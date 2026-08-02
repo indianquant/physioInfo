@@ -1256,78 +1256,128 @@
             <h2><i class="fa-solid fa-calculator text-accent"></i> Interactive Startup Budget & ROI Calculator</h2>
             <button class="btn-copy-link" onclick="copySectionLink('calculator')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
           </div>
-          <p class="section-lead">Estimate your initial capital requirements and monthly payback projection in Bengaluru.</p>
+          <p class="section-lead">Updated with real 2026 Bengaluru rental rates (NoBroker/99acres) and actual equipment prices (IndiaMART/HospitalStore). Presets match the 3 clinic tiers.</p>
+        </div>
+
+        <!-- Preset Tier Quick-Load Buttons -->
+        <div class="calc-preset-row">
+          <span class="calc-preset-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Load Preset:</span>
+          <button class="calc-preset-btn" style="border-color:#34d399; color:#34d399;" onclick="loadCalcPreset('compact')">
+            🟢 Compact Clinic<br><small>400–600 sqft</small>
+          </button>
+          <button class="calc-preset-btn active-preset" style="border-color:#60a5fa; color:#60a5fa;" onclick="loadCalcPreset('standard')">
+            🔵 Standard Clinic<br><small>800–1,200 sqft</small>
+          </button>
+          <button class="calc-preset-btn" style="border-color:#f59e0b; color:#f59e0b;" onclick="loadCalcPreset('sports')">
+            🟡 Sports / Rehab Center<br><small>1,500+ sqft</small>
+          </button>
         </div>
 
         <div class="calculator-layout">
           <div class="calc-form card">
             <h3><i class="fa-solid fa-sliders"></i> Input Parameters</h3>
-            
+
             <div class="form-group">
-              <label>Locality Tier in Bengaluru:</label>
+              <label>Clinic Size & Locality:</label>
               <select id="calcLocality" onchange="calculateROI()">
-                <option value="panathur" selected>Panathur / East BLR (Sobha Neopolis Hub) - Rent ₹40k, Deposit 6 mos</option>
-                <option value="premium">Prime Hub (HSR Layout, Indiranagar, Koramangala) - Rent ₹60k, Deposit 8 mos</option>
-                <option value="standard">Mid-Tier (JP Nagar, Banashankari, Sahakarnagar) - Rent ₹35k, Deposit 6 mos</option>
-                <option value="budget">Outer / Residential (Electronic City, Yelahanka) - Rent ₹22k, Deposit 5 mos</option>
+                <option value="panathur_internal">Panathur / Kadubeesanahalli — Internal Road (₹30K/mo)</option>
+                <option value="panathur_main">Panathur Main Road / ORR Service Road (₹42K/mo)</option>
+                <option value="bellandur">Bellandur / Varthur Road (₹35K/mo)</option>
+                <option value="sarjapur">Sarjapur Road — Internal (₹28K/mo)</option>
+                <option value="whitefield" selected>Whitefield / ITPL Road (₹39K/mo)</option>
+                <option value="premium">Prime Hub (HSR/Indiranagar/Koramangala) (₹70K/mo)</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label>Number of Treatment Beds/Bays:</label>
-              <input type="number" id="calcBeds" value="3" min="1" max="10" autocomplete="off" onchange="calculateROI()">
+              <label>Clinic Tier / Space Size:</label>
+              <select id="calcClinicTier" onchange="calculateROI()">
+                <option value="compact">🟢 Compact — 400–600 sqft (1–2 bays)</option>
+                <option value="standard" selected>🔵 Standard — 800–1,200 sqft (3–4 bays)</option>
+                <option value="sports">🟡 Sports/Rehab — 1,500+ sqft (4–6 bays)</option>
+              </select>
             </div>
 
             <div class="form-group">
-              <label>Equipment Package Tier:</label>
+              <label>Equipment Package:</label>
               <select id="calcEquip" onchange="calculateROI()">
-                <option value="basic">Basic (TENS, IFT, Ultrasound, Basic Rehab) - ₹2.5L</option>
-                <option value="standard" selected>Standard (Laser, Traction, Comprehensive Rehab) - ₹4.5L</option>
-                <option value="advanced">Advanced (Shockwave, HILT, Gait Analysis) - ₹10.0L</option>
+                <option value="basic">🟢 Basic — Combo Unit, Hydrocollator, Cervical Traction, Tables, Bands (₹1.8L)</option>
+                <option value="medium" selected>🔵 Medium — IFT, US, SWD, Motorized Traction, LLLT, Hi-Low Tables (₹4.5L)</option>
+                <option value="advanced">🟡 Advanced — Class IV Laser, EMG/NMES, CPM, Full Traction Suite (₹12L)</option>
               </select>
             </div>
 
             <div class="form-group">
               <label>Consultation Fee Per Session (₹):</label>
-              <input type="number" id="calcFee" value="750" step="50" autocomplete="off" onchange="calculateROI()">
+              <input type="number" id="calcFee" value="800" step="50" autocomplete="off" onchange="calculateROI()">
             </div>
 
             <div class="form-group">
-              <label>Expected Patients Per Day (Average):</label>
-              <input type="number" id="calcPatients" value="8" min="1" max="50" autocomplete="off" onchange="calculateROI()">
+              <label>Patients Per Day (Average):</label>
+              <input type="number" id="calcPatients" value="15" min="1" max="60" autocomplete="off" onchange="calculateROI()">
+            </div>
+
+            <div class="form-group">
+              <label>Staff (Assistants / Receptionist):</label>
+              <select id="calcStaff" onchange="calculateROI()">
+                <option value="0">Solo Practitioner (no staff)</option>
+                <option value="1" selected>1 Assistant (₹15K/mo)</option>
+                <option value="2">2 Staff (₹30K/mo)</option>
+                <option value="3">3 Staff (₹45K/mo)</option>
+              </select>
             </div>
           </div>
 
           <div class="calc-results card">
             <h3><i class="fa-solid fa-chart-pie text-accent"></i> Financial Projections</h3>
-            
-            <div class="result-metric">
-              <span class="res-label">Est. Initial Upfront Capital Required:</span>
-              <span class="res-value text-accent" id="resUpfront">₹0</span>
-            </div>
 
             <div class="result-metric">
-              <span class="res-label">Est. Monthly Gross Revenue:</span>
-              <span class="res-value text-success" id="resRevenue">₹0</span>
+              <span class="res-label"><i class="fa-solid fa-key" style="color:#f59e0b;"></i> Security Deposit (upfront):</span>
+              <span class="res-value text-warning" id="resDeposit">₹0</span>
             </div>
-
             <div class="result-metric">
-              <span class="res-label">Est. Monthly Fixed Expenses (Rent + Util):</span>
-              <span class="res-value text-danger" id="resExpenses">₹0</span>
+              <span class="res-label"><i class="fa-solid fa-screwdriver-wrench" style="color:#60a5fa;"></i> Equipment Cost:</span>
+              <span class="res-value" style="color:#60a5fa;" id="resEquipCost">₹0</span>
+            </div>
+            <div class="result-metric">
+              <span class="res-label"><i class="fa-solid fa-paint-roller" style="color:#a78bfa;"></i> Interiors + Fit-Out:</span>
+              <span class="res-value" style="color:#a78bfa;" id="resInterior">₹0</span>
+            </div>
+            <div class="result-metric">
+              <span class="res-label"><i class="fa-solid fa-file-contract" style="color:#94a3b8;"></i> Licensing + Working Capital:</span>
+              <span class="res-value" style="color:#94a3b8;" id="resLegal">₹0</span>
             </div>
 
             <div class="result-metric highlight-result">
-              <span class="res-label">Estimated Net Monthly Profit:</span>
-              <span class="res-value" id="resProfit">₹0</span>
+              <span class="res-label"><strong>💰 Total One-Time Investment:</strong></span>
+              <span class="res-value text-accent" id="resUpfront">₹0</span>
             </div>
 
+            <div style="height:1px; background: rgba(255,255,255,0.08); margin: 10px 0;"></div>
+
             <div class="result-metric">
-              <span class="res-label">Estimated Breakeven / Payback Period:</span>
-              <span class="res-value text-warning" id="resPayback">0 months</span>
+              <span class="res-label"><i class="fa-solid fa-arrow-trend-up" style="color:#34d399;"></i> Monthly Gross Revenue:</span>
+              <span class="res-value text-success" id="resRevenue">₹0/mo</span>
+            </div>
+            <div class="result-metric">
+              <span class="res-label"><i class="fa-solid fa-arrow-trend-down" style="color:#f87171;"></i> Monthly Fixed Costs:</span>
+              <span class="res-value text-danger" id="resExpenses">₹0/mo</span>
+            </div>
+            <div class="result-metric highlight-result">
+              <span class="res-label"><strong>📈 Est. Net Monthly Profit:</strong></span>
+              <span class="res-value" id="resProfit">₹0/mo</span>
+            </div>
+            <div class="result-metric">
+              <span class="res-label"><i class="fa-solid fa-calendar-check" style="color:#fbbf24;"></i> Breakeven / Payback Period:</span>
+              <span class="res-value text-warning" id="resPayback">—</span>
+            </div>
+            <div class="result-metric">
+              <span class="res-label"><i class="fa-solid fa-percent" style="color:#a3e635;"></i> Net Profit Margin:</span>
+              <span class="res-value" style="color:#a3e635;" id="resMargin">—</span>
             </div>
 
             <div class="calc-note">
-              <i class="fa-solid fa-circle-info"></i> Calculation includes real Bengaluru rental deposit norms, utilities, basic staff allowance, and 25 working days per month.
+              <i class="fa-solid fa-circle-info"></i> Calculates 25 working days/month. Rent data: NoBroker/99acres. Equipment: IndiaMART/HospitalStore. Staff at ₹15K/person. Utilities ₹5K base + ₹3K per bay.
             </div>
           </div>
         </div>
@@ -1428,18 +1478,28 @@
               <button class="sug-pill" onclick="sendSuggestedQuery('What are the closest physio clinics to Home (Sobha Neopolis)?')">Clinics near Home?</button>
               <button class="sug-pill" onclick="sendSuggestedQuery('What is the typical rent & deposit for Panathur area?')">Panathur Rent & Deposit?</button>
               <button class="sug-pill" onclick="sendSuggestedQuery('What are the top reasons physio clinics fail in Bengaluru?')">Why do clinics fail?</button>
+              <button class="sug-pill suggest-pill" onclick="document.getElementById('chatInput').value='/suggest '; document.getElementById('chatInput').focus();">💡 Leave a suggestion</button>
             </div>
+            <!-- Suggestions Feed (populated from GitHub suggestions.json) -->
+            <div id="suggestionsFeed" class="suggestions-feed" style="display:none;"></div>
           </div>
         </div>
       </div>
 
       <div class="chat-input-bar">
-        <input type="text" id="chatInput" placeholder="Ask a question within website scope..." onkeydown="handleChatKeydown(event)" autocomplete="off">
+        <input type="text" id="suggestionAuthor" placeholder="Your name (optional)" autocomplete="off" style="width:120px; flex-shrink:0; font-size:0.78rem; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); color:var(--text-main); padding: 8px 10px;">
+        <input type="text" id="chatInput" placeholder="Ask a question — or type /suggest <your idea>" onkeydown="handleChatKeydown(event)" autocomplete="off">
         <button id="chatSendBtn" class="btn-send" onclick="submitAIChat()"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
   </div>
 
   <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      calculateROI();
+      loadSuggestionsFromGitHub();
+    });
+  </script>
 </body>
 </html>

@@ -298,53 +298,116 @@ function changePageSize() {
 }
 
 // Interactive ROI Calculator Logic
+// ─── ROI Calculator: Real Rental & Equipment Data (mid-2026) ─────────────────
+const CALC_RENT_DATA = {
+  panathur_internal: { rent: 30000, deposit: 6, label: 'Panathur Internal Road' },
+  panathur_main:     { rent: 42000, deposit: 6, label: 'Panathur Main / ORR' },
+  bellandur:         { rent: 35000, deposit: 6, label: 'Bellandur' },
+  sarjapur:          { rent: 28000, deposit: 5, label: 'Sarjapur Road Internal' },
+  whitefield:        { rent: 39000, deposit: 6, label: 'Whitefield / ITPL' },
+  premium:           { rent: 70000, deposit: 8, label: 'Prime Hub (HSR/Indiranagar)' }
+};
+
+const CALC_EQUIP_DATA = {
+  basic:    { cost: 180000,  label: 'Basic (Combo+Hydrocollator+Traction+Tables+Bands)' },
+  medium:   { cost: 450000,  label: 'Medium (IFT+US+SWD+Motorized Traction+LLLT)' },
+  advanced: { cost: 1200000, label: 'Advanced (Class IV Laser+EMG/NMES+CPM+Full Suite)' }
+};
+
+const CALC_TIER_INTERIORS = {
+  compact:  { interior: 125000, bays: 2 },
+  standard: { interior: 275000, bays: 4 },
+  sports:   { interior: 750000, bays: 6 }
+};
+
+function loadCalcPreset(tier) {
+  document.querySelectorAll('.calc-preset-btn').forEach(b => b.classList.remove('active-preset'));
+  event.currentTarget.classList.add('active-preset');
+
+  const presets = {
+    compact: {
+      locality: 'panathur_internal', clinicTier: 'compact',
+      equip: 'basic', fee: 700, patients: 12, staff: '0'
+    },
+    standard: {
+      locality: 'whitefield', clinicTier: 'standard',
+      equip: 'medium', fee: 800, patients: 20, staff: '1'
+    },
+    sports: {
+      locality: 'whitefield', clinicTier: 'sports',
+      equip: 'advanced', fee: 1000, patients: 35, staff: '2'
+    }
+  };
+
+  const p = presets[tier];
+  if (!p) return;
+
+  const setVal = (id, v) => { const el = document.getElementById(id); if(el) el.value = v; };
+  setVal('calcLocality', p.locality);
+  setVal('calcClinicTier', p.clinicTier);
+  setVal('calcEquip', p.equip);
+  setVal('calcFee', p.fee);
+  setVal('calcPatients', p.patients);
+  setVal('calcStaff', p.staff);
+  calculateROI();
+}
+
 function calculateROI() {
-  const locality = document.getElementById('calcLocality').value;
-  const beds = parseInt(document.getElementById('calcBeds').value) || 1;
-  const equipTier = document.getElementById('calcEquip').value;
-  const fee = parseFloat(document.getElementById('calcFee').value) || 750;
-  const patientsPerDay = parseFloat(document.getElementById('calcPatients').value) || 8;
+  const locality    = document.getElementById('calcLocality')?.value || 'whitefield';
+  const clinicTier  = document.getElementById('calcClinicTier')?.value || 'standard';
+  const equipTier   = document.getElementById('calcEquip')?.value || 'medium';
+  const fee         = parseFloat(document.getElementById('calcFee')?.value) || 800;
+  const patientsDay = parseFloat(document.getElementById('calcPatients')?.value) || 15;
+  const staffCount  = parseInt(document.getElementById('calcStaff')?.value) || 1;
 
-  let rent = 35000;
-  let depositMonths = 6;
-  if (locality === 'panathur') { rent = 40000; depositMonths = 6; }
-  else if (locality === 'premium') { rent = 60000; depositMonths = 8; }
-  else if (locality === 'budget') { rent = 22000; depositMonths = 5; }
+  const rentInfo    = CALC_RENT_DATA[locality]    || CALC_RENT_DATA.whitefield;
+  const equipInfo   = CALC_EQUIP_DATA[equipTier]  || CALC_EQUIP_DATA.medium;
+  const tierInfo    = CALC_TIER_INTERIORS[clinicTier] || CALC_TIER_INTERIORS.standard;
 
-  const upfrontDeposit = rent * depositMonths;
+  // Scale rent by clinic tier (larger spaces cost more)
+  const tierRentMultiplier = { compact: 0.7, standard: 1.0, sports: 1.65 };
+  const rent = Math.round(rentInfo.rent * (tierRentMultiplier[clinicTier] || 1.0));
 
-  let equipCost = 450000;
-  if (equipTier === 'basic') equipCost = 250000;
-  else if (equipTier === 'advanced') equipCost = 1000000;
+  const deposit       = rent * rentInfo.deposit;
+  const equipCost     = equipInfo.cost;
+  const interiorCost  = tierInfo.interior;
+  const licensingCost = clinicTier === 'compact' ? 40000 : clinicTier === 'standard' ? 65000 : 115000;
+  const workingCap    = rent * 5; // 5-month buffer
 
-  const interiorCost = 150000 + (beds * 30000);
-  const licensingCost = 50000;
-  const workingCapitalBuffer = rent * 4;
+  const totalUpfront  = deposit + equipCost + interiorCost + licensingCost + workingCap;
 
-  const totalUpfront = upfrontDeposit + equipCost + interiorCost + licensingCost + workingCapitalBuffer;
-  const grossMonthlyRevenue = fee * patientsPerDay * 25;
-  const fixedExpenses = rent + 12000 + (beds * 5000);
-  const netMonthlyProfit = grossMonthlyRevenue - fixedExpenses;
+  // Monthly revenue & costs
+  const grossRevenue  = fee * patientsDay * 25;
+  const staffCost     = staffCount * 15000;
+  const utilities     = 5000 + (tierInfo.bays * 3000);
+  const fixedExpenses = rent + staffCost + utilities;
+  const netProfit     = grossRevenue - fixedExpenses;
+  const margin        = grossRevenue > 0 ? ((netProfit / grossRevenue) * 100).toFixed(1) : 0;
 
-  let paybackMonths = "N/A (Operating at Loss)";
-  if (netMonthlyProfit > 0) {
-    const months = Math.ceil(totalUpfront / netMonthlyProfit);
-    paybackMonths = `${months} Months (${(months / 12).toFixed(1)} Years)`;
+  let payback = 'Operating at Loss';
+  if (netProfit > 0) {
+    const m = Math.ceil(totalUpfront / netProfit);
+    payback = `${m} months (${(m/12).toFixed(1)} yrs)`;
   }
 
-  document.getElementById('resUpfront').innerText = `₹${totalUpfront.toLocaleString('en-IN')}`;
-  document.getElementById('resRevenue').innerText = `₹${grossMonthlyRevenue.toLocaleString('en-IN')}/mo`;
-  document.getElementById('resExpenses').innerText = `₹${fixedExpenses.toLocaleString('en-IN')}/mo`;
-  
+  const fmt = n => '₹' + Math.round(n).toLocaleString('en-IN');
+
+  const set = (id, v) => { const el = document.getElementById(id); if(el) el.innerText = v; };
+  set('resDeposit',   fmt(deposit));
+  set('resEquipCost', fmt(equipCost));
+  set('resInterior',  fmt(interiorCost));
+  set('resLegal',     fmt(licensingCost + workingCap));
+  set('resUpfront',   fmt(totalUpfront));
+  set('resRevenue',   fmt(grossRevenue) + '/mo');
+  set('resExpenses',  fmt(fixedExpenses) + '/mo');
+  set('resPayback',   payback);
+  set('resMargin',    margin + '%');
+
   const profitElem = document.getElementById('resProfit');
-  profitElem.innerText = `₹${netMonthlyProfit.toLocaleString('en-IN')}/mo`;
-  if (netMonthlyProfit >= 0) {
-    profitElem.className = 'res-value text-accent';
-  } else {
-    profitElem.className = 'res-value text-danger';
+  if (profitElem) {
+    profitElem.innerText = fmt(netProfit) + '/mo';
+    profitElem.className = 'res-value ' + (netProfit >= 0 ? 'text-accent' : 'text-danger');
   }
-
-  document.getElementById('resPayback').innerText = paybackMonths;
 }
 
 // Render Checklist
@@ -751,6 +814,20 @@ function submitAIChat() {
   appendChatMessage('user', `<p>${escapeHtml(query)}</p>`);
   input.value = '';
 
+  // ── Mansi Suggestion Mode: /suggest <content> ──────────────────────────────
+  // Any visitor can prefix their message with /suggest to submit a content
+  // suggestion. It is saved to suggestions.json in the GitHub repo via API.
+  const suggestMatch = query.match(/^\/suggest\s+(.+)/is);
+  if (suggestMatch) {
+    const suggestion = suggestMatch[1].trim();
+    appendChatMessage('bot', `
+      <p>📝 <strong>Suggestion received!</strong> Saving to the repository...</p>
+      <p style="font-size:0.8rem; color: var(--text-muted);">Your suggestion: <em>${escapeHtml(suggestion)}</em></p>
+    `);
+    submitSuggestionToGitHub(suggestion);
+    return;
+  }
+
   const container = document.getElementById('chatMessages');
   const tempBotId = 'bot-thinking-' + Date.now();
   const tempDiv = document.createElement('div');
@@ -768,6 +845,117 @@ function submitAIChat() {
     const botAnswer = generateScopedAIResponse(query);
     appendChatMessage('bot', botAnswer);
   }, 400);
+}
+
+// ── Mansi Remote Suggestion System ────────────────────────────────────────────
+// Submits a suggestion to GitHub via the API, which stores it in suggestions.json
+// The site reads this file on load and displays community suggestions.
+async function submitSuggestionToGitHub(suggestionText) {
+  const token = appState.token || localStorage.getItem('gh_pat_token');
+  const author = document.getElementById('suggestionAuthor')?.value?.trim() || 'Anonymous';
+
+  if (!token) {
+    appendChatMessage('bot', `
+      <p>⚠️ <strong>No GitHub token set.</strong> Please set your sync token via the <strong>"Set Sync Token"</strong> button to enable remote suggestions.</p>
+      <p style="font-size:0.8rem; color: var(--text-muted);">Your suggestion has been noted locally. Ask the site owner to add it manually.</p>
+    `);
+    // Still show it locally
+    addLocalSuggestionDisplay(author, suggestionText);
+    return;
+  }
+
+  try {
+    // 1. Fetch existing suggestions.json (to get SHA for update)
+    const headers = {
+      'Authorization': `token ${token}`,
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    };
+
+    let existingSuggestions = [];
+    let fileSHA = null;
+
+    const getResp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/suggestions.json`, { headers });
+    if (getResp.ok) {
+      const data = await getResp.json();
+      fileSHA = data.sha;
+      existingSuggestions = JSON.parse(atob(data.content.replace(/\n/g, '')));
+    }
+
+    // 2. Append new suggestion
+    const newEntry = {
+      id: Date.now(),
+      author: author,
+      text: suggestionText,
+      timestamp: new Date().toISOString(),
+      status: 'pending'
+    };
+    existingSuggestions.push(newEntry);
+
+    // 3. Commit back to GitHub
+    const body = {
+      message: `💡 New suggestion from ${author}: ${suggestionText.slice(0, 60)}`,
+      content: utf8_to_b64(JSON.stringify(existingSuggestions, null, 2)),
+      ...(fileSHA ? { sha: fileSHA } : {})
+    };
+
+    const putResp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/suggestions.json`, {
+      method: 'PUT', headers, body: JSON.stringify(body)
+    });
+
+    if (putResp.ok) {
+      appendChatMessage('bot', `
+        <p>✅ <strong>Suggestion saved!</strong> It has been committed to the repository.</p>
+        <p style="font-size:0.8rem; color: var(--text-muted);">🔄 The site will reflect approved suggestions on next page load. Suggestion ID: <code>${newEntry.id}</code></p>
+        <p style="font-size:0.8rem;">📋 <strong>${author}</strong> suggested: <em>${escapeHtml(suggestionText)}</em></p>
+      `);
+      addLocalSuggestionDisplay(author, suggestionText);
+    } else {
+      throw new Error('GitHub API returned ' + putResp.status);
+    }
+  } catch(err) {
+    appendChatMessage('bot', `
+      <p>❌ <strong>Could not save remotely</strong>: ${err.message}</p>
+      <p style="font-size:0.8rem; color: var(--text-muted);">Tip: Ensure your GitHub token has <code>public_repo</code> or <code>contents:write</code> scope.</p>
+    `);
+  }
+}
+
+function addLocalSuggestionDisplay(author, text) {
+  let box = document.getElementById('suggestionsFeed');
+  if (!box) return;
+  const el = document.createElement('div');
+  el.className = 'suggestion-item';
+  el.innerHTML = `
+    <span class="sug-author"><i class="fa-solid fa-user-pen"></i> ${escapeHtml(author)}</span>
+    <span class="sug-text">${escapeHtml(text)}</span>
+    <span class="sug-ts">${new Date().toLocaleString('en-IN')}</span>
+  `;
+  box.prepend(el);
+  box.style.display = 'block';
+}
+
+// Load existing suggestions from GitHub on page load
+async function loadSuggestionsFromGitHub() {
+  try {
+    const resp = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/suggestions.json?t=${Date.now()}`);
+    if (!resp.ok) return;
+    const suggestions = await resp.json();
+    const feed = document.getElementById('suggestionsFeed');
+    if (!feed || !suggestions.length) return;
+
+    suggestions.slice(-5).reverse().forEach(s => {
+      const el = document.createElement('div');
+      el.className = 'suggestion-item';
+      el.innerHTML = `
+        <span class="sug-author"><i class="fa-solid fa-user-pen"></i> ${escapeHtml(s.author || 'Anonymous')}</span>
+        <span class="sug-text">${escapeHtml(s.text)}</span>
+        <span class="sug-ts">${new Date(s.timestamp).toLocaleDateString('en-IN')}</span>
+      `;
+      feed.appendChild(el);
+    });
+    feed.style.display = 'flex';
+  } catch(e) { /* No suggestions file yet — that's fine */ }
 }
 
 function generateScopedAIResponse(q) {
