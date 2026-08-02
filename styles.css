@@ -81,6 +81,7 @@ a:hover {
 .mt-3 { margin-top: 0.75rem; }
 .mt-4 { margin-top: 1rem; }
 .mt-6 { margin-top: 1.5rem; }
+.mb-6 { margin-bottom: 1.5rem; }
 
 /* Highlight Marker */
 .mark {
@@ -97,6 +98,17 @@ a:hover {
   padding: 2px 6px;
   border-radius: 4px;
   font-weight: 600;
+}
+
+.formula-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-family: monospace;
+  font-size: 1rem;
+  color: var(--accent);
+  display: inline-block;
 }
 
 /* Navigation Bar */
