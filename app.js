@@ -556,13 +556,13 @@ function initNeopolisMap() {
 
   const homeIcon = L.divIcon({
     className: 'home-marker-pin',
-    html: '<div style="background-color: #ef4444; color: white; border-radius: 20px; padding: 6px 12px; font-weight: bold; border: 2px solid white; box-shadow: 0 0 15px rgba(239, 68, 68, 0.9); font-size: 12px; white-space: nowrap;"><i class="fa-solid fa-star"></i> SOBHA NEOPOLIS</div>',
-    iconSize: [140, 32],
-    iconAnchor: [70, 16]
+    html: '<div style="background-color: #ef4444; color: white; border-radius: 20px; padding: 6px 12px; font-weight: bold; border: 2px solid white; box-shadow: 0 0 15px rgba(239, 68, 68, 0.9); font-size: 12px; white-space: nowrap;"><i class="fa-solid fa-house"></i> HOME</div>',
+    iconSize: [100, 32],
+    iconAnchor: [50, 16]
   });
 
   L.marker(SOBHA_NEOPOLIS_COORDS, { icon: homeIcon }).addTo(neopolisMap)
-    .bindPopup('<b>Sobha Neopolis Anchor Base</b><br>Panathur Main Road, East Bengaluru<br>Lat: 12.9348° N, Lng: 77.7128° E');
+    .bindPopup('<b>Home Anchor Base (Sobha Neopolis)</b><br>Panathur Main Road, East Bengaluru<br>Lat: 12.9348° N, Lng: 77.7128° E');
 
   filterNeopolisRadius();
 }
@@ -596,7 +596,7 @@ function renderNeopolisMapAndTable(clinics, radiusVal) {
 
   if (summaryBadge) {
     const label = radiusVal === 'ALL' ? 'All Bengaluru' : `< ${radiusVal} km`;
-    summaryBadge.innerHTML = `<i class="fa-solid fa-location-dot"></i> Showing <strong>${clinics.length}</strong> standalone physio clinics within <strong>${label}</strong> of Sobha Neopolis`;
+    summaryBadge.innerHTML = `<i class="fa-solid fa-house"></i> Showing <strong>${clinics.length}</strong> standalone physio clinics within <strong>${label}</strong> of Home`;
   }
 
   if (tbody) {
@@ -655,7 +655,7 @@ function renderNeopolisMapAndTable(clinics, radiusVal) {
         marker.bindPopup(`
           <div style="font-family: sans-serif; font-size: 13px; color: #1e293b;">
             <strong style="font-size: 14px; color: #0f172a;">${escapeHtml(c.name)}</strong><br>
-            <span style="color: #64748b;">${escapeHtml(c.locality)} • <strong style="color: #6366f1;">${c.distance_km} km from Sobha Neopolis</strong></span><br>
+            <span style="color: #64748b;">${escapeHtml(c.locality)} • <strong style="color: #6366f1;">${c.distance_km} km from Home</strong></span><br>
             <div style="margin-top: 5px;">
               <span style="color: #f59e0b; font-weight: bold;">★ ${c.rating}</span> (${c.reviews} reviews)<br>
               <a href="${c.google_maps_url}" target="_blank" style="color: #6366f1; font-weight: bold; display: inline-block; margin-top: 6px; text-decoration: underline;">Open Google Maps Pin →</a>
