@@ -83,7 +83,7 @@ a:hover {
 .mt-6 { margin-top: 1.5rem; }
 .mb-6 { margin-bottom: 1.5rem; }
 
-/* Database Explorer Controls */
+/* Database Explorer Controls & Pagination */
 .db-controls {
   display: flex;
   flex-wrap: wrap;
@@ -126,6 +126,46 @@ a:hover {
   padding: 8px 12px;
   font-size: 0.85rem;
   outline: none;
+}
+
+.record-summary-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.record-count-badge {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+.page-size-selector select {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  margin-left: 6px;
+}
+
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+}
+
+.page-info-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
 /* Highlight Marker */
@@ -277,6 +317,11 @@ a:hover {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-main);
   border: 1px solid var(--border);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .btn-token {

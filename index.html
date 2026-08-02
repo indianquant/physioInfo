@@ -497,7 +497,7 @@
             <h2><i class="fa-solid fa-database text-accent"></i> Bengaluru Clinic Scraped Database Explorer</h2>
             <button class="btn-copy-link" onclick="copySectionLink('database')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
           </div>
-          <p class="section-lead">Systematically fetched clinic entries across 50+ sub-localities in Bengaluru Urban with mined session fees, patient praises, and sentiment metrics (1,000+ total records).</p>
+          <p class="section-lead">Systematically fetched clinic entries across Bengaluru Urban with strict empirical metrics.</p>
         </div>
 
         <div class="card">
@@ -527,7 +527,22 @@
             <a href="bengaluru_physio_clinics.csv" download class="btn btn-primary"><i class="fa-solid fa-download"></i> Export CSV</a>
           </div>
 
-          <div class="table-container mt-4">
+          <!-- Total Record Summary Counter & Page Size Selector -->
+          <div class="record-summary-bar mt-3">
+            <span id="recordCountText" class="record-count-badge"><i class="fa-solid fa-layer-group"></i> Loading records...</span>
+            <div class="page-size-selector">
+              <label>Rows per page:</label>
+              <select id="dbPageSize" onchange="changePageSize()">
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="ALL">All Records</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-container mt-3">
             <table class="data-table">
               <thead>
                 <tr>
@@ -546,9 +561,13 @@
             </table>
           </div>
 
-          <div class="callout callout-info mt-4">
-            <strong>Data Mining Note:</strong> Session fees and patient praises are extracted from published Google Reviews, Practo listings, and local market surveys.
+          <!-- Pagination Bar -->
+          <div class="pagination-bar mt-4">
+            <button id="btnPrevPage" class="btn btn-secondary" onclick="changePage(-1)" disabled><i class="fa-solid fa-chevron-left"></i> Previous</button>
+            <span id="pageNumbersText" class="page-info-text">Page 1 of 1</span>
+            <button id="btnNextPage" class="btn btn-secondary" onclick="changePage(1)" disabled>Next <i class="fa-solid fa-chevron-right"></i></button>
           </div>
+
         </div>
       </section>
 

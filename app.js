@@ -19,7 +19,10 @@ let appState = {
     { id: 7, text: "Setup & Verify Google My Business Profile (Direct-to-Consumer Local SEO)", completed: false },
     { id: 8, text: "Secure 6-Month Working Capital Cushion for Rent & Payroll", completed: false }
   ],
-  clinicDatabase: []
+  clinicDatabase: [],
+  filteredClinics: [],
+  currentPage: 1,
+  pageSize: 10
 };
 
 // Helper: Safe UTF-8 to Base64 encoding for GitHub API (prevents btoa crash)
@@ -94,17 +97,14 @@ async function loadClinicDatabase() {
     const res = await fetch('bengaluru_physio_clinics.json');
     if (res.ok) {
       appState.clinicDatabase = await res.json();
-      renderClinicDatabase();
+      filterClinicDatabase();
     }
   } catch (err) {
     console.warn('Could not load bengaluru_physio_clinics.json', err);
   }
 }
 
-function renderClinicDatabase() {
-  const tbody = document.getElementById('clinicTableBody');
-  if (!tbody) return;
-
+function filterClinicDatabase() {
   const locFilter = document.getElementById('dbLocalityFilter')?.value || 'ALL';
   const sortFilter = document.getElementById('dbSortFilter')?.value || 'reviews-desc';
   const searchInput = (document.getElementById('dbSearchInput')?.value || '').toLowerCase().trim();
@@ -141,14 +141,61 @@ function renderClinicDatabase() {
     return 0;
   });
 
+  appState.filteredClinics = list;
+  appState.currentPage = 1;
+  renderClinicDatabase();
+}
+
+function renderClinicDatabase() {
+  const tbody = document.getElementById('clinicTableBody');
+  const recordCountBadge = document.getElementById('recordCountText');
+  const pageNumbersText = document.getElementById('pageNumbersText');
+  const btnPrev = document.getElementById('btnPrevPage');
+  const btnNext = document.getElementById('btnNextPage');
+
+  if (!tbody) return;
+
+  const totalRecords = appState.filteredClinics.length;
+  const pageSizeVal = appState.pageSize;
+
+  let pageSlice = appState.filteredClinics;
+  let totalPages = 1;
+
+  if (pageSizeVal !== 'ALL') {
+    const size = parseInt(pageSizeVal) || 10;
+    totalPages = Math.ceil(totalRecords / size) || 1;
+    if (appState.currentPage > totalPages) appState.currentPage = totalPages;
+    
+    const startIdx = (appState.currentPage - 1) * size;
+    const endIdx = startIdx + size;
+    pageSlice = appState.filteredClinics.slice(startIdx, endIdx);
+
+    const showingStart = totalRecords === 0 ? 0 : startIdx + 1;
+    const showingEnd = Math.min(endIdx, totalRecords);
+    if (recordCountBadge) {
+      recordCountBadge.innerHTML = `<i class="fa-solid fa-layer-group"></i> Showing <strong>${showingStart} – ${showingEnd}</strong> of <strong>${totalRecords}</strong> total clinics (Fetched ${appState.clinicDatabase.length})`;
+    }
+  } else {
+    if (recordCountBadge) {
+      recordCountBadge.innerHTML = `<i class="fa-solid fa-layer-group"></i> Showing all <strong>${totalRecords}</strong> clinics (Fetched ${appState.clinicDatabase.length})`;
+    }
+  }
+
+  if (pageNumbersText) {
+    pageNumbersText.innerText = `Page ${appState.currentPage} of ${totalPages}`;
+  }
+
+  if (btnPrev) btnPrev.disabled = appState.currentPage <= 1;
+  if (btnNext) btnNext.disabled = appState.currentPage >= totalPages || pageSizeVal === 'ALL';
+
   tbody.innerHTML = '';
 
-  if (list.length === 0) {
+  if (pageSlice.length === 0) {
     tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted" style="padding: 20px;">No clinics matching filter criteria.</td></tr>`;
     return;
   }
 
-  list.forEach(c => {
+  pageSlice.forEach(c => {
     const tr = document.createElement('tr');
     
     const ratingDisplay = (typeof c.rating === 'number') 
@@ -187,7 +234,15 @@ function renderClinicDatabase() {
   });
 }
 
-function filterClinicDatabase() {
+function changePage(delta) {
+  appState.currentPage += delta;
+  renderClinicDatabase();
+}
+
+function changePageSize() {
+  const sizeVal = document.getElementById('dbPageSize').value;
+  appState.pageSize = sizeVal;
+  appState.currentPage = 1;
   renderClinicDatabase();
 }
 
