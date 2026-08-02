@@ -222,6 +222,10 @@ function renderClinicDatabase() {
       ? `<i class="fa-solid fa-star text-warning"></i> <strong>${c.rating}</strong> (${c.reviews} revs)` 
       : `N/A`;
 
+    const feeDisplay = c.fee_range || 'N/A (Contact Clinic)';
+    const praiseDisplay = (c.top_praise && c.top_praise !== 'N/A') ? `✔ ${c.top_praise}` : `N/A`;
+    const sentimentDisplay = (c.sentiment_pct && c.sentiment_pct !== 'N/A') ? `${c.sentiment_pct} positive` : `N/A`;
+
     const phoneDisplay = (c.phone && c.phone !== 'N/A') 
       ? `<br><a href="tel:${c.phone}" class="btn-tel" style="font-size: 0.75rem; color: #34d399; text-decoration: none; margin-top: 3px; display: inline-block;"><i class="fa-solid fa-phone"></i> ${c.phone}</a>` 
       : ``;
