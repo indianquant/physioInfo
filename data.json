@@ -1,0 +1,13 @@
+{
+  "lastUpdated": "2026-08-02T11:50:00Z",
+  "checklist": [
+    { "id": 1, "text": "Complete BPT/MPT Degree & Mandatory 6-Month Internship", "completed": true },
+    { "id": 2, "text": "Register with Karnataka State Physiotherapy Council", "completed": false },
+    { "id": 3, "text": "Secure Ground Floor / Elevator-Equipped Premises in BLR", "completed": false },
+    { "id": 4, "text": "Register Clinic under KPME Act (Karnataka Medical Establishments)", "completed": false },
+    { "id": 5, "text": "Obtain BBMP Trade License & BMWM Waste Agreement", "completed": false },
+    { "id": 6, "text": "Procure Essential Modalities (TENS, IFT, Ultrasound, Rehab Gear)", "completed": false },
+    { "id": 7, "text": "Setup & Verify Google My Business Profile (Direct-to-Consumer Local SEO)", "completed": false },
+    { "id": 8, "text": "Secure 6-Month Working Capital Cushion for Rent & Payroll", "completed": false }
+  ]
+}
