@@ -497,14 +497,14 @@
             <h2><i class="fa-solid fa-database text-accent"></i> Bengaluru Clinic Scraped Database Explorer</h2>
             <button class="btn-copy-link" onclick="copySectionLink('database')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
           </div>
-          <p class="section-lead">Systematically fetched clinic entries across 30+ sub-localities in Bengaluru Urban (Panathur, HSR, Indiranagar, Jayanagar, etc.).</p>
+          <p class="section-lead">Systematically fetched clinic entries across 50+ sub-localities in Bengaluru Urban (1,000+ total records).</p>
         </div>
 
         <div class="card">
           <div class="db-controls">
             <div class="search-box-db">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" id="dbSearchInput" placeholder="Filter clinics by name or keyword..." oninput="filterClinicDatabase()">
+              <input type="text" id="dbSearchInput" placeholder="Filter clinics by name or keyword..." autocomplete="off" spellcheck="false" name="clinic_search_query" aria-autocomplete="none" oninput="filterClinicDatabase()">
             </div>
             <div class="filter-box">
               <select id="dbLocalityFilter" onchange="filterClinicDatabase()">
@@ -516,7 +516,7 @@
                 <option value="Koramangala">Koramangala</option>
                 <option value="Whitefield">Whitefield</option>
                 <option value="JP Nagar">JP Nagar</option>
-                <option value="Electronic City Phase 1">Electronic City</option>
+                <option value="Electronic City">Electronic City</option>
               </select>
               <select id="dbSortFilter" onchange="filterClinicDatabase()">
                 <option value="reviews-desc">Sort by Review Count (Highest)</option>
@@ -726,7 +726,7 @@
 
             <div class="form-group">
               <label>Number of Treatment Beds/Bays:</label>
-              <input type="number" id="calcBeds" value="3" min="1" max="10" onchange="calculateROI()">
+              <input type="number" id="calcBeds" value="3" min="1" max="10" autocomplete="off" onchange="calculateROI()">
             </div>
 
             <div class="form-group">
@@ -740,12 +740,12 @@
 
             <div class="form-group">
               <label>Consultation Fee Per Session (₹):</label>
-              <input type="number" id="calcFee" value="750" step="50" onchange="calculateROI()">
+              <input type="number" id="calcFee" value="750" step="50" autocomplete="off" onchange="calculateROI()">
             </div>
 
             <div class="form-group">
               <label>Expected Patients Per Day (Average):</label>
-              <input type="number" id="calcPatients" value="8" min="1" max="50" onchange="calculateROI()">
+              <input type="number" id="calcPatients" value="8" min="1" max="50" autocomplete="off" onchange="calculateROI()">
             </div>
           </div>
 
@@ -796,7 +796,7 @@
 
         <div class="card">
           <div class="add-task-row">
-            <input type="text" id="newTaskInput" placeholder="Add a custom task milestone..." onkeydown="if(event.key==='Enter') addChecklistItem()">
+            <input type="text" id="newTaskInput" placeholder="Add a custom task milestone..." autocomplete="off" spellcheck="false" name="new_task_entry" onkeydown="if(event.key==='Enter') addChecklistItem()">
             <button class="btn btn-primary" onclick="addChecklistItem()"><i class="fa-solid fa-plus"></i> Add Task</button>
           </div>
 
@@ -826,7 +826,7 @@
         
         <div class="form-group mt-3">
           <label>GitHub Personal Access Token (PAT):</label>
-          <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+          <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="new-password">
         </div>
 
         <div class="token-instructions">
