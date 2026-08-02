@@ -222,15 +222,24 @@ function renderClinicDatabase() {
       ? `<i class="fa-solid fa-star text-warning"></i> <strong>${c.rating}</strong> (${c.reviews} revs)` 
       : `N/A`;
 
-    const feeDisplay = c.fee_range || 'N/A';
-    const praiseDisplay = (c.top_praise && c.top_praise !== 'N/A') ? `✔ ${c.top_praise}` : `N/A`;
-    const sentimentDisplay = (c.sentiment_pct && c.sentiment_pct !== 'N/A') ? `${c.sentiment_pct} positive` : `N/A`;
+    const phoneDisplay = (c.phone && c.phone !== 'N/A') 
+      ? `<br><a href="tel:${c.phone}" class="btn-tel" style="font-size: 0.75rem; color: #34d399; text-decoration: none; margin-top: 3px; display: inline-block;"><i class="fa-solid fa-phone"></i> ${c.phone}</a>` 
+      : ``;
+
+    const websiteDisplay = (c.website && c.website !== 'N/A') 
+      ? `<br><a href="${c.website}" target="_blank" style="font-size: 0.75rem; color: #60a5fa; text-decoration: underline; margin-top: 3px; display: inline-block;"><i class="fa-solid fa-globe"></i> ${c.website.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '').substring(0, 22)}...</a>` 
+      : ``;
+
+    const hoursDisplay = (c.opening_hours && c.opening_hours !== 'N/A')
+      ? `<br><small class="text-muted" style="font-size: 0.75rem;"><i class="fa-regular fa-clock"></i> ${c.opening_hours}</small>`
+      : ``;
 
     tr.innerHTML = `
       <td>
         <strong>${c.name}</strong>
         <br><small class="text-accent" style="font-weight:600;"><i class="fa-solid fa-stethoscope"></i> ${c.specialization || 'N/A'}</small>
         <br><small class="text-muted">${c.address}</small>
+        ${hoursDisplay}
       </td>
       <td><span class="chip chip-blue">${c.locality}</span></td>
       <td><span class="mark" style="background: rgba(255, 255, 255, 0.05); color: var(--text-muted);">${feeDisplay}</span></td>
@@ -245,9 +254,13 @@ function renderClinicDatabase() {
       </td>
       <td><span class="mark">${c.mps_score || 'N/A'}</span></td>
       <td>
-        <a href="${c.google_maps_url}" target="_blank" class="btn btn-token" style="padding: 4px 8px; font-size: 0.75rem;">
-          <i class="fa-solid fa-map-pin"></i> Map
-        </a>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <a href="${c.google_maps_url}" target="_blank" class="btn btn-token" style="padding: 4px 8px; font-size: 0.75rem;">
+            <i class="fa-solid fa-map-pin"></i> Map
+          </a>
+          ${phoneDisplay}
+          ${websiteDisplay}
+        </div>
       </td>
     `;
     tbody.appendChild(tr);
