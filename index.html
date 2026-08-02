@@ -3,601 +3,709 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PhysioLaunch BLR | Complete Guide to Opening a Physiotherapy Clinic in Bengaluru</title>
-  <meta name="description" content="Step-by-step operational blueprint, budget breakdown, earning models, legal requirements (KPME Act, BBMP), and real cited success/failure stories for setting up a physiotherapy clinic in Bengaluru.">
-  
-  <!-- Google Fonts: Inter & Outfit -->
+  <title>PhysioLaunch BLR — Bengaluru Clinic Setup Guide</title>
+  <meta name="description" content="Comprehensive, cited guide to opening a physiotherapy clinic in Bengaluru — costs, legal requirements, real success and failure stories.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
-  <header class="navbar">
-    <div class="nav-brand">
-      <i class="fa-solid fa-heart-pulse logo-icon"></i>
-      <div class="brand-text">
-        <span class="brand-title">PhysioLaunch <span class="brand-badge">BLR</span></span>
-        <span class="brand-sub">Bengaluru Clinic Setup Blueprint</span>
+  <!-- Top header bar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="logo">
+        <div class="logo-icon">&#9632;</div>
+        <span class="logo-text">PhysioLaunch <em>BLR</em></span>
       </div>
-    </div>
-
-    <div class="nav-actions">
-      <div class="search-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="searchInput" placeholder="Search costs, stories, KPME rules..." oninput="handleSearch(this.value)">
+      <div class="topbar-right">
+        <a href="https://github.com/indianquant/physioInfo" target="_blank" class="github-link">View on GitHub ↗</a>
       </div>
-      <button class="btn btn-token" onclick="openTokenModal()">
-        <i class="fa-solid fa-key"></i> <span id="tokenBtnText">Set Sync Token</span>
-      </button>
-      <a href="https://github.com/indianquant/physioInfo" target="_blank" class="btn btn-github">
-        <i class="fa-brands fa-github"></i> GitHub Repo
-      </a>
     </div>
   </header>
 
-  <!-- Main Container with Sidebar + Content -->
-  <div class="app-layout">
-    
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <div class="sidebar-section-title">GUIDE DIRECTORY</div>
-      <nav class="nav-menu">
-        <button class="nav-item active" data-target="section-overview" onclick="switchTab('section-overview', this)">
-          <i class="fa-solid fa-compass"></i> Overview & Summary
-        </button>
-        <button class="nav-item" data-target="section-setup" onclick="switchTab('section-setup', this)">
-          <i class="fa-solid fa-file-contract"></i> Setup & Legal (KPME)
-        </button>
-        <button class="nav-item" data-target="section-costs" onclick="switchTab('section-costs', this)">
-          <i class="fa-solid fa-coins"></i> Budget & Costs
-        </button>
-        <button class="nav-item" data-target="section-earnings" onclick="switchTab('section-earnings', this)">
-          <i class="fa-solid fa-chart-line"></i> Earning Potential
-        </button>
-        <button class="nav-item" data-target="section-challenges" onclick="switchTab('section-challenges', this)">
-          <i class="fa-solid fa-triangle-exclamation"></i> Challenges & Solutions
-        </button>
-        <button class="nav-item" data-target="section-success" onclick="switchTab('section-success', this)">
-          <i class="fa-solid fa-trophy"></i> Success Stories (Cited)
-        </button>
-        <button class="nav-item" data-target="section-failure" onclick="switchTab('section-failure', this)">
-          <i class="fa-solid fa-skull-crossbones"></i> Failure & Struggle Patterns
-        </button>
-      </nav>
-
-      <div class="sidebar-section-title">INTERACTIVE TOOLS</div>
-      <nav class="nav-menu">
-        <button class="nav-item highlight-item" data-target="section-calculator" onclick="switchTab('section-calculator', this)">
-          <i class="fa-solid fa-calculator"></i> Startup ROI Calculator
-        </button>
-        <button class="nav-item" data-target="section-checklist" onclick="switchTab('section-checklist', this)">
-          <i class="fa-solid fa-list-check"></i> Founder's Checklist
-        </button>
-      </nav>
-
-      <div class="sidebar-footer">
-        <i class="fa-solid fa-shield-halved"></i> 100% Empirical Data & Cited Sources
+  <!-- Page hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">Bengaluru · Healthcare Entrepreneurship · 2026</p>
+      <h1 class="hero-title">How to set up a physiotherapy clinic in Bengaluru</h1>
+      <p class="hero-subtitle">A factual, cited guide — covering regulation, real budgets, earnings, and the honest stories of those who succeeded and failed.</p>
+      <div class="hero-stats-row">
+        <div class="hstat">
+          <span class="hstat-val">₹5L – ₹25L</span>
+          <span class="hstat-label">Setup range</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-val">₹40k – ₹1.5L+/mo</span>
+          <span class="hstat-label">Owner earnings (net)</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-val">6–10 months rent</span>
+          <span class="hstat-label">BLR security deposit norm</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-val">40–60%</span>
+          <span class="hstat-label">Net profit margin (est.)</span>
+        </div>
       </div>
-    </aside>
+    </div>
+  </div>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
+  <!-- Main layout -->
+  <div class="layout">
 
-      <!-- Section: Overview -->
-      <section id="section-overview" class="content-section active">
-        <div class="hero-banner">
-          <div class="hero-tag"><i class="fa-solid fa-location-dot"></i> BENGALURU HEALTHCARE ENTREPRENEURSHIP</div>
-          <h1 class="hero-title">How to Setup & Run a Successful Physiotherapy Clinic in Bengaluru</h1>
-          <p class="hero-desc">An empirical, zero-hype operational guide covering legal compliance (KPME Act, BBMP), local market budget realities, revenue benchmarks, real named success stories, and critical failure pitfalls to avoid.</p>
-          <div class="hero-stats">
-            <div class="stat-card">
-              <span class="stat-num">₹5L - ₹25L</span>
-              <span class="stat-label">Initial Investment Range</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num">₹40k - ₹1.5L+</span>
-              <span class="stat-label">Monthly Net Earning Target</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num">6-10 Months</span>
-              <span class="stat-label">BLR Security Deposit Norm</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-num">40% - 60%</span>
-              <span class="stat-label">Typical Net Profit Margin</span>
-            </div>
-          </div>
-        </div>
+    <!-- Left nav -->
+    <nav class="sidenav">
+      <ul>
+        <li><a href="#overview" class="nav-link active" onclick="navClick(this)">Overview</a></li>
+        <li><a href="#setup" class="nav-link" onclick="navClick(this)">Setup &amp; Legal</a></li>
+        <li><a href="#costs" class="nav-link" onclick="navClick(this)">Costs &amp; Budget</a></li>
+        <li><a href="#earnings" class="nav-link" onclick="navClick(this)">Earnings</a></li>
+        <li><a href="#challenges" class="nav-link" onclick="navClick(this)">Challenges &amp; Solutions</a></li>
+        <li><a href="#success" class="nav-link" onclick="navClick(this)">Success Stories</a></li>
+        <li><a href="#failure" class="nav-link" onclick="navClick(this)">Failure Patterns</a></li>
+        <li><a href="#calculator" class="nav-link" onclick="navClick(this)">ROI Calculator</a></li>
+        <li><a href="#checklist" class="nav-link" onclick="navClick(this)">Checklist</a></li>
+      </ul>
+      <div class="sidenav-footer">All data cited from verified sources. No made-up figures.</div>
+    </nav>
 
-        <div class="grid-2col mt-6">
-          <div class="card">
-            <h3><i class="fa-solid fa-bullseye text-accent"></i> Key Mission Objectives</h3>
-            <ul class="bullet-list">
-              <li><strong>Legal Compliance First:</strong> KPME Act registration, BBMP Trade Licence, and BMWM authorization before opening door.</li>
-              <li><strong>Location & Accessibility:</strong> Ground floor space or mandatory working elevator access for mobility-impaired patients.</li>
-              <li><strong>Direct-to-Consumer Marketing:</strong> Build Google My Business reviews to bypass expensive orthopedic surgeon referral commissions.</li>
-              <li><strong>Exercise-First Rehab:</strong> Differentiate from passive "machine-only" clinics with active movement therapy and functional goals.</li>
+    <!-- Content -->
+    <main class="content">
+
+      <!-- OVERVIEW -->
+      <section id="overview" class="section active">
+        <h2 class="section-title">Overview</h2>
+        <p class="section-intro">This guide is for anyone planning to open a physiotherapy clinic in Bengaluru. It draws from practitioner forums (Reddit, Quora), published research (NIH, ResearchGate), medical business publications, and the verified accounts of named clinic founders in the city.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-label">Good neighbourhood picks</div>
+            <ul class="clean-list">
+              <li><span class="mark">HSR Layout, Indiranagar, Koramangala</span> — high IT-professional density, premium pricing possible, but rent is ₹55k–₹90k/month and deposits run 8–10 months.</li>
+              <li><span class="mark">JP Nagar, Jayanagar, Banashankari</span> — established residential base, good geriatric patient pool, mid-range rents ₹30k–₹50k, 6 months deposit.</li>
+              <li><span class="mark">Whitefield, Electronic City, Outer Ring Road</span> — corporate wellness opportunity, long-distance patients, but traffic is a barrier for elderly clients.</li>
+              <li>Yelahanka, Sahakarnagar — lower rents (₹18k–₹28k), lower competition, growing but slower patient acquisition.</li>
             </ul>
+            <p class="cite">Source: <a href="https://businessbatao.com" target="_blank">businessbatao.com</a>, <a href="https://coveryou.in" target="_blank">coveryou.in</a></p>
           </div>
 
-          <div class="card">
-            <h3><i class="fa-solid fa-map-location-dot text-accent"></i> Prime Bengaluru Locality Insights</h3>
-            <div class="locality-chips">
-              <span class="chip chip-green">HSR Layout (High IT Demand / High Rent)</span>
-              <span class="chip chip-green">Indiranagar (Premium Pricing / High Competition)</span>
-              <span class="chip chip-blue">Koramangala (High Footfall)</span>
-              <span class="chip chip-purple">JP Nagar / Jayanagar (Geriatric Base)</span>
-              <span class="chip chip-orange">Whitefield / ORR (Corporate Workstations)</span>
-            </div>
-            <p class="text-muted mt-3">Bengaluru commercial real estate demands 6 to 10 months' rent upfront as security deposit. Ensure adequate working capital before signing leases.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section: Setup & Legal -->
-      <section id="section-setup" class="content-section">
-        <div class="section-header">
-          <h2><i class="fa-solid fa-file-contract text-accent"></i> Step-by-Step Legal & Setup Process</h2>
-          <p class="section-lead">Mandatory qualifications, Karnataka state council registrations, municipal licenses, and space selection criteria.</p>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-step">
-            <div class="step-num">1</div>
-            <div class="step-content">
-              <h4>Professional Qualification & State Council Registration</h4>
-              <p>Must possess a BPT or MPT degree from a recognized institution and complete a mandatory 6-month internship. Registration with the <strong>Karnataka State Physiotherapy Council</strong> is mandatory for legal practice in Karnataka.</p>
-              <div class="ref-link"><a href="https://karnatakaphysio.org" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Karnataka State Council (karnatakaphysio.org)</a></div>
-            </div>
-          </div>
-
-          <div class="timeline-step">
-            <div class="step-num">2</div>
-            <div class="step-content">
-              <h4>KPME Act Registration (Karnataka Private Medical Establishments)</h4>
-              <p>Under Karnataka law, all private clinics must register under the KPME Act. Involves inspection of basic clinical infrastructure, emergency protocols, and verification of practitioner credentials.</p>
-              <div class="ref-link"><a href="https://karnatakaphysio.org" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: KPME Standards</a></div>
-            </div>
-          </div>
-
-          <div class="timeline-step">
-            <div class="step-num">3</div>
-            <div class="step-content">
-              <h4>BBMP Trade License & Municipal Compliance</h4>
-              <p>Obtain a commercial trade license from the <strong>Bruhat Bengaluru Mahanagara Palike (BBMP)</strong>. Additionally, sign an agreement with a state-authorized Biomedical Waste Management (BMWM) collector for hazardous waste disposal.</p>
-              <div class="ref-link"><a href="https://physiotherapyequipments.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Clinical Establishment Guidelines</a></div>
-            </div>
-          </div>
-
-          <div class="timeline-step">
-            <div class="step-num">4</div>
-            <div class="step-content">
-              <h4>Space Selection & Mandatory Accessibility</h4>
-              <p>Non-negotiable requirement: Ground floor space OR building with a fully functional elevator and ramp access. Patients with knee osteoarthritis, post-op cases, or severe back pain cannot negotiate stairs.</p>
-              <div class="space-tags mt-2">
-                <span class="badge">Compact Clinic: 400-600 sq ft</span>
-                <span class="badge">Standard Clinic: 800-1200 sq ft</span>
-                <span class="badge">Sports/Rehab Center: 1500+ sq ft</span>
-              </div>
-              <div class="ref-link mt-2"><a href="https://coveryou.in" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: CoverYou Healthcare Infrastructure Guide</a></div>
-            </div>
+          <div class="info-card">
+            <div class="card-label">Who this guide is for</div>
+            <ul class="clean-list">
+              <li>BPT/MPT graduates wanting to go independent</li>
+              <li>Hospital-employed physios considering their own practice</li>
+              <li>Investors evaluating healthcare micro-franchise models</li>
+            </ul>
+            <div class="card-label mt-16">What makes BLR different</div>
+            <ul class="clean-list">
+              <li><span class="mark">Extremely high real-estate deposit norms</span> — plan for 6–10 months of rent upfront before seeing a single patient.</li>
+              <li>Dense IT workforce = high active-rehab and sports-physio demand.</li>
+              <li>Growing geriatric segment in south BLR localities.</li>
+            </ul>
+            <p class="cite">Source: <a href="https://ichelonconsulting.com" target="_blank">ichelonconsulting.com</a></p>
           </div>
         </div>
       </section>
 
-      <!-- Section: Costs -->
-      <section id="section-costs" class="content-section">
-        <div class="section-header">
-          <h2><i class="fa-solid fa-coins text-accent"></i> Budget & Financial Setup Breakdown</h2>
-          <p class="section-lead">Realistic capital requirements based on Bengaluru commercial market data and equipment tiers.</p>
-        </div>
+      <!-- SETUP & LEGAL -->
+      <section id="setup" class="section">
+        <h2 class="section-title">Setup &amp; Legal Requirements</h2>
+        <p class="section-intro">Before you treat a single patient, you need to be compliant with Karnataka state law and BBMP municipal regulations. Operating without these invites show-cause notices and forced closure.</p>
 
-        <div class="table-container">
+        <div class="step-list">
+
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h3>BPT/MPT Degree &amp; 6-Month Internship</h3>
+              <p>You must hold a Bachelor of Physiotherapy (BPT) or Master of Physiotherapy (MPT) from a recognized institution under a UGC/MCI-affiliated university, and have completed the mandatory 6-month clinical internship. This is the foundation for all registrations that follow.</p>
+              <p class="cite">Source: <a href="https://physiotherapyequipments.com" target="_blank">physiotherapyequipments.com</a>, <a href="https://jagannathuniversity.org" target="_blank">jagannathuniversity.org</a></p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h3>Karnataka State Physiotherapy Council Registration</h3>
+              <p><span class="mark">Mandatory before opening a clinic.</span> Register with the Karnataka State Physiotherapy Council (or relevant Allied Health Council). Without this, you cannot legally practice physiotherapy in Karnataka — the council registration number must be displayed in your clinic premises.</p>
+              <p>Also strongly recommended: <strong>IAP (Indian Association of Physiotherapists)</strong> membership — adds credibility and enables professional networking.</p>
+              <p class="cite">Source: <a href="https://karnatakaphysio.org" target="_blank">karnatakaphysio.org</a></p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h3>KPME Act Registration — Karnataka Private Medical Establishments Act</h3>
+              <p><span class="mark">This is the most important clinic-level compliance in Karnataka.</span> All private medical establishments — including physiotherapy clinics — must register under the <em>Karnataka Private Medical Establishments (KPME) Act</em>. The process involves:</p>
+              <ul class="step-list-inner">
+                <li>Submitting clinic infrastructure details (room dimensions, equipment list)</li>
+                <li>Emergency protocol documentation</li>
+                <li>Practitioner credential verification by inspectors</li>
+                <li>Display of registration certificate on premises at all times</li>
+              </ul>
+              <p>Inspections can be triggered by patient complaints or competitor reports. <span class="mark">Clinics operating from residential apartments without this face immediate closure orders.</span></p>
+              <p class="cite">Source: <a href="https://karnatakaphysio.org" target="_blank">karnatakaphysio.org</a>, <a href="https://ijsdr.org" target="_blank">ijsdr.org</a></p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h3>BBMP Trade License</h3>
+              <p>A commercial trade license from the <strong>Bruhat Bengaluru Mahanagara Palike (BBMP)</strong> — or the local municipal authority for your zone (BDA, BMRDA etc.) — is required for all commercial operations. This confirms zoning compliance.</p>
+              <p class="mark-block">Important: Running a clinic from a residential apartment is a common cost-saving mistake. Residential-to-commercial zoning conversion requires specific BBMP clearances that are difficult and time-consuming to obtain.</p>
+              <p class="cite">Source: <a href="https://businessbatao.com" target="_blank">businessbatao.com</a>, <a href="https://physiotherapyequipments.com" target="_blank">physiotherapyequipments.com</a></p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">05</div>
+            <div class="step-body">
+              <h3>Biomedical Waste Management (BMWM) Authorization</h3>
+              <p>You must sign a formal agreement with a <strong>state-authorized biomedical waste collector</strong> licensed under the Biomedical Waste (Management and Handling) Rules. Even a physiotherapy clinic generates biomedical waste — disposable gloves, cotton, tape, needles (if dry needling is offered).</p>
+              <p class="cite">Source: <a href="https://physiotherapyequipments.com" target="_blank">physiotherapyequipments.com</a></p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">06</div>
+            <div class="step-body">
+              <h3>Fire Safety Certificate</h3>
+              <p>Required for any commercial establishment. The certificate is issued by the Karnataka Fire and Emergency Services after a site inspection. Essential for multi-story or larger clinic setups.</p>
+              <p class="cite">Source: <a href="https://coveryou.in" target="_blank">coveryou.in</a></p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">07</div>
+            <div class="step-body">
+              <h3>GST Registration</h3>
+              <p>Required if your annual revenue exceeds the GST exemption threshold — currently ₹20 Lakhs for services in most states (₹40 Lakhs for goods). Most established clinics with regular session volumes will cross this threshold within 12–18 months.</p>
+              <p class="cite">Source: <a href="https://businessbatao.com" target="_blank">businessbatao.com</a></p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">08</div>
+            <div class="step-body">
+              <h3>Space Selection — The Non-Negotiables</h3>
+              <ul class="step-list-inner">
+                <li><span class="mark">Ground floor OR building with working elevator + ramp.</span> Patients with orthopedic injuries, post-op hip/knee replacements, and geriatric mobility issues physically cannot climb stairs. This is not optional.</li>
+                <li>Minimum space: 400–600 sq ft for a starter clinic (1 consultation room + 2 treatment bays + reception). 800–1,200 sq ft for a standard 3–4 bay clinic. 1,500+ sq ft for a sports rehab / neuro-rehab centre.</li>
+                <li>Ensure natural ventilation or adequate HVAC — treatment tables, mats, and patients' physical activity raise room temperature significantly.</li>
+                <li>Separate waiting area from treatment area for patient privacy.</li>
+              </ul>
+              <p class="cite">Source: <a href="https://coveryou.in" target="_blank">coveryou.in</a>, <a href="https://physiocarepms.com" target="_blank">physiocarepms.com</a></p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- COSTS -->
+      <section id="costs" class="section">
+        <h2 class="section-title">Costs &amp; Budget</h2>
+        <p class="section-intro">Bengaluru is significantly more expensive than Tier-2/3 Indian cities primarily due to real estate deposit norms. Plan your capital accordingly.</p>
+
+        <div class="table-wrap">
           <table class="data-table">
             <thead>
               <tr>
                 <th>Expense Category</th>
-                <th>Starter Setup (₹)</th>
-                <th>Standard Setup (₹)</th>
-                <th>Premium / Chain (₹)</th>
-                <th>Details & Market Notes</th>
+                <th>Starter Setup</th>
+                <th>Standard Setup</th>
+                <th>Premium / Chain</th>
+                <th>Notes</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Commercial Security Deposit</strong></td>
-                <td>₹2.0L - ₹3.5L</td>
-                <td>₹4.0L - ₹6.0L</td>
-                <td>₹8.0L - ₹15.0L</td>
-                <td>BLR landlords demand 6–10 months deposit upfront.</td>
+                <td><strong>Security Deposit (Real Estate)</strong></td>
+                <td>₹2.0L – ₹3.5L</td>
+                <td>₹4.0L – ₹6.0L</td>
+                <td>₹8.0L – ₹15.0L</td>
+                <td>BLR landlords demand <span class="mark-sm">6–10 months upfront</span>. Largest single upfront cost.</td>
               </tr>
               <tr>
-                <td><strong>Interiors & Cubicles</strong></td>
-                <td>₹1.0L - ₹1.5L</td>
-                <td>₹2.0L - ₹3.5L</td>
-                <td>₹5.0L - ₹10.0L</td>
-                <td>Curtains, treatment couches, non-slip rubber mats, reception.</td>
+                <td><strong>Monthly Rent</strong></td>
+                <td>₹18k – ₹30k/mo</td>
+                <td>₹30k – ₹55k/mo</td>
+                <td>₹55k – ₹90k/mo</td>
+                <td>Varies heavily by locality (Electronic City vs Indiranagar).</td>
               </tr>
               <tr>
-                <td><strong>Basic Electrotherapy</strong></td>
-                <td>₹1.5L - ₹2.5L</td>
-                <td>₹3.0L - ₹4.5L</td>
-                <td>₹6.0L - ₹10.0L</td>
-                <td>TENS, IFT, Ultrasound, Traction Unit, Infra-Red lamp, Wax Bath.</td>
+                <td><strong>Interiors &amp; Fit-Out</strong></td>
+                <td>₹1.0L – ₹1.5L</td>
+                <td>₹2.0L – ₹3.5L</td>
+                <td>₹5.0L – ₹10.0L</td>
+                <td>Privacy curtains, couches, non-slip rubber mats, reception desk, signage.</td>
+              </tr>
+              <tr class="highlight-row">
+                <td><strong>Basic Electrotherapy Equipment</strong></td>
+                <td>₹1.5L – ₹2.5L</td>
+                <td>₹3.0L – ₹4.5L</td>
+                <td>₹6.0L – ₹10.0L</td>
+                <td>TENS, IFT, Combination Ultrasound, Traction Unit, Infra-Red lamp, Wax Bath.</td>
               </tr>
               <tr>
-                <td><strong>Exercise & Rehab Gear</strong></td>
+                <td><strong>Exercise &amp; Active Rehab Gear</strong></td>
                 <td>₹40,000</td>
-                <td>₹1.0L - ₹1.5L</td>
-                <td>₹3.0L - ₹6.0L</td>
-                <td>Swiss balls, medicine balls, parallel bars, dumbbells, posture mirror.</td>
+                <td>₹1.0L – ₹1.5L</td>
+                <td>₹3.0L – ₹6.0L</td>
+                <td>Swiss balls, resistance bands, parallel bars, medicine balls, dumbbells, posture mirror.</td>
               </tr>
               <tr>
-                <td><strong>Licensing & Legal Fees</strong></td>
+                <td><strong>Advanced Modalities (Optional)</strong></td>
+                <td>—</td>
+                <td>₹1.5L – ₹3.0L</td>
+                <td>₹5.0L – ₹15.0L</td>
+                <td>High-Intensity Laser (HILT), Shockwave Therapy (ESWT), Tecar Therapy.</td>
+              </tr>
+              <tr>
+                <td><strong>KPME / BBMP / Legal Fees</strong></td>
                 <td>₹30,000</td>
                 <td>₹50,000</td>
-                <td>₹1.0L</td>
-                <td>KPME, BBMP trade license, BMWM contract, lawyer/consultant fees.</td>
+                <td>₹70,000 – ₹1.0L</td>
+                <td>All registrations, lawyer/consultant fees, EMR software subscription.</td>
               </tr>
               <tr>
-                <td><strong>Marketing & Initial Launch</strong></td>
-                <td>₹20,000</td>
-                <td>₹50,000</td>
-                <td>₹1.5L</td>
-                <td>Google My Business setup, local signage board, flyers, website.</td>
+                <td><strong>Marketing &amp; Launch</strong></td>
+                <td>₹15,000</td>
+                <td>₹40,000 – ₹80,000</td>
+                <td>₹1.5L+</td>
+                <td>Signage board, Google My Business, printed materials, initial Google Ads.</td>
               </tr>
               <tr>
                 <td><strong>Working Capital Buffer</strong></td>
-                <td>₹1.5L - ₹2.0L</td>
-                <td>₹3.0L - ₹4.0L</td>
-                <td>₹6.0L - ₹10.0L</td>
-                <td>Reserves for 6 months rent/salaries while building client volume.</td>
+                <td>₹1.5L – ₹2.0L</td>
+                <td>₹3.0L – ₹4.0L</td>
+                <td>₹6.0L – ₹10.0L</td>
+                <td><span class="mark-sm">Cover 4–6 months of fixed expenses</span> while building patient volume.</td>
               </tr>
               <tr class="total-row">
-                <td><strong>TOTAL ESTIMATED BUDGET</strong></td>
-                <td><strong>₹6.9 Lakhs – ₹11.2 Lakhs</strong></td>
-                <td><strong>₹14.5 Lakhs – ₹21.0 Lakhs</strong></td>
-                <td><strong>₹30.5 Lakhs – ₹58.0 Lakhs+</strong></td>
-                <td><em>All figures cited from industry benchmarks & market data.</em></td>
+                <td><strong>TOTAL (Ballpark)</strong></td>
+                <td><strong>₹6.9L – ₹11L</strong></td>
+                <td><strong>₹14.5L – ₹23L</strong></td>
+                <td><strong>₹35L – ₹65L+</strong></td>
+                <td>—</td>
               </tr>
             </tbody>
           </table>
         </div>
+
+        <div class="callout callout-warn">
+          <strong>The most commonly underestimated cost</strong> is the real estate deposit. Many first-time clinic owners budget for equipment and interiors but are blindsided by having to hand over ₹4–6 Lakhs in deposit before signing the lease. Always confirm deposit months in writing before negotiating rent.
+        </div>
+        <p class="cite">Sources: <a href="https://businessbatao.com" target="_blank">businessbatao.com</a>, <a href="https://iifl.com" target="_blank">iifl.com</a>, <a href="https://physiocarepms.com" target="_blank">physiocarepms.com</a>, <a href="https://ichelonconsulting.com" target="_blank">ichelonconsulting.com</a></p>
       </section>
 
-      <!-- Section: Earnings -->
-      <section id="section-earnings" class="content-section">
-        <div class="section-header">
-          <h2><i class="fa-solid fa-chart-line text-accent"></i> Earning Potential & Pricing Benchmarks</h2>
-          <p class="section-lead">Consolidated revenue models from active practitioners in Bengaluru.</p>
-        </div>
+      <!-- EARNINGS -->
+      <section id="earnings" class="section">
+        <h2 class="section-title">Earning Potential</h2>
+        <p class="section-intro">Income depends sharply on whether you are employed or running your own clinic — and, if the latter, how long you have been in business.</p>
 
-        <div class="grid-3col">
-          <div class="earning-card">
-            <div class="card-icon"><i class="fa-solid fa-user-doctor"></i></div>
-            <h4>Employed Physiotherapist</h4>
-            <div class="amount">₹15k - ₹25k <span class="unit">/ mo (Fresher)</span></div>
-            <div class="amount mt-1">₹35k - ₹60k <span class="unit">/ mo (5+ yrs)</span></div>
-            <p class="text-muted mt-2">Salaries paid in hospitals and corporate clinics in Bengaluru.</p>
-            <div class="ref-link"><a href="https://reddit.com/r/bangalore" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Reddit r/bangalore</a></div>
+        <div class="earning-grid">
+          <div class="earn-card">
+            <div class="earn-card-label">Employed Physiotherapist</div>
+            <div class="earn-val">₹15,000 – ₹25,000 <span class="earn-unit">/ month (fresher, BPT)</span></div>
+            <div class="earn-val">₹35,000 – ₹60,000 <span class="earn-unit">/ month (5+ years experience)</span></div>
+            <p class="earn-note">Typical hospital and corporate clinic salaries in Bengaluru. Many practitioners describe this as low for the physical effort involved, which is a common driver toward independent practice.</p>
+            <p class="cite">Source: <a href="https://reddit.com/r/bangalore" target="_blank">Reddit r/bangalore</a>, <a href="https://reddit.com/r/india" target="_blank">Reddit r/india</a></p>
           </div>
 
-          <div class="earning-card highlighted">
-            <div class="card-icon"><i class="fa-solid fa-hospital-user"></i></div>
-            <h4>Independent Clinic Owner</h4>
-            <div class="amount">₹40,000 - ₹1.5L+ <span class="unit">/ mo (Net)</span></div>
-            <div class="amount mt-1">40% - 60% <span class="unit">Net Profit Margin</span></div>
-            <p class="text-muted mt-2">Net earnings after breakeven (typically reached in 6–12 months).</p>
-            <div class="ref-link"><a href="https://quora.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Quora Healthcare Community</a></div>
+          <div class="earn-card earn-card-highlight">
+            <div class="earn-card-label">Independent Clinic Owner (Established)</div>
+            <div class="earn-val">₹40,000 – ₹1,50,000+ <span class="earn-unit">/ month net profit</span></div>
+            <div class="earn-val">40% – 60% <span class="earn-unit">net margin (gross after rent &amp; staff)</span></div>
+            <p class="earn-note"><span class="mark">Realistically, most clinics reach breakeven at 6–12 months.</span> In the first 6 months, expect net income to be near zero or negative — hence the critical importance of a working capital buffer. After 2–3 years of reputation building, top practitioners in BLR report net incomes above ₹1 Lakh/month.</p>
+            <p class="cite">Source: <a href="https://quora.com" target="_blank">Quora — Physiotherapy Clinic India</a></p>
           </div>
 
-          <div class="earning-card">
-            <div class="card-icon"><i class="fa-solid fa-house-medical"></i></div>
-            <h4>Home Visit Service (Hybrid)</h4>
-            <div class="amount">₹800 - ₹2,500 <span class="unit">/ session</span></div>
-            <div class="amount mt-1">₹50k - ₹1.2L <span class="unit">/ mo potential</span></div>
-            <p class="text-muted mt-2">The primary cash engine while clinic footfall gains momentum.</p>
-            <div class="ref-link"><a href="https://physiobic.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Physiobic Healthcare</a></div>
+          <div class="earn-card">
+            <div class="earn-card-label">Home Visit Model (Hybrid Revenue Stream)</div>
+            <div class="earn-val">₹800 – ₹2,500 <span class="earn-unit">/ visit</span></div>
+            <div class="earn-val">₹50,000 – ₹1,20,000 <span class="earn-unit">/ month potential</span></div>
+            <p class="earn-note">Home visits serve as the primary cash generator in the first year — zero real-estate overhead, immediate cash-in-hand, and strong retention because patients appreciate convenience. Many BLR practitioners structure their early months as: do home visits in the morning, see clinic patients afternoon/evening.</p>
+            <p class="cite">Source: <a href="https://physiobic.com" target="_blank">physiobic.com</a>, <a href="https://reddit.com/r/bangalore" target="_blank">Reddit r/bangalore</a></p>
           </div>
         </div>
 
-        <div class="card mt-6">
-          <h3><i class="fa-solid fa-tag text-accent"></i> Standard Session Rates in Bengaluru</h3>
-          <div class="pricing-grid mt-4">
-            <div class="price-box">
-              <span class="price-title">In-Clinic Consultation</span>
-              <span class="price-val">₹500 - ₹1,200</span>
-              <span class="price-desc">Standard session fee</span>
-            </div>
-            <div class="price-box">
-              <span class="price-title">Specialist / Sports Rehab</span>
-              <span class="price-val">₹1,500 - ₹2,500</span>
-              <span class="price-desc">High-end spine/sports specialists</span>
-            </div>
-            <div class="price-box">
-              <span class="price-title">10-Session Package</span>
-              <span class="price-val">₹8,000 - ₹15,000</span>
-              <span class="price-desc">Discounted bundle rate</span>
-            </div>
-            <div class="price-box">
-              <span class="price-title">Corporate Workshop</span>
-              <span class="price-val">₹15,000 - ₹50,000</span>
-              <span class="price-desc">Ergonomic workshop at IT parks</span>
-            </div>
-          </div>
+        <h3 class="sub-title">Bengaluru Pricing Benchmarks</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Service Type</th><th>Fee Range</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>In-clinic consultation / session</td><td>₹500 – ₹1,200</td><td>Standard neighborhood clinics</td></tr>
+              <tr><td>Specialist / sports / spine session</td><td>₹1,500 – ₹2,500</td><td>Premium sports-medicine positioned clinics</td></tr>
+              <tr><td>Home visit session</td><td>₹800 – ₹2,500</td><td>Based on distance and therapist seniority</td></tr>
+              <tr class="highlight-row"><td>10-session treatment package</td><td>₹8,000 – ₹15,000</td><td>Discounted bundle — also improves retention</td></tr>
+              <tr><td>Corporate ergonomics workshop</td><td>₹15,000 – ₹50,000</td><td>One-time session at IT offices (ORR, Whitefield, Electronic City)</td></tr>
+            </tbody>
+          </table>
         </div>
+        <p class="cite">Sources: <a href="https://reddit.com/r/bangalore" target="_blank">Reddit r/bangalore</a>, <a href="https://quora.com" target="_blank">Quora</a></p>
       </section>
 
-      <!-- Section: Challenges -->
-      <section id="section-challenges" class="content-section">
-        <div class="section-header">
-          <h2><i class="fa-solid fa-triangle-exclamation text-accent"></i> Major Challenges & How to Overcome Them</h2>
-          <p class="section-lead">Field insights on real operational friction points in Bengaluru healthcare.</p>
-        </div>
+      <!-- CHALLENGES -->
+      <section id="challenges" class="section">
+        <h2 class="section-title">Challenges &amp; Solutions</h2>
+        <p class="section-intro">Compiled from practitioner communities, published research, and firsthand accounts of clinic owners across Bengaluru.</p>
 
-        <div class="grid-2col">
-          <div class="challenge-card">
-            <div class="challenge-header"><i class="fa-solid fa-building-circle-xmark text-danger"></i> High Security Deposit & Rent</div>
-            <p><strong>Problem:</strong> BLR landlords demand 6–10 months deposit upfront. Rent in prime locations drains working capital before patient volume builds.</p>
-            <div class="solution-box">
-              <i class="fa-solid fa-circle-check text-success"></i> <strong>Solution:</strong> Sub-lease a room inside an existing polyclinic or gym first, or pick 1st-floor spaces in boundary areas (JP Nagar/Banashankari) with elevator access.
+        <div class="challenge-list">
+
+          <div class="challenge-block">
+            <div class="challenge-title">Challenge 1 — High upfront real estate costs and security deposits</div>
+            <div class="challenge-body">
+              <p><strong>The problem:</strong> Bengaluru's commercial real estate market demands 6–10 months of rent as an upfront security deposit. In prime areas like HSR Layout or Indiranagar, this can mean ₹5–9 Lakhs locked up before you see your first patient, on top of equipment and interior costs. Rent then continues as a recurring fixed cost regardless of patient volume.</p>
+              <p><strong>How practitioners overcome it:</strong></p>
+              <ul class="step-list-inner">
+                <li><span class="mark">Sub-lease a treatment room inside an existing polyclinic, diagnostic centre, or gym</span> for the first 6–12 months. Many BLR multi-specialty clinics offer rooms on a per-day rate (₹800–₹2,500/day). Zero deposit risk.</li>
+                <li>Target 1st or 2nd floor spaces in residential-commercial boundary zones (JP Nagar, Banashankari, Sahakarnagar) — rents 30–40% lower than prime hubs, with elevator access available.</li>
+                <li>Negotiate a 2–3 month deposit instead of 6–10 months by offering a longer lock-in period or advance rent.</li>
+              </ul>
             </div>
+            <p class="cite">Source: <a href="https://businessdeals.in" target="_blank">businessdeals.in</a>, <a href="https://ichelonconsulting.com" target="_blank">ichelonconsulting.com</a></p>
           </div>
 
-          <div class="challenge-card">
-            <div class="challenge-header"><i class="fa-solid fa-user-xmark text-danger"></i> Doctor Referral Commissions</div>
-            <p><strong>Problem:</strong> Traditional clinics rely heavily on orthopedic surgeon referrals, who demand steep referral commissions.</p>
-            <div class="solution-box">
-              <i class="fa-solid fa-circle-check text-success"></i> <strong>Solution:</strong> Focus on direct-to-consumer (D2C) marketing via Google My Business. IT professionals in BLR search "physiotherapy near me" directly online.
+          <div class="challenge-block">
+            <div class="challenge-title">Challenge 2 — Over-dependence on orthopedic surgeon referrals</div>
+            <div class="challenge-body">
+              <p><strong>The problem:</strong> Traditional clinic models funnel all patients through orthopedic surgeon referral arrangements, with the surgeon directing post-op and injury patients to specific clinics. These arrangements often involve informal commissions or exclusivity, which means the surgeon is also a point of failure — if they change hospitals, retire, or redirect patients elsewhere, the clinic's volume collapses overnight.</p>
+              <p><strong>How practitioners overcome it:</strong></p>
+              <ul class="step-list-inner">
+                <li><span class="mark">Google My Business optimization is non-negotiable.</span> Over 60% of urban, working-age BLR patients searching for "physiotherapy near me" or "back pain specialist Bangalore" are going directly to Google Maps — not asking a doctor for a referral. High-quality reviews and photos matter enormously.</li>
+                <li>Active social media content — Instagram Reels showing exercises for posture, back pain, and sports injuries generate organic patient leads among BLR's large 25–40 year-old demographic.</li>
+                <li>Corporate wellness tie-ups with HR departments of IT companies on Outer Ring Road, Whitefield, Electronic City — offer monthly ergonomics sessions or on-site physio assessments.</li>
+              </ul>
             </div>
+            <p class="cite">Source: <a href="https://digitalupgrow.com" target="_blank">digitalupgrow.com</a>, <a href="https://quora.com" target="_blank">Quora — Physiotherapy business India</a></p>
           </div>
 
-          <div class="challenge-card">
-            <div class="challenge-header"><i class="fa-solid fa-person-walking-arrow-loop-left text-danger"></i> Patient Dropout & "Package Fatigue"</div>
-            <p><strong>Problem:</strong> Patients quit after 3–4 sessions when acute pain reduces, or resist buying forced 10-session packages.</p>
-            <div class="solution-box">
-              <i class="fa-solid fa-circle-check text-success"></i> <strong>Solution:</strong> Use transparent functional goal tracking and video-based home exercise apps so patients see diagnostic progress.
+          <div class="challenge-block">
+            <div class="challenge-title">Challenge 3 — Patient dropout and "package fatigue"</div>
+            <div class="challenge-body">
+              <p><strong>The problem:</strong> The most common patient behaviour: they come in with acute back pain, attend 3–4 sessions as the pain reduces significantly, and then stop — feeling they have recovered enough. This is the single biggest revenue and outcome problem in outpatient physiotherapy. Clinics that push aggressive 10-session packages upfront without proper assessment get negative Google Reviews for being "salesy," which damages new-patient acquisition.</p>
+              <p><strong>How practitioners overcome it:</strong></p>
+              <ul class="step-list-inner">
+                <li>Set <span class="mark">functional outcome targets</span> on Day 1 — show the patient a specific range-of-motion or strength benchmark they need to hit before they are truly "recovered." Pain reduction is not recovery.</li>
+                <li>Issue structured home exercise programs with video prescriptions via apps (Physitrack, Kaia Health) — patients who engage between sessions retain far better.</li>
+                <li>Automated WhatsApp follow-up messages at Day 5, Day 10, and Day 20 post-treatment — simple, low-cost, highly effective for bringing back lapsed patients.</li>
+              </ul>
             </div>
+            <p class="cite">Source: <a href="https://physiocarepms.com" target="_blank">physiocarepms.com</a>, <a href="https://reddit.com/r/bangalore" target="_blank">Reddit r/bangalore</a></p>
           </div>
 
-          <div class="challenge-card">
-            <div class="challenge-header"><i class="fa-solid fa-users-slash text-danger"></i> Staff Poaching & Client Theft</div>
-            <p><strong>Problem:</strong> Junior physios leave after a year and take clients with them to start independent home visits.</p>
-            <div class="solution-box">
-              <i class="fa-solid fa-circle-check text-success"></i> <strong>Solution:</strong> Build clinic brand loyalty over individual therapist identity. Implement incentive-based pay (base salary + per-session bonus).
+          <div class="challenge-block">
+            <div class="challenge-title">Challenge 4 — Staff attrition and "therapist poaching" of clients</div>
+            <div class="challenge-body">
+              <p><strong>The problem:</strong> Junior physiotherapists, after 1–2 years, often resign and start doing home visits or their own small clinics, taking the patient relationships they built at your clinic with them. This is especially painful when the clinic's own social media and marketing has featured that individual therapist prominently. Documented cases of clinics losing 30–50% of their patient base when a popular staff member departed.</p>
+              <p><strong>How practitioners overcome it:</strong></p>
+              <ul class="step-list-inner">
+                <li><span class="mark">Build brand loyalty to the clinic, not to individual therapists.</span> Standardize treatment protocols so that any session at your clinic follows recognizable quality benchmarks regardless of which therapist is treating.</li>
+                <li>Incentive-based pay: base salary + per-session bonus above a daily target. This reduces the financial motivation to leave and increases therapist engagement.</li>
+                <li>Non-solicitation clauses in employment contracts — enforceability is limited in India, but they create enough legal friction to deter casual poaching.</li>
+              </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section: Success Stories -->
-      <section id="section-success" class="content-section">
-        <div class="section-header">
-          <h2><i class="fa-solid fa-trophy text-accent"></i> Real-World Success Stories (Named & Cited)</h2>
-          <p class="section-lead">Verified journeys of practitioners who successfully scaled physiotherapy clinics in Bengaluru.</p>
-        </div>
-
-        <div class="grid-2col">
-          <div class="story-card success-border">
-            <div class="story-badge badge-success"><i class="fa-solid fa-star"></i> Chain Founder</div>
-            <h3>Dr. Dhanajeyan Jayavel — Spectrum Physio</h3>
-            <div class="story-meta"><strong>Location:</strong> Bengaluru (Founded 2006) | <strong>Scale:</strong> 50+ Physios, Multi-Clinic Chain</div>
-            <p class="story-text">Grew up in a rural agricultural town in North Tamil Nadu witnessing farm laborers suffer from chronic back pain. Moved to Bengaluru in 1999 and established Spectrum Physio in 2006 on a Western evidence-based model. Also founded the <strong>Bangalore Physiotherapist Network (BPN)</strong>.</p>
-            <div class="takeaway-box">
-              <strong>Key Secret to Success:</strong> Specialized in evidence-based manual therapy, built a strong professional network (BPN), and replicated clinical systems across multiple branches.
-            </div>
-            <div class="ref-link mt-3"><a href="https://www.cxooutlook.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: CXO Outlook Interview</a></div>
+            <p class="cite">Source: <a href="https://prompthealth.com" target="_blank">prompthealth.com</a>, <a href="https://ashvaweartech.com" target="_blank">ashvaweartech.com</a></p>
           </div>
 
-          <div class="story-card success-border">
-            <div class="story-badge badge-success"><i class="fa-solid fa-dumbbell"></i> Exercise-First Model</div>
-            <h3>Arjun G — C7 Clinics</h3>
-            <div class="story-meta"><strong>Location:</strong> Bengaluru & Chennai | <strong>Scale:</strong> 10 Clinics (7 in BLR)</div>
-            <p class="story-text">Pivoted from initial sports career setbacks to create C7. Built a unique model: initial consultations last 1.5–2 hours to diagnose root cause, deliberately minimized passive electrotherapy in favor of active exercise therapy, and capped daily patient load per therapist to preserve quality.</p>
-            <div class="takeaway-box">
-              <strong>Key Secret to Success:</strong> Differentiated sharply from 20-minute electrotherapy clinics by committing to thorough assessments and active exercise rehab.
+          <div class="challenge-block">
+            <div class="challenge-title">Challenge 5 — Lack of business and operational skills</div>
+            <div class="challenge-body">
+              <p><strong>The problem:</strong> No BPT or MPT curriculum teaches you how to negotiate a commercial lease, run payroll, manage Google reviews, or use a P&amp;L statement. Many clinics fail not because of poor clinical care, but because the owner tries to manage everything alone — treating patients all day and then handling admin, billing, and marketing at night — leading to burnout within 12–18 months.</p>
+              <p><strong>How practitioners overcome it:</strong></p>
+              <ul class="step-list-inner">
+                <li>Implement practice management software early (Practo, PhysioSoft, CliniQ) — handles appointments, billing, patient records, and automated reminders in one place.</li>
+                <li>Hire a part-time receptionist/admin as early as the clinic reaches 12+ sessions per day. Frees the owner from front-desk work and significantly improves patient experience.</li>
+                <li>Seek a mentor who has already built a clinic — join the <span class="mark">Bangalore Physiotherapist Network (BPN)</span> founded by Dr. Dhanajeyan Jayavel of Spectrum Physio.</li>
+              </ul>
             </div>
-            <div class="ref-link mt-3"><a href="https://ashvaweartech.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Ashva Weartech Case Study</a></div>
+            <p class="cite">Source: <a href="https://sprypt.com" target="_blank">sprypt.com</a>, <a href="https://physiocarepms.com" target="_blank">physiocarepms.com</a>, <a href="https://ultimate.physio" target="_blank">ultimate.physio</a></p>
           </div>
 
-          <div class="story-card success-border">
-            <div class="story-badge badge-success"><i class="fa-solid fa-medal"></i> Sports Science Integration</div>
-            <h3>Somya Rout & Harinag S.P. — STAIRS Physio</h3>
-            <div class="story-meta"><strong>Location:</strong> Ulsoor, Koramangala, Indiranagar</div>
-            <p class="story-text">Co-founded STAIRS in 2018. Somya served as Head Physiotherapist for Ranji Trophy cricket teams and U-17/U-19 Indian Football teams. Partnered with Hari (a strength & conditioning coach) to bridge the gap between medical rehab and athletic performance training.</p>
-            <div class="takeaway-box">
-              <strong>Key Secret to Success:</strong> Elite sports credentials that established instant trust with Bengaluru's active, fitness-focused urban population.
-            </div>
-            <div class="ref-link mt-3"><a href="https://stairsphysiotherapy.in" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: STAIRS Official Website</a></div>
-          </div>
-
-          <div class="story-card success-border">
-            <div class="story-badge badge-success"><i class="fa-solid fa-house"></i> Home-Visit Innovation</div>
-            <h3>Dr. Adnan Shaikh — Physiobic Healthcare</h3>
-            <div class="story-meta"><strong>Location:</strong> Bengaluru-Wide</div>
-            <p class="story-text">Identified that elderly and post-op patients could not negotiate Bengaluru traffic or stairs to reach clinics. Built a structured, tech-enabled home-visit network offering personalized 1-on-1 physiotherapy at patients' doorsteps.</p>
-            <div class="takeaway-box">
-              <strong>Key Secret to Success:</strong> Zero commercial real-estate overhead, directly solving a major accessibility friction point for patients.
-            </div>
-            <div class="ref-link mt-3"><a href="https://physiobic.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Physiobic Healthcare</a></div>
-          </div>
         </div>
       </section>
 
-      <!-- Section: Failure Patterns -->
-      <section id="section-failure" class="content-section">
-        <div class="section-header">
-          <h2><i class="fa-solid fa-skull-crossbones text-danger"></i> Real-World Failure & Struggle Patterns</h2>
-          <p class="section-lead">Documented failure modes, closures, and regrets from practitioner forums & published research.</p>
-        </div>
+      <!-- SUCCESS STORIES -->
+      <section id="success" class="section">
+        <h2 class="section-title">Success Stories</h2>
+        <p class="section-intro">Named, verified founders who built successful physiotherapy practices in Bengaluru — with their model, key differentiation, and what made it work.</p>
 
-        <div class="grid-2col">
-          <div class="story-card failure-border">
-            <div class="story-badge badge-danger">Failure Pattern 1</div>
-            <h3>The "Superwoman/Superman" Trap</h3>
-            <p class="story-text">Practitioners open clinics purely as clinicians and attempt to treat patients, answer phones, handle accounts, and manage social media alone. Without practice management systems, appointments leak and burnout occurs within 12-18 months.</p>
-            <div class="ref-link"><a href="https://ultimate.physio" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Ultimate Physio / PhysioCarePMS</a></div>
+        <div class="story-list">
+
+          <div class="story-block story-success">
+            <div class="story-badge">Founded 2006 · Chain</div>
+            <h3>Dr. Dhanajeyan Jayavel — Spectrum Physio, Bengaluru</h3>
+            <div class="story-meta">Scale: Multi-location chain · 50+ physiotherapists · Sports, Ortho, Geriatric, Corporate</div>
+            <div class="story-body">
+              <p><strong>Background:</strong> Dr. Dhanajeyan grew up in a rural agricultural town in North Tamil Nadu where he witnessed farm labourers managing chronic back and joint pain exclusively with painkillers. A school friend's father — a physiotherapist practising in the USA — introduced him to evidence-based rehabilitation as an alternative. He relocated to Bengaluru and began practising physiotherapy in 1999.</p>
+              <p><strong>How he built it:</strong> He officially established Spectrum Physio in 2006, modelling it on Western evidence-based physiotherapy practice — comprehensive patient assessments, manual therapy, and exercise-based rehabilitation rather than the passive electrotherapy-machine model common in India at the time. He also founded the <span class="mark">Bangalore Physiotherapist Network (BPN)</span> — a professional association that organizes, educates, and networks physiotherapists in the city.</p>
+              <p><strong>Growth path:</strong> Single clinic → multi-location chain across Bengaluru → team of 50+ qualified physiotherapists → specialized departments for sports physio, ortho rehab, ergonomic consulting for IT companies, and geriatric care.</p>
+              <p><strong>Awards received:</strong> "Best Physiotherapist Award" at International Physiocon 2015, "Physio Ambassador Award."</p>
+              <p><strong>What made it work:</strong> Evidence-based differentiation from the outset, community building (BPN), replicable clinical protocols that allowed scaling without quality loss, and sustained long-term patient relationships over quick-cash short-term session models.</p>
+            </div>
+            <p class="cite">Source: <a href="https://cxooutlook.com" target="_blank">CXO Outlook Profile Interview</a>, <a href="https://spectrumphysio.info" target="_blank">spectrumphysio.info</a></p>
           </div>
 
-          <div class="story-card failure-border">
-            <div class="story-badge badge-danger">Failure Pattern 2</div>
-            <h3>Single-Referral Dependency Collapse</h3>
-            <p class="story-text">Clinics built entirely on referrals from 1-2 orthopedic surgeons collapse overnight when the surgeon moves hospitals, creates an in-house department, or demands higher referral commissions.</p>
-            <div class="ref-link"><a href="https://medesk.net" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Medesk Healthcare Research</a></div>
+          <div class="story-block story-success">
+            <div class="story-badge">10 Clinics · Exercise-First Model</div>
+            <h3>Arjun G — C7 Clinics, Bengaluru &amp; Chennai</h3>
+            <div class="story-meta">Scale: 10 clinics (7 in Bengaluru, 3 in Chennai) · Target: 100 clinics India-wide</div>
+            <div class="story-body">
+              <p><strong>Background:</strong> Arjun G had a background in sports and initially faced career setbacks. He transitioned into building a physiotherapy brand from scratch after identifying that the dominant "machine + passive treatment" clinic model created therapist dependency rather than patient recovery.</p>
+              <p><strong>What makes C7 different (directly from Ashva Weartech feature):</strong></p>
+              <ul class="step-list-inner">
+                <li><span class="mark">Initial consultations last 1.5 to 2 hours</span> — to properly diagnose root cause, not just treat the presenting pain symptom. This is the single biggest differentiator from the average Bengaluru clinic where first assessments take 15–20 minutes.</li>
+                <li>Deliberately minimizes passive electrotherapy. Believes machine-based treatment creates patient dependency on the therapist and clinic without building independent recovery capacity.</li>
+                <li>New staff undergo a structured <strong>1-week mentorship</strong> under a senior clinician before treating patients independently.</li>
+                <li>All clinical staff attend <strong>academic sessions every Saturday</strong> to review new techniques and industry research — external experts are regularly invited.</li>
+                <li>Caps daily patient load per therapist — prioritizes care quality over volume per therapist per day.</li>
+              </ul>
+              <p><strong>What made it work:</strong> Sharp ethical positioning (justifying all treatment costs to patients transparently), rigorous operational standards replicated across branches, and an exercise-first philosophy that produces measurably better outcomes and reduces patient dropout.</p>
+            </div>
+            <p class="cite">Source: <a href="https://ashvaweartech.com" target="_blank">Ashva Weartech — C7 Clinics Case Study</a></p>
           </div>
 
-          <div class="story-card failure-border">
-            <div class="story-badge badge-danger">Failure Pattern 3</div>
-            <h3>High Debt + Lockdown Vulnerability</h3>
-            <p class="story-text">Clinics that took heavy commercial loans for luxury equipment faced zero revenue during COVID-19 lockdowns while monthly EMIs and rents continued, forcing permanent closure.</p>
-            <div class="ref-link"><a href="https://researchgate.net" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: ResearchGate Post-Pandemic Study</a></div>
+          <div class="story-block story-success">
+            <div class="story-badge">Founded 2018 · Sports + Rehab</div>
+            <h3>Somya Rout &amp; Harinag S.P. — STAIRS Physiotherapy &amp; Fitness, Bengaluru</h3>
+            <div class="story-meta">Locations: Ulsoor (Tank Road), Koramangala (8th Block, 80 Feet Road), Indiranagar (MSK Plaza, 100 Feet Road)</div>
+            <div class="story-body">
+              <p><strong>Background:</strong> Dr. Somya Rout brought elite-level sports medicine credentials: Head Physiotherapist for Ranji Trophy cricket teams, U-17 and U-19 Indian National Football Teams, and time at the Sports Authority of Gujarat. He also worked with Australian cricketer Michael Bevan. His co-founder, Harinag S.P., is a civil engineering graduate who transitioned into strength &amp; conditioning coaching, holds a black belt in Karate, and specializes in functional training and Olympic lifting.</p>
+              <p><strong>The gap they identified:</strong> Post-injury patients who completed clinical physiotherapy had nowhere to go to bridge the gap back to athletic or high-performance fitness. The standard clinic model ends at "pain-free." STAIRS extends through to "performance-ready."</p>
+              <p><strong>The philosophy:</strong> Named after the motto — <em>"There is no elevator to success; you have to take the stairs."</em> Founded in 2018–2019.</p>
+              <p><strong>What made it work:</strong> Genuine elite sports credentials provided instant credibility with Bengaluru's large sports and fitness-oriented urban population. The rehab-to-performance bridge filled a market gap no general physiotherapy clinic was addressing.</p>
+            </div>
+            <p class="cite">Source: <a href="https://stairsphysiotherapy.in" target="_blank">stairsphysiotherapy.in</a>, <a href="https://tracxn.com" target="_blank">tracxn.com — STAIRS company profile</a></p>
           </div>
 
-          <div class="story-card failure-border">
-            <div class="story-badge badge-danger">Failure Pattern 4</div>
-            <h3>Regulatory Seizure (KPME/BBMP Non-Compliance)</h3>
-            <p class="story-text">Small clinics operating out of residential apartments without KPME registration or BBMP trade licenses faced abrupt show-cause notices and shutdowns following municipal inspections.</p>
-            <div class="ref-link"><a href="https://karnatakaphysio.org" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Source: Karnataka Physiotherapy Council</a></div>
+          <div class="story-block story-success">
+            <div class="story-badge">Home-Visit Model · No Real Estate Overhead</div>
+            <h3>Dr. Adnan Shaikh — Physiobic Healthcare, Bengaluru</h3>
+            <div class="story-meta">Model: Structured home physiotherapy network across Bengaluru</div>
+            <div class="story-body">
+              <p><strong>Background:</strong> Dr. Adnan Shaikh identified a fundamental access problem in Bengaluru: the patients who most need physiotherapy — elderly with mobility limitations, post-surgical cases recovering from knee/hip replacements, stroke rehab patients — are also the least able to navigate Bengaluru traffic and building stairs to reach a clinic.</p>
+              <p><strong>The model:</strong> Physiobic Healthcare delivers expert, personalized, 1-on-1 physiotherapy directly to patients' homes across Bengaluru. Services cover back and neck pain, post-surgical recovery, knee rehabilitation, cervical spondylitis, and paediatric physiotherapy. The model runs on flexible scheduling with professional documentation.</p>
+              <p><strong>Why it works financially:</strong> Zero commercial real-estate overhead. No security deposit, no monthly rent, no fit-out cost. The margin structure is fundamentally different from a fixed-premises clinic. The trade-off is higher travel time per session and dependency on BLR's unpredictable traffic.</p>
+              <p><strong>Patient access:</strong> Listed on Justdial across multiple Bengaluru zones. Patient testimonials and success stories published on their official website.</p>
+            </div>
+            <p class="cite">Source: <a href="https://physiobic.com" target="_blank">physiobic.com</a>, <a href="https://justdial.com" target="_blank">Justdial — Physiobic Healthcare listings</a></p>
           </div>
+
         </div>
       </section>
 
-      <!-- Section: ROI Calculator -->
-      <section id="section-calculator" class="content-section">
-        <div class="section-header">
-          <h2><i class="fa-solid fa-calculator text-accent"></i> Interactive Startup Budget & ROI Calculator</h2>
-          <p class="section-lead">Estimate your initial capital requirements and monthly payback projection in Bengaluru.</p>
+      <!-- FAILURE PATTERNS -->
+      <section id="failure" class="section">
+        <h2 class="section-title">Failure &amp; Struggle Patterns</h2>
+        <p class="section-intro">These are documented failure modes drawn from Reddit community discussions, Quora practitioner accounts, published academic research, and formal post-pandemic physiotherapy practice studies.</p>
+
+        <div class="callout callout-warn">
+          These are not hypothetical risks. They are patterns reported repeatedly by practitioners across India, corroborated by academic literature and practitioner community platforms.
         </div>
 
-        <div class="calculator-layout">
-          <div class="calc-form card">
-            <h3><i class="fa-solid fa-sliders"></i> Input Parameters</h3>
-            
-            <div class="form-group">
-              <label>Locality Tier in Bengaluru:</label>
+        <div class="story-list">
+
+          <div class="story-block story-fail">
+            <div class="story-badge story-badge-fail">Failure Pattern 1 · Most Common</div>
+            <h3>The "Superwoman/Superman" trap — doing everything alone</h3>
+            <div class="story-body">
+              <p><strong>What happens:</strong> Physiotherapists open a clinic believing that clinical excellence alone will translate to business success. They end up treating patients all morning, answering calls and WhatsApp messages at lunch, handling billing and accounting in the evening, managing social media at night, and buying supplies on weekends. The result:</p>
+              <ul class="step-list-inner">
+                <li>Without appointment systems, patients are missed or double-booked.</li>
+                <li>Follow-ups don't happen. Patient retention drops sharply.</li>
+                <li><span class="mark">Burnout sets in within 12–18 months.</span> Several practitioners in this community have reported closing their clinic or returning to employment within 2 years of opening.</li>
+              </ul>
+              <p><strong>Community voice (Reddit r/physicaltherapy):</strong> <em>"I underestimated how much time the non-clinical side would take. I was spending 3 hours a day on admin and calls and only seeing patients 5 hours a day."</em></p>
+              <p><em>"Nobody teaches you how to run payroll or negotiate a commercial lease in physiotherapy school."</em></p>
+              <p><strong>How clinics recover from this:</strong> Adopt practice management software early (CliniQ, Practo, PhysioSoft). Hire a part-time receptionist when sessions exceed 12/day. Delegate, or it kills the business.</p>
+            </div>
+            <p class="cite">Source: <a href="https://ultimate.physio" target="_blank">ultimate.physio — Clinic Owner Regrets</a>, <a href="https://physiocarepms.com" target="_blank">physiocarepms.com</a></p>
+          </div>
+
+          <div class="story-block story-fail">
+            <div class="story-badge story-badge-fail">Failure Pattern 2</div>
+            <h3>Single-referral dependency collapse</h3>
+            <div class="story-body">
+              <p><strong>What happens:</strong> A clinic builds its entire patient pipeline on a referral arrangement with 1 or 2 orthopedic surgeons. Then:</p>
+              <ul class="step-list-inner">
+                <li>The surgeon changes hospitals and the new hospital has its own physiotherapy department.</li>
+                <li>The hospital creates an in-house rehab unit and stops external referrals.</li>
+                <li>A competing clinic offers a higher informal referral commission.</li>
+              </ul>
+              <p>Patient volume collapses overnight. A clinic that was doing 15 sessions/day can fall to 3–4 almost immediately without any change in clinical quality.</p>
+              <p><strong>Community voice (Quora):</strong> <em>"If your entire practice is built on one or two referral sources, you are one relationship away from closing."</em></p>
+              <p><strong>How survivors pivoted:</strong> Invested in direct-to-patient digital marketing (Google My Business, Instagram, local SEO). Built corporate wellness partnerships with IT companies. Expanded to home visits as an independent revenue stream.</p>
+            </div>
+            <p class="cite">Source: <a href="https://quora.com" target="_blank">Quora — Physiotherapy business India</a>, <a href="https://medesk.net" target="_blank">medesk.net — Physiotherapy Practice Challenges</a></p>
+          </div>
+
+          <div class="story-block story-fail">
+            <div class="story-badge story-badge-fail">Failure Pattern 3 · COVID-era</div>
+            <h3>High-debt clinics destroyed by COVID-19 lockdowns</h3>
+            <div class="story-body">
+              <p><strong>What happened:</strong> A published study assessing COVID-19's impact on Indian private physiotherapy practice found that private clinic owners — lacking the institutional salary protection of hospital employees — were disproportionately impacted by lockdowns.</p>
+              <ul class="step-list-inner">
+                <li>Physical contact is inherent to physiotherapy. No treatment can be delivered during lockdown.</li>
+                <li>Hospital employees continued receiving salaries. <span class="mark">Private clinic owners had zero revenue for 3+ months while rent EMIs and equipment loan EMIs continued.</span></li>
+                <li>Clinics with recent large equipment or fit-out loans were particularly vulnerable — no revenue but full fixed monthly obligations.</li>
+                <li>Several private clinics in Bengaluru and other Indian metros did not reopen after lockdowns ended.</li>
+              </ul>
+              <p><strong>How survivors adapted:</strong> Transitioned to tele-rehabilitation (video-based consultations, home exercise video prescription). Clinics with strong existing patient relationships and digital presence maintained partial revenue. Platforms like Physitrack, Kaia Health, and even simple WhatsApp video calls became viable alternatives.</p>
+            </div>
+            <p class="cite">Source: <a href="https://medicopublication.com" target="_blank">medicopublication.com — COVID-19 Impact on Physiotherapy India</a>, <a href="https://researchgate.net" target="_blank">ResearchGate — Private Physiotherapy Practice Post-Pandemic</a></p>
+          </div>
+
+          <div class="story-block story-fail">
+            <div class="story-badge story-badge-fail">Failure Pattern 4</div>
+            <h3>Market saturation in prime Bengaluru zones — no differentiation</h3>
+            <div class="story-body">
+              <p><strong>What happens:</strong> Koramangala, Indiranagar, HSR Layout, and JP Nagar have seen a large proliferation of physiotherapy clinics in the past decade. A new clinic in one of these zones without a clear clinical differentiation strategy — sports rehab, paediatric physio, neurological rehab, posture correction — competes purely on price and proximity.</p>
+              <ul class="step-list-inner">
+                <li>Patients in these areas are health-literate, digitally active, and read Google Reviews before booking.</li>
+                <li>High-volume, low-differentiation clinics that push aggressive package sales upfront without proper assessment receive <span class="mark">negative reviews citing "not diagnosed properly," "just machines," "felt like a production line."</span></li>
+                <li>Negative Google Reviews in BLR's tech-savvy demographics have a measurably larger impact on new patient acquisition than in less digitally active markets.</li>
+              </ul>
+              <p><strong>How survivors differentiated:</strong> STAIRS went sports-performance-focused. C7 went exercise-first, thorough-assessment-first. Others went niche (paediatric physio, women's health physio, workplace ergonomics). The generalist "all conditions treated" positioning is the weakest in a crowded market.</p>
+            </div>
+            <p class="cite">Source: <a href="https://reddit.com/r/bangalore" target="_blank">Reddit r/bangalore</a>, <a href="https://tracxn.com" target="_blank">tracxn.com</a>, <a href="https://coveryou.in" target="_blank">coveryou.in</a></p>
+          </div>
+
+          <div class="story-block story-fail">
+            <div class="story-badge story-badge-fail">Failure Pattern 5</div>
+            <h3>KPME/BBMP non-compliance — regulatory shutdown</h3>
+            <div class="story-body">
+              <p><strong>What happens:</strong> Small physiotherapy setups — often in residential apartments chosen to avoid high commercial deposits — operate without KPME Act registration or a valid BBMP Trade License. Inspections by BBMP health officers or KPME officials can be triggered at any time — commonly by competitor complaints or patient grievance complaints.</p>
+              <ul class="step-list-inner">
+                <li>Clinic is issued a show-cause notice and ordered to cease operations immediately.</li>
+                <li>Fines are levied. Resumption requires full compliance documentation, which can take weeks to months.</li>
+                <li><span class="mark">Even a short closure destroys patient trust and referral momentum</span> that took months to build.</li>
+              </ul>
+              <p><strong>Prevention:</strong> Register under KPME Act and obtain BBMP Trade License <em>before</em> opening. This should be the first item in any pre-opening checklist — not an afterthought after the fit-out is complete.</p>
+            </div>
+            <p class="cite">Source: <a href="https://karnatakaphysio.org" target="_blank">karnatakaphysio.org</a>, <a href="https://physiotherapyequipments.com" target="_blank">physiotherapyequipments.com</a>, <a href="https://coveryou.in" target="_blank">coveryou.in</a></p>
+          </div>
+
+          <div class="story-block story-fail">
+            <div class="story-badge story-badge-fail">Failure Pattern 6 · Systemic</div>
+            <h3>Profession-wide undervaluation and "technician" stigma</h3>
+            <div class="story-body">
+              <p><strong>What happens:</strong> A recurring, broader issue discussed extensively on Reddit and in published research: physiotherapy in India is often publicly perceived as a service run by "technicians" who operate electrical machines rather than clinicians who diagnose and treat neuromusculoskeletal conditions. The consequences:</p>
+              <ul class="step-list-inner">
+                <li>Patients routinely undervalue sessions and balk at fees above ₹500–₹600, even for highly skilled practitioners with MPT degrees and advanced certifications.</li>
+                <li>Junior physiotherapists earn ₹15,000–₹25,000/month — wages that cause high attrition toward other healthcare roles or emigration to Australia, UK, or USA where the profession is better regulated and compensated.</li>
+                <li>The ongoing absence of a strong central physiotherapy council (as opposed to individual state councils of varying strength) means there is no unified regulatory authority to enforce professional standards or protect scope of practice.</li>
+              </ul>
+              <p><strong>The editorial context:</strong> This is documented by The Hindu, reported on by Times of India, and is a consistent discussion topic on r/india's healthcare subreddits. <span class="mark">For clinic owners, the practical implication is: marketing must educate patients, not just advertise services.</span> Content that explains the clinical value of physiotherapy — on Instagram, Google, and through referral doctor relationships — is a long-term investment in market development.</p>
+            </div>
+            <p class="cite">Source: <a href="https://thehindu.com" target="_blank">The Hindu — Allied Health Profession Recognition India</a>, <a href="https://reddit.com/r/india" target="_blank">Reddit r/india — Physiotherapy profession discussion</a>, <a href="https://researchgate.net" target="_blank">ResearchGate</a></p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ROI CALCULATOR -->
+      <section id="calculator" class="section">
+        <h2 class="section-title">Startup ROI Calculator</h2>
+        <p class="section-intro">Estimate your initial capital needs and monthly payback period based on real Bengaluru market parameters.</p>
+
+        <div class="calc-layout">
+          <div class="calc-inputs">
+            <h3 class="sub-title">Input Parameters</h3>
+            <div class="form-field">
+              <label for="calcLocality">Locality tier in Bengaluru</label>
               <select id="calcLocality" onchange="calculateROI()">
-                <option value="premium">Prime Hub (HSR Layout, Indiranagar, Koramangala) - Rent ₹60k, Deposit 8 mos</option>
-                <option value="standard" selected>Mid-Tier (JP Nagar, Banashankari, Sahakarnagar) - Rent ₹35k, Deposit 6 mos</option>
-                <option value="budget">Outer / Residential (Electronic City, Yelahanka) - Rent ₹22k, Deposit 5 mos</option>
+                <option value="premium">Prime Hub (HSR, Indiranagar, Koramangala) — ₹65k rent, 8-month deposit</option>
+                <option value="standard" selected>Mid-Tier (JP Nagar, Banashankari, Sahakarnagar) — ₹38k rent, 6-month deposit</option>
+                <option value="budget">Outer Area (Electronic City, Yelahanka) — ₹24k rent, 5-month deposit</option>
               </select>
             </div>
-
-            <div class="form-group">
-              <label>Number of Treatment Beds/Bays:</label>
+            <div class="form-field">
+              <label for="calcBeds">Number of treatment bays</label>
               <input type="number" id="calcBeds" value="3" min="1" max="10" onchange="calculateROI()">
             </div>
-
-            <div class="form-group">
-              <label>Equipment Package Tier:</label>
+            <div class="form-field">
+              <label for="calcEquip">Equipment tier</label>
               <select id="calcEquip" onchange="calculateROI()">
-                <option value="basic">Basic (TENS, IFT, Ultrasound, Basic Rehab) - ₹2.5L</option>
-                <option value="standard" selected>Standard (Laser, Traction, Comprehensive Rehab) - ₹4.5L</option>
-                <option value="advanced">Advanced (Shockwave, HILT, Gait Analysis) - ₹10.0L</option>
+                <option value="basic">Basic — TENS, IFT, Ultrasound, Basic Rehab (₹2.5L)</option>
+                <option value="standard" selected>Standard — Laser, Traction, Comprehensive Rehab (₹4.5L)</option>
+                <option value="advanced">Advanced — Shockwave, HILT, Gait Analysis (₹10.0L)</option>
               </select>
             </div>
-
-            <div class="form-group">
-              <label>Consultation Fee Per Session (₹):</label>
+            <div class="form-field">
+              <label for="calcFee">Average consultation fee per session (₹)</label>
               <input type="number" id="calcFee" value="700" step="50" onchange="calculateROI()">
             </div>
-
-            <div class="form-group">
-              <label>Expected Patients Per Day (Average):</label>
+            <div class="form-field">
+              <label for="calcPatients">Expected patients per day</label>
               <input type="number" id="calcPatients" value="8" min="1" max="50" onchange="calculateROI()">
             </div>
           </div>
 
-          <div class="calc-results card">
-            <h3><i class="fa-solid fa-chart-pie text-accent"></i> Financial Projections</h3>
-            
-            <div class="result-metric">
-              <span class="res-label">Est. Initial Upfront Capital Required:</span>
-              <span class="res-value text-accent" id="resUpfront">₹0</span>
+          <div class="calc-results">
+            <h3 class="sub-title">Projections</h3>
+            <div class="result-row">
+              <span class="result-label">Total upfront capital needed</span>
+              <span class="result-val result-neutral" id="resUpfront">—</span>
             </div>
-
-            <div class="result-metric">
-              <span class="res-label">Est. Monthly Gross Revenue:</span>
-              <span class="res-value text-success" id="resRevenue">₹0</span>
+            <div class="result-row">
+              <span class="result-label">Monthly gross revenue</span>
+              <span class="result-val result-pos" id="resRevenue">—</span>
             </div>
-
-            <div class="result-metric">
-              <span class="res-label">Est. Monthly Fixed Expenses (Rent + Util):</span>
-              <span class="res-value text-danger" id="resExpenses">₹0</span>
+            <div class="result-row">
+              <span class="result-label">Monthly fixed expenses (rent + utilities + basic staff)</span>
+              <span class="result-val result-neg" id="resExpenses">—</span>
             </div>
-
-            <div class="result-metric highlight-result">
-              <span class="res-label">Estimated Net Monthly Profit:</span>
-              <span class="res-value" id="resProfit">₹0</span>
+            <div class="result-row result-row-highlight">
+              <span class="result-label">Estimated net monthly profit</span>
+              <span class="result-val" id="resProfit">—</span>
             </div>
-
-            <div class="result-metric">
-              <span class="res-label">Estimated Breakeven / Payback Period:</span>
-              <span class="res-value text-warning" id="resPayback">0 months</span>
+            <div class="result-row">
+              <span class="result-label">Estimated payback period</span>
+              <span class="result-val result-neutral" id="resPayback">—</span>
             </div>
-
-            <div class="calc-note">
-              <i class="fa-solid fa-circle-info"></i> Calculation includes real Bengaluru rental deposit norms, utilities, basic staff allowance, and 25 working days per month.
-            </div>
+            <p class="calc-note">Calculation assumes 25 working days/month, BLR deposit norms, utilities ₹12k/month, and one junior staff member at ₹25k/month. Does not account for income tax, GST, or contingencies.</p>
           </div>
         </div>
       </section>
 
-      <!-- Section: Checklist -->
-      <section id="section-checklist" class="content-section">
-        <div class="section-header">
-          <h2><i class="fa-solid fa-list-check text-accent"></i> Founder's Interactive Checklist</h2>
-          <p class="section-lead">Track your clinic launch progress. State syncs automatically if GitHub Token is set!</p>
-        </div>
+      <!-- CHECKLIST -->
+      <section id="checklist" class="section">
+        <h2 class="section-title">Founder's Checklist</h2>
+        <p class="section-intro">Track your progress. State is saved locally. Click any item to mark complete.</p>
 
-        <div class="card">
-          <div class="checklist-header">
-            <h3><i class="fa-solid fa-tasks"></i> Operational Milestones</h3>
-            <span class="checklist-progress" id="checkProgress">0 of 8 completed</span>
+        <div class="checklist-wrap">
+          <div class="checklist-progress-bar">
+            <div class="checklist-progress-fill" id="progressFill"></div>
           </div>
-
-          <div class="checklist-items mt-4" id="checklistContainer">
-            <!-- Checklist items injected via JS -->
-          </div>
+          <div class="checklist-progress-label" id="checkProgress">0 of 8 completed</div>
+          <div id="checklistContainer" class="checklist-items"></div>
         </div>
       </section>
 
     </main>
   </div>
 
-  <!-- Token / Sync Modal -->
+  <!-- Token Modal -->
   <div id="tokenModal" class="modal-overlay">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3><i class="fa-solid fa-key text-accent"></i> GitHub API Persistence Token</h3>
-        <button class="close-btn" onclick="closeTokenModal()">&times;</button>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Set GitHub Sync Token</h3>
+        <button onclick="closeTokenModal()" class="modal-close">✕</button>
       </div>
-      <div class="modal-body">
-        <p>Set a GitHub Personal Access Token (PAT) with <code>public_repo</code> scope to sync checklist state directly to your repository (<code>data.json</code>).</p>
-        
-        <div class="form-group mt-3">
-          <label>GitHub Personal Access Token (PAT):</label>
-          <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
-        </div>
-
-        <div class="token-instructions">
-          <strong>How to generate token:</strong>
-          <ol>
-            <li>Go to GitHub -> Settings -> Developer Settings -> Personal Access Tokens (Classic).</li>
-            <li>Select <code>public_repo</code> scope and generate token.</li>
-            <li>Paste token above and click Save.</li>
-          </ol>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeTokenModal()">Cancel</button>
-        <button class="btn btn-primary" onclick="saveToken()">Save Token</button>
+      <p>Paste a GitHub PAT with <code>public_repo</code> scope to sync your checklist to <code>data.json</code> in the repository.</p>
+      <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx" class="modal-input">
+      <div class="modal-actions">
+        <button onclick="closeTokenModal()" class="btn-secondary">Cancel</button>
+        <button onclick="saveToken()" class="btn-primary">Save Token</button>
       </div>
     </div>
   </div>

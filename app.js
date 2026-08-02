@@ -1,166 +1,236 @@
-/* ==========================================================================
-   PhysioLaunch BLR — Application Logic & GitHub Persistence API
-   ========================================================================== */
+/* =============================================================
+   PhysioLaunch BLR — Application Logic
+   GitHub Repo: indianquant/physioInfo
+   ============================================================= */
 
 const REPO_OWNER = 'indianquant';
-const REPO_NAME = 'physioInfo';
-const FILE_PATH = 'data.json';
+const REPO_NAME  = 'physioInfo';
+const FILE_PATH  = 'data.json';
 
-// Global State
-let appState = {
-  token: localStorage.getItem('gh_pat_token') || '',
-  checklist: [
-    { id: 1, text: "Complete BPT/MPT Degree & Mandatory 6-Month Internship", completed: true },
-    { id: 2, text: "Register with Karnataka State Physiotherapy Council", completed: false },
-    { id: 3, text: "Secure Ground Floor / Elevator-Equipped Premises in BLR", completed: false },
-    { id: 4, text: "Register Clinic under KPME Act (Karnataka Medical Establishments)", completed: false },
-    { id: 5, text: "Obtain BBMP Trade License & BMWM Waste Agreement", completed: false },
-    { id: 6, text: "Procure Essential Modalities (TENS, IFT, Ultrasound, Rehab Gear)", completed: false },
-    { id: 7, text: "Setup & Verify Google My Business Profile (Direct-to-Consumer Local SEO)", completed: false },
-    { id: 8, text: "Secure 6-Month Working Capital Cushion for Rent & Payroll", completed: false }
-  ]
+// ─── Checklist Data ─────────────────────────────────────────
+const DEFAULT_CHECKLIST = [
+  { id: 1, text: 'Complete BPT/MPT degree and mandatory 6-month internship', done: false },
+  { id: 2, text: 'Register with Karnataka State Physiotherapy Council', done: false },
+  { id: 3, text: 'Identify ground-floor / elevator-access premises in target BLR locality', done: false },
+  { id: 4, text: 'Register clinic under KPME Act (Karnataka Private Medical Establishments)', done: false },
+  { id: 5, text: 'Obtain BBMP Trade License and Biomedical Waste Management (BMWM) authorization', done: false },
+  { id: 6, text: 'Get Fire Safety NOC from Karnataka Fire and Emergency Services', done: false },
+  { id: 7, text: 'Procure core equipment: TENS, IFT, Ultrasound, Traction, Rehab gear', done: false },
+  { id: 8, text: 'Set up Google My Business profile and collect initial patient reviews', done: false },
+];
+
+// ─── App State ───────────────────────────────────────────────
+const state = {
+  token: localStorage.getItem('gh_pat') || '',
+  checklist: loadLocalChecklist(),
 };
 
-// Initialize Application
+function loadLocalChecklist() {
+  try {
+    const saved = localStorage.getItem('physio_checklist');
+    return saved ? JSON.parse(saved) : DEFAULT_CHECKLIST.map(i => ({ ...i }));
+  } catch { return DEFAULT_CHECKLIST.map(i => ({ ...i })); }
+}
+
+// ─── INIT ────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  updateTokenUI();
   calculateROI();
-  loadData();
+  renderChecklist();
+  // Try loading from GitHub (no token needed — public raw URL)
+  loadRemoteData();
+  // Scroll spy for nav active states
+  setupScrollSpy();
 });
 
-// Navigation / Tab Switching
-function switchTab(sectionId, element) {
-  document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+// ─── NAVIGATION ──────────────────────────────────────────────
+function navClick(el) {
+  event.preventDefault();
 
-  const targetSection = document.getElementById(sectionId);
-  if (targetSection) {
-    targetSection.classList.add('active');
-  }
-  if (element) {
-    element.classList.add('active');
+  // Update active nav link
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  el.classList.add('active');
+
+  // Show the right section
+  const target = el.getAttribute('href').replace('#', '');
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  const sec = document.getElementById(target);
+  if (sec) sec.classList.add('active');
+
+  // Scroll content area to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setupScrollSpy() {
+  // Update nav based on hash if someone links directly
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const link = document.querySelector(`.nav-link[href="#${hash}"]`);
+    if (link) navClick(link);
   }
 }
 
-// Interactive ROI Calculator Logic
+// ─── ROI CALCULATOR ──────────────────────────────────────────
 function calculateROI() {
-  const locality = document.getElementById('calcLocality').value;
-  const beds = parseInt(document.getElementById('calcBeds').value) || 1;
-  const equipTier = document.getElementById('calcEquip').value;
-  const fee = parseFloat(document.getElementById('calcFee').value) || 500;
-  const patientsPerDay = parseFloat(document.getElementById('calcPatients').value) || 5;
+  const locality    = document.getElementById('calcLocality')?.value || 'standard';
+  const beds        = parseInt(document.getElementById('calcBeds')?.value) || 3;
+  const equipTier   = document.getElementById('calcEquip')?.value || 'standard';
+  const fee         = parseFloat(document.getElementById('calcFee')?.value) || 700;
+  const patientsDay = parseFloat(document.getElementById('calcPatients')?.value) || 8;
 
-  // Rent & Security Deposit Norms in BLR
-  let rent = 35000;
-  let depositMonths = 6;
-  if (locality === 'premium') { rent = 60000; depositMonths = 8; }
-  else if (locality === 'budget') { rent = 22000; depositMonths = 5; }
+  // Locality params
+  const locality_data = {
+    premium:  { rent: 65000, depositMonths: 8  },
+    standard: { rent: 38000, depositMonths: 6  },
+    budget:   { rent: 24000, depositMonths: 5  },
+  };
+  const { rent, depositMonths } = locality_data[locality];
 
-  const upfrontDeposit = rent * depositMonths;
+  // Equipment cost
+  const equip_cost = { basic: 250000, standard: 450000, advanced: 1000000 };
+  const equipCost = equip_cost[equipTier];
 
-  // Equipment Cost
-  let equipCost = 450000;
-  if (equipTier === 'basic') equipCost = 250000;
-  else if (equipTier === 'advanced') equipCost = 1000000;
+  // Upfront total
+  const deposit    = rent * depositMonths;
+  const interiors  = 150000 + beds * 25000;
+  const licensing  = 50000;
+  const buffer     = rent * 4;                  // 4-month working capital
+  const upfront    = deposit + equipCost + interiors + licensing + buffer;
 
-  // Interiors & Licensing
-  const interiorCost = 150000 + (beds * 30000);
-  const licensingCost = 50000;
-  const workingCapitalBuffer = rent * 4;
+  // Monthly
+  const revenue    = fee * patientsDay * 25;    // 25 working days
+  const expenses   = rent + 12000 + 25000;      // rent + utilities + 1 junior staff
+  const profit     = revenue - expenses;
 
-  const totalUpfront = upfrontDeposit + equipCost + interiorCost + licensingCost + workingCapitalBuffer;
-
-  // Monthly Financials (Assuming 25 Working Days per Month)
-  const grossMonthlyRevenue = fee * patientsPerDay * 25;
-  const fixedExpenses = rent + 12000 + (beds * 5000); // Rent + Utilities + Consumables
-  const netMonthlyProfit = grossMonthlyRevenue - fixedExpenses;
-
-  // Payback Period
-  let paybackMonths = "N/A (Operating at Loss)";
-  if (netMonthlyProfit > 0) {
-    const months = Math.ceil(totalUpfront / netMonthlyProfit);
-    paybackMonths = `${months} Months (${(months / 12).toFixed(1)} Years)`;
+  // Payback
+  let payback = 'Operating at a loss';
+  if (profit > 0) {
+    const months = Math.ceil(upfront / profit);
+    payback = `~${months} months (${(months / 12).toFixed(1)} yrs)`;
   }
 
-  // Update UI Metrics
-  document.getElementById('resUpfront').innerText = `₹${totalUpfront.toLocaleString('en-IN')}`;
-  document.getElementById('resRevenue').innerText = `₹${grossMonthlyRevenue.toLocaleString('en-IN')}/mo`;
-  document.getElementById('resExpenses').innerText = `₹${fixedExpenses.toLocaleString('en-IN')}/mo`;
-  
-  const profitElem = document.getElementById('resProfit');
-  profitElem.innerText = `₹${netMonthlyProfit.toLocaleString('en-IN')}/mo`;
-  if (netMonthlyProfit >= 0) {
-    profitElem.className = 'res-value text-accent';
-  } else {
-    profitElem.className = 'res-value text-danger';
-  }
+  // Render
+  set('resUpfront',  `₹${fmt(upfront)}`);
+  set('resRevenue',  `₹${fmt(revenue)}/mo`);
+  set('resExpenses', `₹${fmt(expenses)}/mo`);
+  set('resPayback',  payback);
 
-  document.getElementById('resPayback').innerText = paybackMonths;
+  const profitEl = document.getElementById('resProfit');
+  if (profitEl) {
+    profitEl.textContent = profit >= 0 ? `₹${fmt(profit)}/mo` : `−₹${fmt(Math.abs(profit))}/mo`;
+    profitEl.className   = 'result-val ' + (profit >= 0 ? 'result-pos' : 'result-neg');
+  }
 }
 
-// Render Checklist
+function set(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function fmt(n) {
+  return Math.round(n).toLocaleString('en-IN');
+}
+
+// ─── CHECKLIST ───────────────────────────────────────────────
 function renderChecklist() {
   const container = document.getElementById('checklistContainer');
   if (!container) return;
 
   container.innerHTML = '';
-  let completedCount = 0;
+  let done = 0;
 
-  appState.checklist.forEach(item => {
-    if (item.completed) completedCount++;
+  state.checklist.forEach(item => {
+    if (item.done) done++;
 
     const div = document.createElement('div');
-    div.className = `checklist-item ${item.completed ? 'done' : ''}`;
-    div.onclick = () => toggleChecklistItem(item.id);
+    div.className = 'checklist-item' + (item.done ? ' done' : '');
+    div.onclick = () => toggleItem(item.id);
 
     div.innerHTML = `
-      <div class="checkbox"><i class="fa-solid fa-check"></i></div>
-      <div class="item-text">${item.text}</div>
+      <div class="check-box">${item.done ? '✓' : ''}</div>
+      <div class="check-text">${item.text}</div>
     `;
-
     container.appendChild(div);
   });
 
-  const progressElem = document.getElementById('checkProgress');
-  if (progressElem) {
-    progressElem.innerText = `${completedCount} of ${appState.checklist.length} completed`;
-  }
+  // Progress
+  const total = state.checklist.length;
+  const pct   = Math.round((done / total) * 100);
+  const fill  = document.getElementById('progressFill');
+  if (fill) fill.style.width = pct + '%';
+  set('checkProgress', `${done} of ${total} completed`);
 }
 
-// Toggle Checklist Item
-function toggleChecklistItem(id) {
-  appState.checklist = appState.checklist.map(item => {
-    if (item.id === id) {
-      return { ...item, completed: !item.completed };
-    }
-    return item;
-  });
-
+function toggleItem(id) {
+  state.checklist = state.checklist.map(i =>
+    i.id === id ? { ...i, done: !i.done } : i
+  );
+  persistChecklist();
   renderChecklist();
-  saveData();
 }
 
-// Search & Filter Across Content
-function handleSearch(query) {
-  const q = query.toLowerCase().trim();
-  if (!q) {
-    document.querySelectorAll('.story-card, .timeline-step, .challenge-card').forEach(el => el.style.display = '');
-    return;
-  }
+function persistChecklist() {
+  localStorage.setItem('physio_checklist', JSON.stringify(state.checklist));
+  if (state.token) syncToGitHub();
+}
 
-  document.querySelectorAll('.story-card, .timeline-step, .challenge-card').forEach(el => {
-    const text = el.innerText.toLowerCase();
-    if (text.includes(q)) {
-      el.style.display = '';
-    } else {
-      el.style.display = 'none';
+// ─── GITHUB DATA PERSISTENCE ─────────────────────────────────
+async function loadRemoteData() {
+  try {
+    const url  = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${FILE_PATH}?t=${Date.now()}`;
+    const resp = await fetch(url);
+    if (!resp.ok) return;
+
+    const data = await resp.json();
+    if (data?.checklist && Array.isArray(data.checklist)) {
+      state.checklist = data.checklist;
+      localStorage.setItem('physio_checklist', JSON.stringify(state.checklist));
+      renderChecklist();
     }
-  });
+  } catch (err) {
+    console.info('Could not reach GitHub raw data — using local state.', err);
+  }
 }
 
-// Modal Token Management
+async function syncToGitHub() {
+  if (!state.token) return;
+  try {
+    // Get current SHA
+    const headResp = await fetch(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`,
+      { headers: { Authorization: `token ${state.token}` } }
+    );
+    let sha = '';
+    if (headResp.ok) sha = (await headResp.json()).sha;
+
+    const content = JSON.stringify({
+      lastUpdated: new Date().toISOString(),
+      checklist: state.checklist,
+    }, null, 2);
+
+    const putResp = await fetch(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`,
+      {
+        method:  'PUT',
+        headers: {
+          Authorization:  `token ${state.token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: 'Update checklist [PhysioLaunch BLR]',
+          content: btoa(unescape(encodeURIComponent(content))),
+          sha,
+        }),
+      }
+    );
+    if (!putResp.ok) console.warn('GitHub sync failed:', await putResp.text());
+  } catch (err) {
+    console.warn('GitHub sync error:', err);
+  }
+}
+
+// ─── TOKEN MODAL ─────────────────────────────────────────────
 function openTokenModal() {
-  document.getElementById('tokenInput').value = appState.token;
+  document.getElementById('tokenInput').value = state.token;
   document.getElementById('tokenModal').classList.add('active');
 }
 
@@ -169,87 +239,9 @@ function closeTokenModal() {
 }
 
 function saveToken() {
-  const token = document.getElementById('tokenInput').value.trim();
-  appState.token = token;
-  localStorage.setItem('gh_pat_token', token);
-  updateTokenUI();
+  const t = document.getElementById('tokenInput').value.trim();
+  state.token = t;
+  localStorage.setItem('gh_pat', t);
   closeTokenModal();
-  saveData();
-}
-
-function updateTokenUI() {
-  const btnText = document.getElementById('tokenBtnText');
-  if (btnText) {
-    if (appState.token) {
-      btnText.innerText = 'Token Active ✓';
-    } else {
-      btnText.innerText = 'Set Sync Token';
-    }
-  }
-}
-
-// Data Persistence (GitHub REST API Read & Write)
-async function loadData() {
-  try {
-    const response = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${FILE_PATH}?v=${Date.now()}`);
-    if (response.ok) {
-      const data = await response.json();
-      if (data && data.checklist) {
-        appState.checklist = data.checklist;
-      }
-    }
-  } catch (err) {
-    console.warn('Could not fetch data.json from GitHub, using default local state.', err);
-  } finally {
-    renderChecklist();
-  }
-}
-
-async function saveData() {
-  // Always save to localStorage
-  localStorage.setItem('physio_checklist_state', JSON.stringify(appState.checklist));
-
-  if (!appState.token) {
-    console.log('No GitHub Token provided. Saved state locally.');
-    return;
-  }
-
-  try {
-    // Get existing file SHA first (required for update)
-    const getFileRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
-      headers: { 'Authorization': `token ${appState.token}` }
-    });
-
-    let sha = '';
-    if (getFileRes.ok) {
-      const fileData = await getFileRes.json();
-      sha = fileData.sha;
-    }
-
-    const payload = {
-      message: 'Update checklist state via PhysioLaunch BLR Web App',
-      content: btoa(JSON.stringify({
-        lastUpdated: new Date().toISOString(),
-        checklist: appState.checklist
-      }, null, 2)),
-      sha: sha || undefined
-    };
-
-    const putRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `token ${appState.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (putRes.ok) {
-      console.log('Successfully synced state with GitHub repo data.json!');
-    } else {
-      console.error('GitHub API error:', await putRes.text());
-    }
-  } catch (err) {
-    console.error('Error saving to GitHub API:', err);
-  }
+  if (t) syncToGitHub();
 }
