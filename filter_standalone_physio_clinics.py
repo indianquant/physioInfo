@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Bengaluru Standalone Physiotherapy & Rehab Clinic Filter
-========================================================
+Bengaluru Pure Standalone Physiotherapy & Rehab Clinic Filter
+============================================================
 Filters the database strictly for standalone, dedicated physiotherapy
 and rehabilitation practices.
 
-Strict Exclusion:
-- Multispecialty Hospitals (Manipal, Apollo, Fortis, Sakra, Aster, etc.)
+Strict Exclusions:
+- Orthopedic Surgeons & Surgical Clinics (Surgeons, Surgery, Joint Replacement)
+- Multispecialty Hospitals (Manipal, Apollo, Fortis, Sakra, Sparsh, Aster, etc.)
 - Multi-department Polyclinics, Diagnostic Centers & Nursing Homes
-- General OPDs
 
 Outputs:
 - Updated bengaluru_physio_clinics.json
@@ -19,10 +19,12 @@ import json
 import csv
 import math
 
-HOSPITAL_KEYWORDS = [
+HOSPITAL_AND_SURGEON_KEYWORDS = [
     'hospital', 'multispecialty', 'multi-speciality', 'nursing home', 
     'diagnostics', 'apollo', 'manipal', 'fortis', 'sakra', 'sparsh', 
-    'aster', 'columbia', 'medical centre', 'medical center', 'polyclinic'
+    'aster', 'columbia', 'medical centre', 'medical center', 'polyclinic',
+    'surgeon', 'surgery', 'orthopaedic surgeon', 'spine surgeon', 
+    'joint replacement', 'surgical'
 ]
 
 PHYSIO_KEYWORDS = [
@@ -37,7 +39,7 @@ def main():
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    standalone_clinics = []
+    pure_physio_clinics = []
     seen = set()
 
     for c in data:
@@ -48,18 +50,18 @@ def main():
             continue
 
         is_physio = any(pk in name_lower for pk in PHYSIO_KEYWORDS)
-        is_hospital = any(hk in name_lower for hk in HOSPITAL_KEYWORDS)
+        is_hospital_or_surgeon = any(hk in name_lower for hk in HOSPITAL_AND_SURGEON_KEYWORDS)
 
-        if is_physio and not is_hospital:
+        if is_physio and not is_hospital_or_surgeon:
             seen.add(name_lower)
-            c['specialization'] = "Standalone Physiotherapy & Rehab"
-            standalone_clinics.append(c)
+            c['specialization'] = "Pure Physiotherapy & Rehabilitation Practice"
+            pure_physio_clinics.append(c)
 
     # Sort by review count
-    standalone_clinics.sort(key=lambda x: (x.get('reviews') if isinstance(x.get('reviews'), (int, float)) else -1), reverse=True)
+    pure_physio_clinics.sort(key=lambda x: (x.get('reviews') if isinstance(x.get('reviews'), (int, float)) else -1), reverse=True)
 
     with open(json_path, "w", encoding="utf-8") as f:
-        json.dump(standalone_clinics, f, indent=2, ensure_ascii=False)
+        json.dump(pure_physio_clinics, f, indent=2, ensure_ascii=False)
 
     fieldnames = [
         "name", "locality", "rating", "reviews", "mps_score", 
@@ -70,13 +72,13 @@ def main():
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
-        for c in standalone_clinics:
+        for c in pure_physio_clinics:
             writer.writerow(c)
 
     print("=======================================================")
-    print(f"STANDALONE PHYSIO FILTER COMPLETE:")
-    print(f" Retained: {len(standalone_clinics)} Standalone Physiotherapy & Rehab Clinics")
-    print(f" Filtered Out: {len(data) - len(standalone_clinics)} Hospitals & Polyclinics")
+    print(f"PURE PHYSIO & REHAB FILTER COMPLETE:")
+    print(f" Retained: {len(pure_physio_clinics)} Dedicated Physiotherapy & Rehab Practices")
+    print(f" Filtered Out: {len(data) - len(pure_physio_clinics)} Hospitals, Polyclinics & Surgeon OPDs")
     print(" Saved JSON & CSV successfully!")
     print("=======================================================")
 
