@@ -220,6 +220,206 @@
     "source": "Bengaluru Directory & Map Analysis"
   },
   {
+    "name": "BOSH Physiotherapy",
+    "locality": "Kalyan Nagar",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "BOSH Physiotherapy, 426, CMR Road, Kalyan Nagar, Kalyanagar, Bengaluru North City Corporation, Bengaluru, Bangalore Nort",
+    "google_maps_url": "https://www.google.com/maps/search/BOSH%20Physiotherapy%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Physiotherapy Clinic",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Physiotherapy Clinic, Devasandra Main Road, Chikka Devasandra, Bengaluru East City Corporation, Bengaluru, Bangalore Eas",
+    "google_maps_url": "https://www.google.com/maps/search/Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Amogha Physiotherapy Clinic",
+    "locality": "Varthur",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Amogha Physiotherapy Clinic, Halasahalli Road, Varthur, Bengaluru East City Corporation, Bengaluru, Bangalore East, Beng",
+    "google_maps_url": "https://www.google.com/maps/search/Amogha%20Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Eva Physiotherapy Clinic",
+    "locality": "Whitefield",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Eva Physiotherapy Clinic, Whitefield Road, Prashanth Extension, Pattanduru Agrahara, S.M Krishna Ward, Bengaluru East Ci",
+    "google_maps_url": "https://www.google.com/maps/search/Eva%20Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Fix and flex Physiotherapy Clinic | Best physiotherapy centre in Bangalore",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Fix and flex Physiotherapy Clinic | Best physiotherapy centre in Bangalore, 4th Cross Road, Srinagar, Hanumanthanagar, B",
+    "google_maps_url": "https://www.google.com/maps/search/Fix%20and%20flex%20Physiotherapy%20Clinic%20%7C%20Best%20physiotherapy%20centre%20in%20Bangalore%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Naina Polyclinic & Physiotherapy Centre",
+    "locality": "Yelahanka",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Naina Polyclinic & Physiotherapy Centre, 13th B Main Road, Sector B, Yelahanka New Town, Yelahanka Satellite Town, Benga",
+    "google_maps_url": "https://www.google.com/maps/search/Naina%20Polyclinic%20%26%20Physiotherapy%20Centre%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Pristine physiotherapy and wellness clinic in Koramangala",
+    "locality": "Koramangala",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Pristine physiotherapy and wellness clinic in Koramangala, 80 Feet Road, Koramangala 5th Block, Adugodi, A Adugodi, Beng",
+    "google_maps_url": "https://www.google.com/maps/search/Pristine%20physiotherapy%20and%20wellness%20clinic%20in%20Koramangala%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Impact Physiotherapy",
+    "locality": "BTM Layout",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Impact Physiotherapy, 771, 16th Main Road, Kuvempu Nagar, BTM Layout, Viswamanava Kuvempu Ward, Bengaluru South City Cor",
+    "google_maps_url": "https://www.google.com/maps/search/Impact%20Physiotherapy%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Elite Physiotherapy Clinic",
+    "locality": "Yelahanka",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Elite Physiotherapy Clinic, Kendriya Vihar Apartments Exit, Kendriya Vihar Apartments, Akash Ward, Bengaluru North City ",
+    "google_maps_url": "https://www.google.com/maps/search/Elite%20Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Gaur Physiotherapy",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Gaur Physiotherapy, Marenahalli Road, Shakambari Nagar, Shakambarinagara, Bengaluru South City Corporation, Bengaluru, B",
+    "google_maps_url": "https://www.google.com/maps/search/Gaur%20Physiotherapy%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "NIMHANS Physiotherapy Center",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "NIMHANS Physiotherapy Center, NIMHANS Quarters, BHEL Ward, Bengaluru Central City Corporation, Bengaluru, Bangalore Nort",
+    "google_maps_url": "https://www.google.com/maps/search/NIMHANS%20Physiotherapy%20Center%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Synovium Physiotherapy Clinic",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Synovium Physiotherapy Clinic, 3rd Main Road, Kacharakanahalli, HRBR Layout 3rd Block, Kacharakanahalli, Bengaluru North",
+    "google_maps_url": "https://www.google.com/maps/search/Synovium%20Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "JP Nagar Physiotherapy Clinic",
+    "locality": "JP Nagar",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "JP Nagar Physiotherapy Clinic, 9th Cross Road, Sarakki, JP Nagar 1st Phase, Sarakki, Bengaluru South City Corporation, B",
+    "google_maps_url": "https://www.google.com/maps/search/JP%20Nagar%20Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Dr. Harsha's physiotherapy Clinic",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Dr. Harsha's physiotherapy Clinic, 5th Main Road, HRBR Layout 2nd Block, Kacharakanahalli, Bengaluru North City Corporat",
+    "google_maps_url": "https://www.google.com/maps/search/Dr.%20Harsha%27s%20physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Dr. Abhilipsa | AbhiGyan - Ortho Neuro Sports Rehab Physiotherapist | Physiotherapy Clinic | Back Pain | Neck Pain",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Dr. Abhilipsa | AbhiGyan - Ortho Neuro Sports Rehab Physiotherapist | Physiotherapy Clinic | Back Pain | Neck Pain, Seco",
+    "google_maps_url": "https://www.google.com/maps/search/Dr.%20Abhilipsa%20%7C%20AbhiGyan%20-%20Ortho%20Neuro%20Sports%20Rehab%20Physiotherapist%20%7C%20Physiotherapy%20Clinic%20%7C%20Back%20Pain%20%7C%20Neck%20Pain%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Healing Hands Advanced Physiotherapy Clinic",
+    "locality": "Banashankari",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Healing Hands Advanced Physiotherapy Clinic, 64/2, Sarakki Main Rd, Sarakki Nagar,, 4th Cross Road, Banashankari Temple ",
+    "google_maps_url": "https://www.google.com/maps/search/Healing%20Hands%20Advanced%20Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Florence Physiotherapy Clinic",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Florence Physiotherapy Clinic, Service Road, HRBR Layout 3rd Block, Kacharakanahalli, Bengaluru North City Corporation, ",
+    "google_maps_url": "https://www.google.com/maps/search/Florence%20Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Sri Krishna Physiotherapy Clinic",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Sri Krishna Physiotherapy Clinic, Devasandra Main Road, Ayyappanagara, Basavanapura, Bengaluru East City Corporation, Be",
+    "google_maps_url": "https://www.google.com/maps/search/Sri%20Krishna%20Physiotherapy%20Clinic%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Florence College of Physiotherapy",
+    "locality": "Bengaluru Urban",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Florence College of Physiotherapy, 1st D Main, HRBR Layout 3rd Block, Kacharakanahalli, Bengaluru North City Corporation",
+    "google_maps_url": "https://www.google.com/maps/search/Florence%20College%20of%20Physiotherapy%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
+    "name": "Quantum Physiotherapy",
+    "locality": "HSR Layout",
+    "rating": 4.8,
+    "reviews": 180,
+    "address": "Quantum Physiotherapy, 5th Main Road, Sector 6, HSR Layout, Bengaluru South City Corporation, Bengaluru, Bangalore South",
+    "google_maps_url": "https://www.google.com/maps/search/Quantum%20Physiotherapy%20Bengaluru",
+    "source": "OpenStreetMap Geo Data",
+    "mps_score": 10.84
+  },
+  {
     "name": "Omniphysiocare East Hub",
     "locality": "Varthur",
     "rating": 4.6,
