@@ -79,6 +79,10 @@ function switchTab(sectionId, element, updateHash = true) {
     const cleanHash = sectionId.replace('section-', '');
     window.history.pushState(null, '', `#${cleanHash}`);
   }
+
+  if (sectionId === 'section-radius') {
+    setTimeout(initNeopolisMap, 100);
+  }
 }
 
 // Copy Direct Link to Clipboard
@@ -98,6 +102,7 @@ async function loadClinicDatabase() {
     if (res.ok) {
       appState.clinicDatabase = await res.json();
       filterClinicDatabase();
+      filterNeopolisRadius();
     }
   } catch (err) {
     console.warn('Could not load bengaluru_physio_clinics.json', err);
@@ -487,5 +492,145 @@ async function saveData() {
     }
   } catch (err) {
     showStatusMessage('Saved locally ✓');
+  }
+}
+
+/* ==========================================================================
+   Sobha Neopolis Proximity Map & Distance Matrix Logic (Leaflet.js)
+   ========================================================================== */
+
+let neopolisMap = null;
+let neopolisMarkers = [];
+let neopolisCircle = null;
+
+const SOBHA_NEOPOLIS_COORDS = [12.9348, 77.7128]; // Panathur Main Road
+
+function initNeopolisMap() {
+  if (neopolisMap) {
+    neopolisMap.invalidateSize();
+    return;
+  }
+
+  const mapContainer = document.getElementById('neopolisMap');
+  if (!mapContainer || typeof L === 'undefined') return;
+
+  neopolisMap = L.map('neopolisMap').setView(SOBHA_NEOPOLIS_COORDS, 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(neopolisMap);
+
+  const homeIcon = L.divIcon({
+    className: 'home-marker-pin',
+    html: '<div style="background-color: #ef4444; color: white; border-radius: 20px; padding: 6px 12px; font-weight: bold; border: 2px solid white; box-shadow: 0 0 15px rgba(239, 68, 68, 0.9); font-size: 12px; white-space: nowrap;"><i class="fa-solid fa-star"></i> SOBHA NEOPOLIS</div>',
+    iconSize: [140, 32],
+    iconAnchor: [70, 16]
+  });
+
+  L.marker(SOBHA_NEOPOLIS_COORDS, { icon: homeIcon }).addTo(neopolisMap)
+    .bindPopup('<b>Sobha Neopolis Anchor Base</b><br>Panathur Main Road, East Bengaluru<br>Lat: 12.9348° N, Lng: 77.7128° E');
+
+  filterNeopolisRadius();
+}
+
+function recenterNeopolisMap() {
+  if (neopolisMap) {
+    neopolisMap.setView(SOBHA_NEOPOLIS_COORDS, 13);
+  }
+}
+
+function filterNeopolisRadius() {
+  if (!appState.clinicDatabase || appState.clinicDatabase.length === 0) return;
+
+  const select = document.getElementById('radiusFilterSelect');
+  const maxRadius = select ? select.value : '5';
+
+  let filtered = appState.clinicDatabase.filter(c => {
+    const dist = c.distance_km !== undefined ? c.distance_km : 999;
+    if (maxRadius === 'ALL') return true;
+    return dist <= parseFloat(maxRadius);
+  });
+
+  filtered.sort((a, b) => (a.distance_km || 0) - (b.distance_km || 0));
+
+  renderNeopolisMapAndTable(filtered, maxRadius);
+}
+
+function renderNeopolisMapAndTable(clinics, radiusVal) {
+  const tbody = document.getElementById('radiusTableBody');
+  const summaryBadge = document.getElementById('radiusRecordSummary');
+
+  if (summaryBadge) {
+    const label = radiusVal === 'ALL' ? 'All Bengaluru' : `< ${radiusVal} km`;
+    summaryBadge.innerHTML = `<i class="fa-solid fa-location-dot"></i> Showing <strong>${clinics.length}</strong> standalone physio clinics within <strong>${label}</strong> of Sobha Neopolis`;
+  }
+
+  if (tbody) {
+    if (clinics.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6" class="text-center p-4">No clinics found within this distance radius.</td></tr>`;
+    } else {
+      tbody.innerHTML = clinics.map((c, idx) => `
+        <tr>
+          <td><strong>${idx + 1}</strong></td>
+          <td>
+            <div class="clinic-name-cell">
+              <strong>${escapeHtml(c.name)}</strong>
+              <span class="clinic-sub-spec">${escapeHtml(c.specialization || 'Physiotherapy & Rehab')}</span>
+            </div>
+          </td>
+          <td><span class="locality-badge"><i class="fa-solid fa-location-arrow"></i> ${escapeHtml(c.locality)}</span></td>
+          <td>
+            <span class="distance-badge ${c.distance_km <= 2 ? 'dist-near' : c.distance_km <= 5 ? 'dist-mid' : 'dist-far'}">
+              <i class="fa-solid fa-route"></i> ${c.distance_km} km
+            </span>
+          </td>
+          <td>
+            <div class="rating-box">
+              <span class="star-rating"><i class="fa-solid fa-star"></i> ${c.rating || 'N/A'}</span>
+              <span class="review-count">(${c.reviews || 0} reviews)</span>
+            </div>
+          </td>
+          <td>
+            <a href="${c.google_maps_url}" target="_blank" class="btn btn-sm btn-outline-primary">
+              <i class="fa-solid fa-map-location-dot"></i> View Pin
+            </a>
+          </td>
+        </tr>
+      `).join('');
+    }
+  }
+
+  if (neopolisMap) {
+    neopolisMarkers.forEach(m => neopolisMap.removeLayer(m));
+    neopolisMarkers = [];
+    if (neopolisCircle) neopolisMap.removeLayer(neopolisCircle);
+
+    if (radiusVal !== 'ALL') {
+      const radiusMeters = parseFloat(radiusVal) * 1000;
+      neopolisCircle = L.circle(SOBHA_NEOPOLIS_COORDS, {
+        color: '#6366f1',
+        fillColor: '#6366f1',
+        fillOpacity: 0.12,
+        radius: radiusMeters
+      }).addTo(neopolisMap);
+    }
+
+    clinics.forEach(c => {
+      if (c.lat && c.lng) {
+        const marker = L.marker([c.lat, c.lng]).addTo(neopolisMap);
+        marker.bindPopup(`
+          <div style="font-family: sans-serif; font-size: 13px; color: #1e293b;">
+            <strong style="font-size: 14px; color: #0f172a;">${escapeHtml(c.name)}</strong><br>
+            <span style="color: #64748b;">${escapeHtml(c.locality)} • <strong style="color: #6366f1;">${c.distance_km} km from Sobha Neopolis</strong></span><br>
+            <div style="margin-top: 5px;">
+              <span style="color: #f59e0b; font-weight: bold;">★ ${c.rating}</span> (${c.reviews} reviews)<br>
+              <a href="${c.google_maps_url}" target="_blank" style="color: #6366f1; font-weight: bold; display: inline-block; margin-top: 6px; text-decoration: underline;">Open Google Maps Pin →</a>
+            </div>
+          </div>
+        `);
+        neopolisMarkers.push(marker);
+      }
+    });
   }
 }

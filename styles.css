@@ -1132,3 +1132,49 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* Sobha Neopolis Distance Badges & Map Styling */
+.radius-badge-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  color: #c7d2fe;
+  font-size: 0.9rem;
+}
+
+.distance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.dist-near {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.dist-mid {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.dist-far {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.home-marker-pin {
+  pointer-events: none;
+}
+

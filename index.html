@@ -14,6 +14,10 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- Leaflet.js Maps CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -66,6 +70,9 @@
         </a>
         <a href="#database" class="nav-item" onclick="switchTab('section-database', this)">
           <i class="fa-solid fa-database"></i> Live Clinic Database
+        </a>
+        <a href="#radius" class="nav-item" onclick="switchTab('section-radius', this)">
+          <i class="fa-solid fa-map-pin"></i> Sobha Neopolis Proximity
         </a>
         <a href="#reddit" class="nav-item" onclick="switchTab('section-reddit', this)">
           <i class="fa-brands fa-reddit-alien"></i> Reddit Stories & Insights
@@ -568,6 +575,63 @@
             <button id="btnNextPage" class="btn btn-secondary" onclick="changePage(1)" disabled>Next <i class="fa-solid fa-chevron-right"></i></button>
           </div>
 
+        </div>
+      </section>
+
+      <!-- Section: Sobha Neopolis Proximity Map & Distance Matrix -->
+      <section id="section-radius" class="content-section">
+        <div class="section-header">
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-map-pin text-accent"></i> Sobha Neopolis Catchment & Distance Matrix</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('radius')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
+          <p class="section-lead">Interactive Leaflet map & proximity distance matrix centered on <strong>Sobha Neopolis (12.9348° N, 77.7128° E), Panathur Main Road</strong>.</p>
+        </div>
+
+        <div class="card mb-4">
+          <div class="db-controls">
+            <div class="radius-badge-info">
+              <i class="fa-solid fa-location-dot text-accent" style="font-size: 1.2rem;"></i>
+              <span>Anchor Base: <strong>Sobha Neopolis, Panathur Main Rd</strong></span>
+            </div>
+            <div class="filter-box">
+              <select id="radiusFilterSelect" onchange="filterNeopolisRadius()">
+                <option value="2">&lt; 2 km (Immediate Panathur Catchment)</option>
+                <option value="5" selected>&lt; 5 km (Kadubeesanahalli, Varthur, Bellandur)</option>
+                <option value="10">&lt; 10 km (HSR Layout, Whitefield, Sarjapur)</option>
+                <option value="15">&lt; 15 km (Indiranagar, Koramangala)</option>
+                <option value="ALL">All Bengaluru (568 Clinics)</option>
+              </select>
+            </div>
+            <button class="btn btn-secondary" onclick="recenterNeopolisMap()"><i class="fa-solid fa-arrows-to-eye"></i> Recenter Map</button>
+          </div>
+
+          <!-- Live Interactive Leaflet Map Container -->
+          <div id="neopolisMap" style="height: 480px; width: 100%; border-radius: 12px; margin-top: 15px; border: 1px solid rgba(255,255,255,0.15); z-index: 1;"></div>
+        </div>
+
+        <!-- Proximity Distance Table Card -->
+        <div class="card">
+          <div class="record-summary-bar mb-3">
+            <span class="record-count-badge" id="radiusRecordSummary">Showing 0 clinics within radius</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Clinic Name</th>
+                  <th>Sub-Locality</th>
+                  <th>Distance from Sobha Neopolis</th>
+                  <th>Rating & Reviews</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="radiusTableBody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
