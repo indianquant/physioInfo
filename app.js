@@ -81,7 +81,11 @@ function switchTab(sectionId, element, updateHash = true) {
   }
 
   if (sectionId === 'section-radius') {
-    setTimeout(initNeopolisMap, 100);
+    setTimeout(() => {
+      initNeopolisMap();
+      if (neopolisMap) neopolisMap.invalidateSize();
+      filterNeopolisRadius();
+    }, 150);
   }
 }
 
@@ -506,13 +510,14 @@ let neopolisCircle = null;
 const SOBHA_NEOPOLIS_COORDS = [12.9348, 77.7128]; // Panathur Main Road
 
 function initNeopolisMap() {
-  if (neopolisMap) {
-    neopolisMap.invalidateSize();
-    return;
-  }
-
   const mapContainer = document.getElementById('neopolisMap');
   if (!mapContainer || typeof L === 'undefined') return;
+
+  if (neopolisMap) {
+    neopolisMap.invalidateSize();
+    filterNeopolisRadius();
+    return;
+  }
 
   neopolisMap = L.map('neopolisMap').setView(SOBHA_NEOPOLIS_COORDS, 13);
 
