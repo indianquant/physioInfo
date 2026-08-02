@@ -864,3 +864,406 @@ function generateScopedAIResponse(q) {
     <p>Try asking: <em>"What are the nearest clinics to Home?"</em> or <em>"How much is the rent deposit in Panathur?"</em></p>
   `;
 }
+/* ==========================================================================
+   Equipment & Instruments Price Catalogue — Data & Rendering
+   ========================================================================== */
+
+const EQUIPMENT_CATALOGUE = [
+  // ─── BASIC TIER ─────────────────────────────────────────────────────────────
+  {
+    tier: 'basic',
+    category: 'Heat Therapy',
+    name: 'Hydrocollator (Moist Heat Unit)',
+    icon: 'fa-fire-flame-curved',
+    description: 'Stainless steel tank with thermostatic control that heats silica-gel hot packs in water. Essential for muscle spasm, arthritis, cervical & lumbar treatment. Available as 4-pack (portable) or 8-pack (clinical grade). Moist heat penetrates 2–3 cm deeper than dry heat.',
+    price_min: 7000,
+    price_max: 35000,
+    unit: 'unit',
+    tags: ['Cervical', 'Lumbar', 'Spasm Relief', 'Day 1 Essential'],
+    pros: ['Deep moist heat penetration', 'No electricity during treatment', 'Reusable packs last 5+ years'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/hydrocollator-22052832588.html'
+  },
+  {
+    tier: 'basic',
+    category: 'Heat Therapy',
+    name: 'Paraffin Wax Bath',
+    icon: 'fa-hand-sparkles',
+    description: 'Electric thermostatically-controlled wax melting unit for dipping hands, wrists, and feet. Ideal for rheumatoid arthritis, stiff joints, and post-fracture rehabilitation. Provides sustained moist heat at 48–52°C.',
+    price_min: 3000,
+    price_max: 12000,
+    unit: 'unit',
+    tags: ['Hand Therapy', 'Arthritis', 'Wrist Rehab'],
+    pros: ['Uniform heat distribution', 'Low running cost', 'Relaxing for patients'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/paraffin-wax-bath.html'
+  },
+  {
+    tier: 'basic',
+    category: 'Electrotherapy',
+    name: 'TENS Machine (Transcutaneous Electrical Nerve Stimulation)',
+    icon: 'fa-bolt',
+    description: '2-channel or 4-channel electrical stimulator delivering low-voltage pulses for pain relief. Works on Gate Control Theory — blocks pain signals via large nerve fibre stimulation. Analog units are most cost-effective; digital units offer pre-programmed protocols.',
+    price_min: 2000,
+    price_max: 10000,
+    unit: 'unit',
+    tags: ['Pain Relief', 'Nerve Stimulation', 'Day 1 Essential', 'Cervical', 'Lumbar'],
+    pros: ['Zero side effects', 'Immediate patient relief', 'Highly portable options available'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/tens-machine.html'
+  },
+  {
+    tier: 'basic',
+    category: 'Electrotherapy',
+    name: 'Muscle Stimulator (MS / EMS)',
+    icon: 'fa-person-running',
+    description: 'Electrical muscle stimulator for denervated muscle re-education, post-surgery strengthening, and prevention of muscle atrophy. Often bundled with TENS in combo units. Essential for post-ortho and post-stroke patients.',
+    price_min: 3000,
+    price_max: 15000,
+    unit: 'unit',
+    tags: ['Muscle Re-education', 'Post-Surgery', 'Atrophy Prevention'],
+    pros: ['Prevents disuse atrophy', 'Adjunct to exercise therapy', 'Wide waveform variety'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/muscle-stimulator.html'
+  },
+  {
+    tier: 'basic',
+    category: 'Electrotherapy',
+    name: 'Combo Therapy Unit (TENS + IFT + US + MS)',
+    icon: 'fa-plug-circle-bolt',
+    description: 'All-in-one 4-in-1 or 5-in-1 electrotherapy machine combining TENS, Interferential Therapy (IFT), Ultrasound (1 MHz), and Muscle Stimulation in a single compact unit. Best value for Day 1 clinic setup — saves space and budget.',
+    price_min: 6000,
+    price_max: 25000,
+    unit: 'unit',
+    tags: ['Best Value', 'Day 1 Essential', 'All-in-One', 'Space Saver'],
+    pros: ['4 modalities in 1 device', 'Pre-programmed protocols', 'Smallest footprint per modality'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/combo-therapy-unit.html'
+  },
+  {
+    tier: 'basic',
+    category: 'Traction',
+    name: 'Cervical Traction Unit (Manual / Pneumatic)',
+    icon: 'fa-person-dots-from-line',
+    description: 'Mechanical or pneumatic traction device specifically for cervical spine decompression. Relieves disc herniation, cervical spondylosis, and radiculopathy. Manual units use a halter + pulley system; pneumatic units inflate an air collar to achieve measured distraction force.',
+    price_min: 10000,
+    price_max: 25000,
+    unit: 'unit',
+    tags: ['Cervical', 'Spondylosis', 'Disc Herniation', 'Radiculopathy'],
+    pros: ['Non-surgical disc decompression', 'Adjustable force settings', 'Quick patient setup'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/cervical-traction.html'
+  },
+  {
+    tier: 'basic',
+    category: 'Furniture',
+    name: 'Treatment Table / Couch (Manual Fold)',
+    icon: 'fa-bed',
+    description: 'Standard padded treatment plinth with adjustable backrest (manual fold mechanism). Used for all patient assessments and hands-on physiotherapy. Available in fixed-height or adjustable-height versions with Leatherette upholstery.',
+    price_min: 9500,
+    price_max: 30000,
+    unit: 'table',
+    tags: ['Furniture', 'Day 1 Essential', 'Patient Plinth'],
+    pros: ['Adjustable backrest', 'Easy to clean Leatherette', 'Stable for mobilisation techniques'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/physiotherapy-table.html'
+  },
+  {
+    tier: 'basic',
+    category: 'Exercise & Rehab',
+    name: 'Exercise Resistance Bands Set (Theraband)',
+    icon: 'fa-circle-nodes',
+    description: 'Latex progressive resistance bands in 5–7 resistance levels (Yellow to Black). Used for strengthening, stretching, and proprioceptive training. Standard across all rehab protocols for shoulder, knee, ankle, and post-surgical recovery.',
+    price_min: 500,
+    price_max: 3000,
+    unit: 'set',
+    tags: ['Exercise', 'Strengthening', 'Low Cost', 'Day 1 Essential'],
+    pros: ['Extremely portable', 'Graded resistance levels', 'Used in 90% of rehab protocols'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/theraband-resistance-band.html'
+  },
+  {
+    tier: 'basic',
+    category: 'Exercise & Rehab',
+    name: 'Parallel Bars (Walking Rehabilitation)',
+    icon: 'fa-ruler-horizontal',
+    description: 'Height-adjustable stainless steel parallel bars for gait training in post-surgical, post-stroke, and elderly patients. Standard length is 3 metres with rubber non-slip flooring. Essential for any outpatient physiotherapy setup.',
+    price_min: 8000,
+    price_max: 22000,
+    unit: 'unit',
+    tags: ['Gait Training', 'Post-Stroke', 'Post-Surgery', 'Day 1 Essential'],
+    pros: ['Height adjustable', 'Bilateral support for balance training', 'Durable stainless steel'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/parallel-bars.html'
+  },
+
+  // ─── MEDIUM TIER ────────────────────────────────────────────────────────────
+  {
+    tier: 'medium',
+    category: 'Electrotherapy',
+    name: 'IFT Machine — Interferential Therapy (Standalone)',
+    icon: 'fa-wave-square',
+    description: 'Generates medium-frequency (4000 Hz) alternating currents that interfere within the tissue to produce a low-frequency beat for deep pain relief and muscle stimulation. Reaches 5–6 cm deep — far deeper than TENS. Standalone IFT units offer higher precision than combo models.',
+    price_min: 10000,
+    price_max: 85000,
+    unit: 'unit',
+    tags: ['Deep Pain Relief', 'Sports Injury', 'Knee', 'Shoulder', 'Lumbar'],
+    pros: ['Deeper tissue penetration than TENS', 'Excellent for chronic pain', 'Comfortable for patients'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/ift-machine.html'
+  },
+  {
+    tier: 'medium',
+    category: 'Ultrasound',
+    name: 'Therapeutic Ultrasound Machine (1 MHz & 3 MHz)',
+    icon: 'fa-satellite-dish',
+    description: 'Generates high-frequency sound waves (1 MHz for deep tissue, 3 MHz for superficial). Produces thermal & non-thermal (cavitation) effects for soft tissue healing, tendinopathy, calcification, and scar tissue remodelling. Dual frequency units are preferred clinically.',
+    price_min: 6000,
+    price_max: 35000,
+    unit: 'unit',
+    tags: ['Soft Tissue Healing', 'Tendinopathy', 'Scar Tissue', 'Calcification'],
+    pros: ['Accelerates tissue healing', 'Dual 1 MHz + 3 MHz for versatility', 'Low consumable cost'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/ultrasound-therapy.html'
+  },
+  {
+    tier: 'medium',
+    category: 'Traction',
+    name: 'Lumbar Traction Unit (Digital / Computerized)',
+    icon: 'fa-arrows-left-right-to-line',
+    description: 'Motorized digital lumbar traction with LCD display, programmable static and intermittent traction modes, and precise force control up to 100 kg. Used for lumbar disc herniation, spondylolisthesis, and lumbar nerve root compression. Often mounted on a treatment table.',
+    price_min: 20000,
+    price_max: 80000,
+    unit: 'unit',
+    tags: ['Lumbar', 'Disc Herniation', 'Spondylolisthesis', 'Digital Control'],
+    pros: ['Precise force control (grams accuracy)', 'Static & intermittent modes', 'LCD patient monitoring'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/lumbar-traction.html'
+  },
+  {
+    tier: 'medium',
+    category: 'Shortwave & Microwave',
+    name: 'Shortwave Diathermy (SWD) — 300W / 500W',
+    icon: 'fa-radiation',
+    description: 'High-frequency electromagnetic energy (27.12 MHz) producing deep tissue heating up to 5 cm. Used for joint conditions, muscle spasms, sinusitis, pelvic inflammatory disease. Available in continuous (thermal) and pulsed (non-thermal/athermal) modes. 500W units preferred for clinical depth.',
+    price_min: 17500,
+    price_max: 90000,
+    unit: 'unit',
+    tags: ['Deep Heating', 'Joint Conditions', 'Pelvic', 'Sinusitis', 'Chronic Pain'],
+    pros: ['Deepest thermal penetration (5 cm)', 'Both thermal & non-thermal modes', 'Covers large areas'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/shortwave-diathermy.html'
+  },
+  {
+    tier: 'medium',
+    category: 'Traction',
+    name: 'Cervical + Lumbar Motorized Traction Combo',
+    icon: 'fa-arrows-up-down',
+    description: 'Combined digital traction system handling both cervical and lumbar spine in one unit. Includes interchangeable patient harness systems, programmable time cycles (5–60 min), force display, and emergency stop. Ideal for spondylosis-heavy patient profiles near IT corridor (desk workers).',
+    price_min: 45000,
+    price_max: 1,
+    price_max_text: '₹1.2L',
+    unit: 'unit',
+    tags: ['Cervical + Lumbar', 'IT Professionals', 'Combined Unit', 'Programmable'],
+    pros: ['Single unit for both spinal regions', 'Programmable timer & force', 'High ROI for desk-worker demographics'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/cervical-lumbar-traction.html'
+  },
+  {
+    tier: 'medium',
+    category: 'Exercise & Rehab',
+    name: 'Exercise Cycle (Motorized / Pedal Exerciser)',
+    icon: 'fa-person-biking',
+    description: 'Motorized or semi-motorized lower limb cycle ergometer for knee, hip, and stroke rehabilitation. Passive (motor-driven) and active-assisted modes. Essential for joint ROM improvement, post-knee replacement, and cardiac physiotherapy. Desk-style pedal variants for upper limb rehab too.',
+    price_min: 5000,
+    price_max: 40000,
+    unit: 'unit',
+    tags: ['Knee Rehab', 'Post-TKR', 'Stroke Rehab', 'ROM Improvement'],
+    pros: ['Passive & active-assisted modes', 'ROM & RPM display', 'Low impact for elderly patients'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/exercise-cycle.html'
+  },
+  {
+    tier: 'medium',
+    category: 'Exercise & Rehab',
+    name: 'Balance Board / Wobble Board Set',
+    icon: 'fa-yin-yang',
+    description: 'Proprioceptive training equipment including wobble boards, rocker boards, and balance pods. Used for ankle, knee, and hip stabilisation post-sprain, post-fracture, or ACL reconstruction. BOSU balls and inflatable discs are popular in sports rehab setups.',
+    price_min: 2000,
+    price_max: 15000,
+    unit: 'set',
+    tags: ['Balance', 'Proprioception', 'Ankle Sprain', 'Sports Rehab', 'ACL'],
+    pros: ['Low cost, high patient engagement', 'Graded difficulty levels', 'Dual use strength + balance'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/balance-board.html'
+  },
+  {
+    tier: 'medium',
+    category: 'Exercise & Rehab',
+    name: 'Dumbbell & Weight Set (Clinic Grade)',
+    icon: 'fa-dumbbell',
+    description: 'Rubber-coated hex dumbbells (0.5 kg to 10 kg) for upper extremity strengthening, grip training, and progressive resistance exercise in elderly and post-surgical patients. Wall-mounted rack with full range strongly recommended over individual sets for space efficiency.',
+    price_min: 3000,
+    price_max: 20000,
+    unit: 'set',
+    tags: ['Strengthening', 'Upper Limb', 'Elderly', 'Post-Surgery'],
+    pros: ['Durable rubber coating', 'Hex design prevents rolling', 'Covers all patient strength levels'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/dumbbell-set.html'
+  },
+  {
+    tier: 'medium',
+    category: 'Furniture',
+    name: 'Hi-Low Motorized Treatment Table',
+    icon: 'fa-table',
+    description: 'Electrically height-adjustable treatment plinth with foot-control pedal. Adjusts from 45 cm to 90 cm height. Essential for treating elderly, obese, or post-surgical patients who cannot step up to fixed-height tables. High-quality foam padding with waterproof Leatherette.',
+    price_min: 25000,
+    price_max: 75000,
+    unit: 'table',
+    tags: ['Furniture', 'Elderly-Friendly', 'Electric Adjust', 'Premium'],
+    pros: ['Foot-pedal height control', 'Safer patient transfers', 'Professional clinic image'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/hi-low-treatment-table.html'
+  },
+
+  // ─── ADVANCED TIER ──────────────────────────────────────────────────────────
+  {
+    tier: 'advanced',
+    category: 'Laser Therapy',
+    name: 'Class IV Laser Therapy System (High Power)',
+    icon: 'fa-laser',
+    description: 'High-power (5W–10W) Class IV therapeutic laser for deep tissue photobiomodulation. Effective for chronic pain, wound healing, nerve regeneration, and sports injury recovery. Wavelengths of 810 nm & 980 nm penetrate to 5–7 cm depth. Often used for knee OA, plantar fasciitis, and disc injuries.',
+    price_min: 150000,
+    price_max: 350000,
+    unit: 'unit',
+    tags: ['Advanced', 'Chronic Pain', 'Sports Rehab', 'Photobiomodulation', 'Premium'],
+    pros: ['Fastest healing modality', 'Highly differentiated service offering', 'Premium fee justification'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/laser-therapy.html'
+  },
+  {
+    tier: 'advanced',
+    category: 'Electrotherapy',
+    name: 'EMG Biofeedback System with NMES',
+    icon: 'fa-brain',
+    description: 'Surface electromyography (sEMG) biofeedback with integrated neuromuscular electrical stimulation (NMES). Reads real-time muscle activity and provides visual/audio feedback to patients. Used in stroke rehabilitation, bell's palsy, and urinary incontinence treatment. Combines FES and EMG-triggered stimulation.',
+    price_min: 50000,
+    price_max: 350000,
+    unit: 'unit',
+    tags: ['Stroke Rehab', "Bell's Palsy", 'Neurology', 'Biofeedback', 'NMES'],
+    pros: ['Objective muscle activity measurement', 'Motivating real-time feedback for patients', 'Opens neurological rehab referrals'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/emg-biofeedback.html'
+  },
+  {
+    tier: 'advanced',
+    category: 'Laser Therapy',
+    name: 'Low Level Laser Therapy (LLLT / Cold Laser)',
+    icon: 'fa-wand-magic-sparkles',
+    description: 'Low intensity laser (5–50 mW) for superficial wound healing, acupuncture point stimulation, and trigger point therapy. Unlike Class IV, it produces no thermal effect — purely photochemical. Used for oral mucositis, lymphoedema, and nerve repair.',
+    price_min: 15000,
+    price_max: 80000,
+    unit: 'unit',
+    tags: ['Cold Laser', 'Wound Healing', 'Lymphoedema', 'Acupuncture Points'],
+    pros: ['No thermal risk', 'Precise treatment area', 'Opens wound-care & lymphatic protocols'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/lllt-laser.html'
+  },
+  {
+    tier: 'advanced',
+    category: 'Hydrotherapy',
+    name: 'Hydrotherapy Pool / Aquatic Therapy Tub',
+    icon: 'fa-water',
+    description: 'Fiberglass or stainless steel therapeutic pool (1.5–2.5 m × 3–5 m) with underwater jets, heated water (33–36°C), and non-slip entry stairs. Water buoyancy reduces weight bearing by 90% (at neck level). Ideal for orthopaedic, neurological, and elderly patient rehab.',
+    price_min: 200000,
+    price_max: 800000,
+    unit: 'unit',
+    tags: ['Aquatic Therapy', 'Neurological', 'Elderly', 'Weight-Bearing', 'Premium'],
+    pros: ['Weight offloading in water', 'Unique service differentiator in market', 'High patient demand in BLR'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/hydrotherapy-pool.html'
+  },
+  {
+    tier: 'advanced',
+    category: 'CPM & Robotics',
+    name: 'CPM Machine — Continuous Passive Motion (Knee)',
+    icon: 'fa-gear',
+    description: 'Motorized continuous passive motion device for post-operative knee rehabilitation (TKR, ACL repair, cartilage procedures). Automatically cycles the knee through a set arc of motion (0°–120°) for hours. Dramatically reduces post-surgical stiffness and speeds discharge.',
+    price_min: 14000,
+    price_max: 90000,
+    unit: 'unit',
+    tags: ['Post-TKR', 'Post-ACL', 'Knee Surgery', 'CPM', 'Post-Op'],
+    pros: ['Accelerates post-surgical recovery', 'Passive - no patient effort needed', 'Strong referral driver from orthopaedic surgeons'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/cpm-machine-knee.html'
+  },
+  {
+    tier: 'advanced',
+    category: 'CPM & Robotics',
+    name: 'Robotic Gait Trainer / Exoskeleton Rehab System',
+    icon: 'fa-robot',
+    description: 'Motorized exoskeleton or end-effector gait training system for stroke, spinal cord injury, and neurological rehabilitation. Systems like Lokomat-style trainers provide repetitive, task-specific gait training with body-weight support up to 75 kg. Advanced units provide real-time kinetic & kinematic biofeedback.',
+    price_min: 280000,
+    price_max: 2000000,
+    price_max_text: '₹20L+',
+    unit: 'unit',
+    tags: ['Stroke Rehab', 'SCI', 'Neurological', 'Gait Training', 'Exoskeleton', 'Premium'],
+    pros: ['Highest patient outcomes for stroke gait', 'Unique service in Bengaluru standalone clinics', 'Insurance-covered for neurological indications'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/robotic-gait-trainer.html'
+  },
+  {
+    tier: 'advanced',
+    category: 'Exercise & Rehab',
+    name: 'Isokinetic Dynamometer (Cybex / Biodex Style)',
+    icon: 'fa-chart-column',
+    description: 'Computer-controlled machine for objective muscle strength testing and isokinetic training at fixed angular velocities. Used for sports injury assessment, pre/post ACL surgery evaluation, and medico-legal strength documentation. Outputs torque curves, peak torque, and bilateral deficit ratios.',
+    price_min: 500000,
+    price_max: 2000000,
+    price_max_text: '₹20L+',
+    unit: 'unit',
+    tags: ['Sports Rehab', 'Strength Testing', 'Isokinetic', 'ACL', 'Sports Medicine'],
+    pros: ['Gold standard for strength testing', 'Attracts sports medicine referrals', 'Medico-legal documentation value'],
+    indiamart_link: 'https://www.indiamart.com/proddetail/isokinetic-dynamometer.html'
+  }
+];
+
+function renderEquipmentGrid(filterTier = 'all') {
+  const grid = document.getElementById('equipmentGrid');
+  if (!grid) return;
+
+  const filtered = filterTier === 'all' 
+    ? EQUIPMENT_CATALOGUE 
+    : EQUIPMENT_CATALOGUE.filter(e => e.tier === filterTier);
+
+  const tierColors = { basic: '#34d399', medium: '#60a5fa', advanced: '#f59e0b' };
+  const tierLabels = { basic: 'Basic', medium: 'Medium', advanced: 'Advanced' };
+
+  grid.innerHTML = filtered.map(eq => {
+    const color = tierColors[eq.tier];
+    const label = tierLabels[eq.tier];
+    const minFmt = eq.price_min >= 100000 ? `₹${(eq.price_min/100000).toFixed(1)}L` : `₹${eq.price_min.toLocaleString('en-IN')}`;
+    const maxFmt = eq.price_max_text ? eq.price_max_text : (eq.price_max >= 100000 ? `₹${(eq.price_max/100000).toFixed(1)}L` : `₹${eq.price_max.toLocaleString('en-IN')}`);
+    const priceRange = `${minFmt} – ${maxFmt}`;
+
+    const tagsHtml = eq.tags.map(t => `<span class="equip-tag">${t}</span>`).join('');
+    const prosHtml = eq.pros.map(p => `<li>${p}</li>`).join('');
+
+    return `
+      <div class="equip-card" data-tier="${eq.tier}">
+        <div class="equip-card-header" style="border-left: 4px solid ${color};">
+          <div class="equip-icon-wrap" style="background: rgba(${color === '#34d399' ? '16,185,129' : color === '#60a5fa' ? '96,165,250' : '245,158,11'}, 0.15); color: ${color};">
+            <i class="fa-solid ${eq.icon}"></i>
+          </div>
+          <div class="equip-title-group">
+            <span class="equip-tier-badge" style="background: rgba(${color === '#34d399' ? '16,185,129' : color === '#60a5fa' ? '96,165,250' : '245,158,11'}, 0.15); color: ${color}; border: 1px solid ${color}40;">${label}</span>
+            <span class="equip-category">${eq.category}</span>
+          </div>
+        </div>
+        <h3 class="equip-name">${eq.name}</h3>
+        <p class="equip-desc">${eq.description}</p>
+        <div class="equip-tags">${tagsHtml}</div>
+        <div class="equip-pros">
+          <div class="equip-pros-title"><i class="fa-solid fa-check-circle" style="color: #34d399;"></i> Key Clinical Benefits</div>
+          <ul>${prosHtml}</ul>
+        </div>
+        <div class="equip-footer">
+          <div class="equip-price-block">
+            <div class="equip-price-label">Price Range (ex-GST)</div>
+            <div class="equip-price" style="color: ${color};">${priceRange}</div>
+          </div>
+          <a href="${eq.indiamart_link}" target="_blank" class="equip-buy-btn" style="border-color: ${color}; color: ${color};">
+            <i class="fa-solid fa-cart-shopping"></i> IndiaMART
+          </a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterEquipTier(tier, btn) {
+  document.querySelectorAll('.equip-tier-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderEquipmentGrid(tier);
+}
+
+// Initialize equipment grid on load
+document.addEventListener('DOMContentLoaded', () => {
+  renderEquipmentGrid('all');
+});

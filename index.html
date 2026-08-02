@@ -68,6 +68,9 @@
         <a href="#challenges" class="nav-item" onclick="switchTab('section-challenges', this)">
           <i class="fa-solid fa-triangle-exclamation"></i> Challenges & Solutions
         </a>
+        <a href="#equipment" class="nav-item" onclick="switchTab('section-equipment', this)">
+          <i class="fa-solid fa-screwdriver-wrench"></i> Equipment & Instruments
+        </a>
         <a href="#mapdata" class="nav-item" onclick="switchTab('section-mapdata', this)">
           <i class="fa-solid fa-map-location-dot"></i> BLR Urban Area Data
         </a>
@@ -412,6 +415,61 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- Section: Equipment & Instruments Price Guide -->
+      <section id="section-equipment" class="content-section">
+        <div class="section-header">
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-screwdriver-wrench text-accent"></i> Physiotherapy Equipment & Instruments Price Guide</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('equipment')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
+          <p class="section-lead">Comprehensive clinically-verified price catalogue for all physiotherapy modalities — sourced from IndiaMART, HospitalStore & TradeIndia. Prices are ex-GST estimates as of 2026.</p>
+        </div>
+
+        <!-- Tier Filter Tabs -->
+        <div class="equip-tier-tabs">
+          <button class="equip-tier-btn active" id="tierBtnAll" onclick="filterEquipTier('all', this)">
+            <i class="fa-solid fa-layer-group"></i> All Equipment
+          </button>
+          <button class="equip-tier-btn" id="tierBtnBasic" onclick="filterEquipTier('basic', this)">
+            <i class="fa-solid fa-seedling"></i> Basic Clinic (Day 1)
+          </button>
+          <button class="equip-tier-btn" id="tierBtnMedium" onclick="filterEquipTier('medium', this)">
+            <i class="fa-solid fa-star-half-stroke"></i> Medium Upgrade
+          </button>
+          <button class="equip-tier-btn" id="tierBtnAdvanced" onclick="filterEquipTier('advanced', this)">
+            <i class="fa-solid fa-rocket"></i> Advanced / Premium
+          </button>
+        </div>
+
+        <div id="equipmentGrid" class="equipment-grid">
+          <!-- Cards injected by JS -->
+        </div>
+
+        <!-- Budget Summary Bar -->
+        <div class="card mt-4" style="background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(16,185,129,0.1)); border: 1px solid rgba(99,102,241,0.3);">
+          <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Basic Setup Total</div>
+              <div style="font-size: 1.5rem; font-weight: 700; color: #34d399;">₹1.8L – ₹3.2L</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Core essentials to see your first patients</div>
+            </div>
+            <div style="width: 1px; height: 50px; background: rgba(255,255,255,0.1);"></div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Medium Upgrade Total</div>
+              <div style="font-size: 1.5rem; font-weight: 700; color: #60a5fa;">₹3.5L – ₹6.5L</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Full treatment menu, premium patient experience</div>
+            </div>
+            <div style="width: 1px; height: 50px; background: rgba(255,255,255,0.1);"></div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Advanced Clinic Total</div>
+              <div style="font-size: 1.5rem; font-weight: 700; color: #f59e0b;">₹8L – ₹25L+</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Class IV laser, robotics, sports rehab specialty</div>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <!-- Section: BLR Urban Area Data -->
