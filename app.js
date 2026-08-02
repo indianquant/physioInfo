@@ -32,6 +32,17 @@ function utf8_to_b64(str) {
   return window.btoa(binString);
 }
 
+// Helper: Escape HTML to prevent XSS and ReferenceErrors
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
   updateTokenUI();
