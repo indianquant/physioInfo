@@ -69,6 +69,14 @@ window.addEventListener('hashchange', () => {
   handleHashNavigation();
 });
 
+// Mobile Navigation Sidebar Drawer Toggle
+function toggleMobileSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar) {
+    sidebar.classList.toggle('mobile-open');
+  }
+}
+
 // Navigation / Tab Switching with URL Hash Update
 function switchTab(sectionId, element, updateHash = true) {
   document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
@@ -84,6 +92,12 @@ function switchTab(sectionId, element, updateHash = true) {
   } else {
     const matchBtn = document.querySelector(`.nav-item[onclick*="${sectionId}"]`);
     if (matchBtn) matchBtn.classList.add('active');
+  }
+
+  // Close mobile sidebar drawer if open
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar && sidebar.classList.contains('mobile-open')) {
+    sidebar.classList.remove('mobile-open');
   }
 
   if (updateHash) {
