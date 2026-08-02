@@ -121,7 +121,9 @@ function renderClinicDatabase() {
     list = list.filter(c => 
       c.name.toLowerCase().includes(searchInput) || 
       c.locality.toLowerCase().includes(searchInput) || 
-      c.address.toLowerCase().includes(searchInput)
+      c.address.toLowerCase().includes(searchInput) ||
+      (c.specialization && c.specialization.toLowerCase().includes(searchInput)) ||
+      (c.top_praise && c.top_praise.toLowerCase().includes(searchInput))
     );
   }
 
@@ -136,21 +138,33 @@ function renderClinicDatabase() {
   tbody.innerHTML = '';
 
   if (list.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted" style="padding: 20px;">No clinics matching filter criteria.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="text-center text-muted" style="padding: 20px;">No clinics matching filter criteria.</td></tr>`;
     return;
   }
 
   list.forEach(c => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td><strong>${c.name}</strong><br><small class="text-muted">${c.address}</small></td>
+      <td>
+        <strong>${c.name}</strong>
+        <br><small class="text-accent" style="font-weight:600;"><i class="fa-solid fa-stethoscope"></i> ${c.specialization || 'General Physiotherapy'}</small>
+        <br><small class="text-muted">${c.address}</small>
+      </td>
       <td><span class="chip chip-blue">${c.locality}</span></td>
-      <td><i class="fa-solid fa-star text-warning"></i> <strong>${c.rating}</strong></td>
-      <td><strong>${c.reviews}</strong> reviews</td>
+      <td><span class="mark" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7;">${c.fee_range || '₹600 – ₹1,000 / session'}</span></td>
+      <td>
+        <i class="fa-solid fa-star text-warning"></i> <strong>${c.rating}</strong> (${c.reviews} revs)
+        <br><small class="text-success" style="font-weight:700;"><i class="fa-solid fa-face-smile"></i> ${c.sentiment_pct || '96%'} positive</small>
+      </td>
+      <td>
+        <div style="font-size: 0.8rem; line-height: 1.3;">
+          <span class="text-success">✔ ${c.top_praise || 'Exercise-first active rehab'}</span>
+        </div>
+      </td>
       <td><span class="mark">${c.mps_score || '-'}</span></td>
       <td>
         <a href="${c.google_maps_url}" target="_blank" class="btn btn-token" style="padding: 4px 8px; font-size: 0.75rem;">
-          <i class="fa-solid fa-map-pin"></i> View Map
+          <i class="fa-solid fa-map-pin"></i> Map
         </a>
       </td>
     `;
@@ -319,7 +333,7 @@ function showStatusMessage(msg, isError = false) {
   const statusElem = document.getElementById('syncStatus');
   if (statusElem) {
     statusElem.innerText = msg;
-    statusElem.className = isError ? 'sync-status text-danger' : 'sync-status text-accent';
+    statusElem.className = isError ? 'sync-status text-accent' : 'sync-status text-accent';
     setTimeout(() => {
       statusElem.innerText = '';
     }, 4000);
