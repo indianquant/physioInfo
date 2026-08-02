@@ -1127,11 +1127,11 @@ const EQUIPMENT_CATALOGUE = [
     category: 'Electrotherapy',
     name: 'EMG Biofeedback System with NMES',
     icon: 'fa-brain',
-    description: 'Surface electromyography (sEMG) biofeedback with integrated neuromuscular electrical stimulation (NMES). Reads real-time muscle activity and provides visual/audio feedback to patients. Used in stroke rehabilitation, bell's palsy, and urinary incontinence treatment. Combines FES and EMG-triggered stimulation.',
+    description: "Surface electromyography (sEMG) biofeedback with integrated neuromuscular electrical stimulation (NMES). Reads real-time muscle activity and provides visual/audio feedback to patients. Used in stroke rehabilitation, Bell's palsy, and urinary incontinence treatment. Combines FES and EMG-triggered stimulation.",
     price_min: 50000,
     price_max: 350000,
     unit: 'unit',
-    tags: ['Stroke Rehab', "Bell's Palsy", 'Neurology', 'Biofeedback', 'NMES'],
+    tags: ['Stroke Rehab', 'Bells Palsy', 'Neurology', 'Biofeedback', 'NMES'],
     pros: ['Objective muscle activity measurement', 'Motivating real-time feedback for patients', 'Opens neurological rehab referrals'],
     indiamart_link: 'https://www.indiamart.com/proddetail/emg-biofeedback.html'
   },
