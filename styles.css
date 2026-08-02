@@ -111,6 +111,34 @@ a:hover {
   display: inline-block;
 }
 
+/* Section & Card Header Flex */
+.section-header-flex, .card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-copy-link {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-copy-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(16, 185, 129, 0.1);
+}
+
 /* Navigation Bar */
 .navbar {
   height: 70px;
@@ -292,6 +320,7 @@ a:hover {
   cursor: pointer;
   text-align: left;
   transition: all 0.2s ease;
+  text-decoration: none;
 }
 
 .nav-item i {
@@ -303,6 +332,7 @@ a:hover {
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-main);
+  text-decoration: none;
 }
 
 .nav-item.active {
@@ -984,6 +1014,19 @@ a:hover {
 .chip-blue { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); }
 .chip-purple { background: rgba(139, 92, 246, 0.15); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.3); }
 .chip-orange { background: rgba(249, 115, 22, 0.15); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.3); }
+
+/* Callout Box */
+.callout {
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+.callout-info {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+}
 
 /* Responsive */
 @media (max-width: 900px) {

@@ -40,10 +40,28 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTokenUI();
   calculateROI();
   loadData();
+  handleHashNavigation();
 });
 
-// Navigation / Tab Switching
-function switchTab(sectionId, element) {
+// Handle URL Hash Navigation & Deep Linking
+function handleHashNavigation() {
+  const hash = window.location.hash.replace('#', '').trim();
+  if (hash) {
+    const fullId = 'section-' + hash;
+    if (document.getElementById(fullId)) {
+      switchTab(fullId, null, false);
+      return;
+    }
+  }
+  switchTab('section-overview', null, false);
+}
+
+window.addEventListener('hashchange', () => {
+  handleHashNavigation();
+});
+
+// Navigation / Tab Switching with URL Hash Update
+function switchTab(sectionId, element, updateHash = true) {
   document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
 
@@ -51,9 +69,29 @@ function switchTab(sectionId, element) {
   if (targetSection) {
     targetSection.classList.add('active');
   }
+
   if (element) {
     element.classList.add('active');
+  } else {
+    // Find matching nav button by sectionId
+    const matchBtn = document.querySelector(`.nav-item[onclick*="${sectionId}"]`);
+    if (matchBtn) matchBtn.classList.add('active');
   }
+
+  if (updateHash) {
+    const cleanHash = sectionId.replace('section-', '');
+    window.history.pushState(null, '', `#${cleanHash}`);
+  }
+}
+
+// Copy Direct Link to Clipboard
+function copySectionLink(hashName) {
+  const fullUrl = `${window.location.origin}${window.location.pathname}#${hashName}`;
+  navigator.clipboard.writeText(fullUrl).then(() => {
+    showStatusMessage(`Copied direct link: #${hashName} ✓`);
+  }).catch(() => {
+    showStatusMessage(`Direct link: #${hashName}`);
+  });
 }
 
 // Interactive ROI Calculator Logic

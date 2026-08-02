@@ -42,47 +42,47 @@
   <!-- Main Container with Sidebar + Content -->
   <div class="app-layout">
     
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation with Native Anchor Hrefs -->
     <aside class="sidebar">
       <div class="sidebar-section-title">GUIDE DIRECTORY</div>
       <nav class="nav-menu">
-        <button class="nav-item active" onclick="switchTab('section-overview', this)">
+        <a href="#overview" class="nav-item active" onclick="switchTab('section-overview', this)">
           <i class="fa-solid fa-compass"></i> Overview & Summary
-        </button>
-        <button class="nav-item" onclick="switchTab('section-setup', this)">
+        </a>
+        <a href="#setup" class="nav-item" onclick="switchTab('section-setup', this)">
           <i class="fa-solid fa-file-contract"></i> Setup & Legal (KPME)
-        </button>
-        <button class="nav-item" onclick="switchTab('section-costs', this)">
+        </a>
+        <a href="#costs" class="nav-item" onclick="switchTab('section-costs', this)">
           <i class="fa-solid fa-coins"></i> Budget & Costs
-        </button>
-        <button class="nav-item" onclick="switchTab('section-earnings', this)">
+        </a>
+        <a href="#earnings" class="nav-item" onclick="switchTab('section-earnings', this)">
           <i class="fa-solid fa-chart-line"></i> Earning Potential
-        </button>
-        <button class="nav-item" onclick="switchTab('section-challenges', this)">
+        </a>
+        <a href="#challenges" class="nav-item" onclick="switchTab('section-challenges', this)">
           <i class="fa-solid fa-triangle-exclamation"></i> Challenges & Solutions
-        </button>
-        <button class="nav-item" onclick="switchTab('section-mapdata', this)">
+        </a>
+        <a href="#mapdata" class="nav-item" onclick="switchTab('section-mapdata', this)">
           <i class="fa-solid fa-map-location-dot"></i> BLR Urban Area Data
-        </button>
-        <button class="nav-item" onclick="switchTab('section-reddit', this)">
+        </a>
+        <a href="#reddit" class="nav-item" onclick="switchTab('section-reddit', this)">
           <i class="fa-brands fa-reddit-alien"></i> Reddit Stories & Insights
-        </button>
-        <button class="nav-item" onclick="switchTab('section-success', this)">
+        </a>
+        <a href="#success" class="nav-item" onclick="switchTab('section-success', this)">
           <i class="fa-solid fa-trophy"></i> Success Stories (Cited)
-        </button>
-        <button class="nav-item" onclick="switchTab('section-failure', this)">
+        </a>
+        <a href="#failure" class="nav-item" onclick="switchTab('section-failure', this)">
           <i class="fa-solid fa-skull-crossbones"></i> Failure Patterns
-        </button>
+        </a>
       </nav>
 
       <div class="sidebar-section-title">INTERACTIVE TOOLS</div>
       <nav class="nav-menu">
-        <button class="nav-item highlight-item" onclick="switchTab('section-calculator', this)">
+        <a href="#calculator" class="nav-item highlight-item" onclick="switchTab('section-calculator', this)">
           <i class="fa-solid fa-calculator"></i> Startup ROI Calculator
-        </button>
-        <button class="nav-item" onclick="switchTab('section-checklist', this)">
+        </a>
+        <a href="#checklist" class="nav-item" onclick="switchTab('section-checklist', this)">
           <i class="fa-solid fa-list-check"></i> Founder's Checklist
-        </button>
+        </a>
       </nav>
 
       <div class="sidebar-footer">
@@ -121,7 +121,10 @@
 
         <div class="grid-2col mt-6">
           <div class="card">
-            <h3><i class="fa-solid fa-bullseye text-accent"></i> Key Mission Objectives</h3>
+            <div class="card-header-flex">
+              <h3><i class="fa-solid fa-bullseye text-accent"></i> Key Mission Objectives</h3>
+              <button class="btn-copy-link" onclick="copySectionLink('overview')" title="Copy Direct Page Link"><i class="fa-solid fa-link"></i> Link</button>
+            </div>
             <ul class="bullet-list">
               <li><strong>Legal Compliance First:</strong> KPME Act registration, BBMP Trade Licence, and BMWM authorization before opening door.</li>
               <li><strong>Location & Accessibility:</strong> Ground floor space or mandatory working elevator access for mobility-impaired patients.</li>
@@ -131,7 +134,10 @@
           </div>
 
           <div class="card">
-            <h3><i class="fa-solid fa-map-location-dot text-accent"></i> Prime Bengaluru Locality Insights</h3>
+            <div class="card-header-flex">
+              <h3><i class="fa-solid fa-map-location-dot text-accent"></i> Prime Bengaluru Locality Insights</h3>
+              <button class="btn-copy-link" onclick="copySectionLink('overview')" title="Copy Direct Page Link"><i class="fa-solid fa-link"></i> Link</button>
+            </div>
             <div class="locality-chips">
               <span class="chip chip-purple">Panathur / Sobha Neopolis Hub (High Techie Catchment)</span>
               <span class="chip chip-green">HSR Layout (High IT Demand / High Rent)</span>
@@ -150,7 +156,10 @@
       <!-- Section: Setup & Legal -->
       <section id="section-setup" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-file-contract text-accent"></i> Step-by-Step Legal & Setup Process</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-file-contract text-accent"></i> Step-by-Step Legal & Setup Process</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('setup')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Mandatory qualifications, Karnataka state council registrations, municipal licenses, and space selection criteria.</p>
         </div>
 
@@ -201,7 +210,10 @@
       <!-- Section: Costs -->
       <section id="section-costs" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-coins text-accent"></i> Budget & Financial Setup Breakdown</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-coins text-accent"></i> Budget & Financial Setup Breakdown</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('costs')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Realistic capital requirements based on Bengaluru commercial market data and equipment tiers.</p>
         </div>
 
@@ -281,7 +293,10 @@
       <!-- Section: Earnings -->
       <section id="section-earnings" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-chart-line text-accent"></i> Earning Potential & Pricing Benchmarks</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-chart-line text-accent"></i> Earning Potential & Pricing Benchmarks</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('earnings')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Consolidated revenue models from active practitioners in Bengaluru.</p>
         </div>
 
@@ -344,7 +359,10 @@
       <!-- Section: Challenges -->
       <section id="section-challenges" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-triangle-exclamation text-accent"></i> Major Challenges & How to Overcome Them</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-triangle-exclamation text-accent"></i> Major Challenges & How to Overcome Them</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('challenges')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Field insights on real operational friction points in Bengaluru healthcare.</p>
         </div>
 
@@ -386,7 +404,10 @@
       <!-- Section: BLR Urban Area Data -->
       <section id="section-mapdata" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-map-location-dot text-accent"></i> Bengaluru Urban Area Directory & Market Analysis</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-map-location-dot text-accent"></i> Bengaluru Urban Area Directory & Market Analysis</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('mapdata')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Empirical directory sample data across major Bengaluru Urban zones (Practo, Justdial, Google Maps listings) and mathematical market performance breakdown.</p>
         </div>
 
@@ -469,7 +490,10 @@
       <!-- Section: Reddit Stories -->
       <section id="section-reddit" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-brands fa-reddit-alien text-accent"></i> Reddit Community Stories & Field Insights</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-brands fa-reddit-alien text-accent"></i> Reddit Community Stories & Field Insights</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('reddit')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Parsed discussions from r/bangalore, r/india, r/physicaltherapy, and r/physiotherapy.</p>
         </div>
 
@@ -516,7 +540,10 @@
       <!-- Section: Success Stories -->
       <section id="section-success" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-trophy text-accent"></i> Real-World Success Stories (Named & Cited)</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-trophy text-accent"></i> Real-World Success Stories (Named & Cited)</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('success')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Verified journeys of practitioners who successfully scaled physiotherapy clinics in Bengaluru.</p>
         </div>
 
@@ -570,7 +597,10 @@
       <!-- Section: Failure Patterns -->
       <section id="section-failure" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-skull-crossbones text-danger"></i> Real-World Failure & Struggle Patterns</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-skull-crossbones text-danger"></i> Real-World Failure & Struggle Patterns</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('failure')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Documented failure modes, closures, and regrets from practitioner forums & published research.</p>
         </div>
 
@@ -608,7 +638,10 @@
       <!-- Section: ROI Calculator -->
       <section id="section-calculator" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-calculator text-accent"></i> Interactive Startup Budget & ROI Calculator</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-calculator text-accent"></i> Interactive Startup Budget & ROI Calculator</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('calculator')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Estimate your initial capital requirements and monthly payback projection in Bengaluru.</p>
         </div>
 
@@ -689,7 +722,10 @@
       <!-- Section: Checklist -->
       <section id="section-checklist" class="content-section">
         <div class="section-header">
-          <h2><i class="fa-solid fa-list-check text-accent"></i> Founder's Interactive Checklist</h2>
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-list-check text-accent"></i> Founder's Interactive Checklist</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('checklist')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
           <p class="section-lead">Manage your clinic launch tasks. You can check off, cut/delete, or add new tasks!</p>
         </div>
 
