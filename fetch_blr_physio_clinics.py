@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 """
-Bengaluru Google Places API Live Scanner (Official API Key Grid Extractor)
-==========================================================================
-Scans 50+ sub-localities across Bengaluru Urban via official Google Places API:
-- Clinic Name
-- Locality / Suburb
-- Rating (out of 5.0)
-- Review Count (user_ratings_total)
-- Formatted Address
-- Direct Google Maps URL (via Place ID)
+Bengaluru Google Places API Live Scanner (Environment Variable Security Pattern)
+==================================================================================
+Scans sub-localities across Bengaluru Urban via official Google Places API.
+
+SECURITY NOTE:
+- Never hardcodes API keys in source code.
+- Reads GOOGLE_MAPS_API_KEY strictly from environment variable or interactive prompt.
 
 Outputs:
 - bengaluru_physio_clinics.json
@@ -60,7 +58,7 @@ def scan_google_places(api_key):
                 if status != 'OK' and status != 'ZERO_RESULTS':
                     print(f"[{loc}] API Status: {status} - {data.get('error_message', '')}")
                     if status == 'REQUEST_DENIED':
-                        print("\n❌ Google Billing still pending propagation. Please check payment status.")
+                        print("\n❌ API Key invalid or request denied.")
                         return None
                 
                 results = data.get('results', [])
@@ -100,7 +98,14 @@ def scan_google_places(api_key):
     return clinics
 
 def main():
-    api_key = os.environ.get("GOOGLE_MAPS_API_KEY", "AIzaSyCoASrn7P7r9dgodExKvopoTZTI6hxjVDw")
+    api_key = os.environ.get("GOOGLE_MAPS_API_KEY")
+    if not api_key:
+        api_key = input("Enter your GOOGLE_MAPS_API_KEY: ").strip()
+
+    if not api_key:
+        print("No API key provided. Exiting.")
+        sys.exit(1)
+
     clinics = scan_google_places(api_key)
 
     if not clinics:
