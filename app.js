@@ -122,16 +122,22 @@ function renderClinicDatabase() {
       c.name.toLowerCase().includes(searchInput) || 
       c.locality.toLowerCase().includes(searchInput) || 
       c.address.toLowerCase().includes(searchInput) ||
-      (c.specialization && c.specialization.toLowerCase().includes(searchInput)) ||
-      (c.top_praise && c.top_praise.toLowerCase().includes(searchInput))
+      (c.specialization && c.specialization.toLowerCase().includes(searchInput))
     );
   }
 
   // Sort
   list.sort((a, b) => {
-    if (sortFilter === 'reviews-desc') return (b.reviews || 0) - (a.reviews || 0);
-    if (sortFilter === 'rating-desc') return (b.rating || 0) - (a.rating || 0);
-    if (sortFilter === 'mps-desc') return (b.mps_score || 0) - (a.mps_score || 0);
+    const aRev = typeof a.reviews === 'number' ? a.reviews : -1;
+    const bRev = typeof b.reviews === 'number' ? b.reviews : -1;
+    const aRat = typeof a.rating === 'number' ? a.rating : -1;
+    const bRat = typeof b.rating === 'number' ? b.rating : -1;
+    const aMps = typeof a.mps_score === 'number' ? a.mps_score : -1;
+    const bMps = typeof b.mps_score === 'number' ? b.mps_score : -1;
+
+    if (sortFilter === 'reviews-desc') return bRev - aRev;
+    if (sortFilter === 'rating-desc') return bRat - aRat;
+    if (sortFilter === 'mps-desc') return bMps - aMps;
     return 0;
   });
 
@@ -144,24 +150,33 @@ function renderClinicDatabase() {
 
   list.forEach(c => {
     const tr = document.createElement('tr');
+    
+    const ratingDisplay = (typeof c.rating === 'number') 
+      ? `<i class="fa-solid fa-star text-warning"></i> <strong>${c.rating}</strong> (${c.reviews} revs)` 
+      : `N/A`;
+
+    const feeDisplay = c.fee_range || 'N/A';
+    const praiseDisplay = (c.top_praise && c.top_praise !== 'N/A') ? `✔ ${c.top_praise}` : `N/A`;
+    const sentimentDisplay = (c.sentiment_pct && c.sentiment_pct !== 'N/A') ? `${c.sentiment_pct} positive` : `N/A`;
+
     tr.innerHTML = `
       <td>
         <strong>${c.name}</strong>
-        <br><small class="text-accent" style="font-weight:600;"><i class="fa-solid fa-stethoscope"></i> ${c.specialization || 'General Physiotherapy'}</small>
+        <br><small class="text-accent" style="font-weight:600;"><i class="fa-solid fa-stethoscope"></i> ${c.specialization || 'N/A'}</small>
         <br><small class="text-muted">${c.address}</small>
       </td>
       <td><span class="chip chip-blue">${c.locality}</span></td>
-      <td><span class="mark" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7;">${c.fee_range || '₹600 – ₹1,000 / session'}</span></td>
+      <td><span class="mark" style="background: rgba(255, 255, 255, 0.05); color: var(--text-muted);">${feeDisplay}</span></td>
       <td>
-        <i class="fa-solid fa-star text-warning"></i> <strong>${c.rating}</strong> (${c.reviews} revs)
-        <br><small class="text-success" style="font-weight:700;"><i class="fa-solid fa-face-smile"></i> ${c.sentiment_pct || '96%'} positive</small>
+        ${ratingDisplay}
+        <br><small class="text-muted">${sentimentDisplay}</small>
       </td>
       <td>
         <div style="font-size: 0.8rem; line-height: 1.3;">
-          <span class="text-success">✔ ${c.top_praise || 'Exercise-first active rehab'}</span>
+          <span class="text-muted">${praiseDisplay}</span>
         </div>
       </td>
-      <td><span class="mark">${c.mps_score || '-'}</span></td>
+      <td><span class="mark">${c.mps_score || 'N/A'}</span></td>
       <td>
         <a href="${c.google_maps_url}" target="_blank" class="btn btn-token" style="padding: 4px 8px; font-size: 0.75rem;">
           <i class="fa-solid fa-map-pin"></i> Map
