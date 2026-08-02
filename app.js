@@ -1267,3 +1267,28 @@ function filterEquipTier(tier, btn) {
 document.addEventListener('DOMContentLoaded', () => {
   renderEquipmentGrid('all');
 });
+
+/* ==========================================================================
+   Budget & Costs Tier Filter
+   ========================================================================== */
+function filterCostsTier(tier, btn) {
+  document.querySelectorAll('.costs-tier-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const views = {
+    all:      ['costsTableAll'],
+    basic:    ['costsCardBasic'],
+    medium:   ['costsCardMedium'],
+    advanced: ['costsCardAdvanced']
+  };
+
+  ['costsTableAll','costsCardBasic','costsCardMedium','costsCardAdvanced'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('hidden');
+  });
+
+  (views[tier] || views.all).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('hidden');
+  });
+}

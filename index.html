@@ -230,83 +230,231 @@
       <section id="section-costs" class="content-section">
         <div class="section-header">
           <div class="section-header-flex">
-            <h2><i class="fa-solid fa-coins text-accent"></i> Budget & Financial Setup Breakdown</h2>
+            <h2><i class="fa-solid fa-coins text-accent"></i> Budget & Financial Setup Breakdown — 3 Tiers</h2>
             <button class="btn-copy-link" onclick="copySectionLink('costs')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
           </div>
-          <p class="section-lead">Realistic capital requirements based on Bengaluru commercial market data and equipment tiers.</p>
+          <p class="section-lead">Updated capital requirements using <strong>live rental data</strong> (NoBroker/99acres) and <strong>actual equipment prices</strong> (IndiaMART/HospitalStore). All figures are Bengaluru ORR/Panathur corridor market as of mid-2026.</p>
         </div>
 
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Expense Category</th>
-                <th>Starter Setup (₹)</th>
-                <th>Standard Setup (₹)</th>
-                <th>Premium / Chain (₹)</th>
-                <th>Details & Market Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Commercial Security Deposit</strong></td>
-                <td>₹2.0L - ₹3.5L</td>
-                <td>₹4.0L - ₹6.0L</td>
-                <td>₹8.0L - ₹15.0L</td>
-                <td>BLR landlords demand <span class="mark-warn">6–10 months deposit upfront</span>.</td>
-              </tr>
-              <tr>
-                <td><strong>Interiors & Cubicles</strong></td>
-                <td>₹1.0L - ₹1.5L</td>
-                <td>₹2.0L - ₹3.5L</td>
-                <td>₹5.0L - ₹10.0L</td>
-                <td>Curtains, treatment couches, non-slip rubber mats, reception.</td>
-              </tr>
-              <tr>
-                <td><strong>Basic Electrotherapy</strong></td>
-                <td>₹1.5L - ₹2.5L</td>
-                <td>₹3.0L - ₹4.5L</td>
-                <td>₹6.0L - ₹10.0L</td>
-                <td>TENS, IFT, Combination Ultrasound, Traction Unit, Infra-Red lamp, Wax Bath.</td>
-              </tr>
-              <tr>
-                <td><strong>Exercise & Rehab Gear</strong></td>
-                <td>₹40,000</td>
-                <td>₹1.0L - ₹1.5L</td>
-                <td>₹3.0L - ₹6.0L</td>
-                <td>Swiss balls, medicine balls, parallel bars, dumbbells, posture mirror.</td>
-              </tr>
-              <tr>
-                <td><strong>Licensing & Legal Fees</strong></td>
-                <td>₹30,000</td>
-                <td>₹50,000</td>
-                <td>₹1.0L</td>
-                <td>KPME, BBMP trade license, BMWM contract, lawyer/consultant fees.</td>
-              </tr>
-              <tr>
-                <td><strong>Marketing & Initial Launch</strong></td>
-                <td>₹20,000</td>
-                <td>₹50,000</td>
-                <td>₹1.5L</td>
-                <td>Google My Business setup, local signage board, flyers, website.</td>
-              </tr>
-              <tr>
-                <td><strong>Working Capital Buffer</strong></td>
-                <td>₹1.5L - ₹2.0L</td>
-                <td>₹3.0L - ₹4.0L</td>
-                <td>₹6.0L - ₹10.0L</td>
-                <td>Reserves for 6 months rent/salaries while building client volume.</td>
-              </tr>
-              <tr class="total-row">
-                <td><strong>TOTAL ESTIMATED BUDGET</strong></td>
-                <td><strong>₹6.9 Lakhs – ₹11.2 Lakhs</strong></td>
-                <td><strong>₹14.5 Lakhs – ₹21.0 Lakhs</strong></td>
-                <td><strong>₹30.5 Lakhs – ₹58.0 Lakhs+</strong></td>
-                <td><em>All figures cited from industry benchmarks & market data.</em></td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Tier Selector Tabs -->
+        <div class="costs-tier-tabs">
+          <button class="costs-tier-btn active" id="ctBtnAll" onclick="filterCostsTier('all', this)">
+            <i class="fa-solid fa-layer-group"></i> Compare All Tiers
+          </button>
+          <button class="costs-tier-btn" id="ctBtnBasic" onclick="filterCostsTier('basic', this)">
+            <i class="fa-solid fa-seedling"></i> 🟢 Compact Clinic
+          </button>
+          <button class="costs-tier-btn" id="ctBtnMedium" onclick="filterCostsTier('medium', this)">
+            <i class="fa-solid fa-star-half-stroke"></i> 🔵 Standard Clinic
+          </button>
+          <button class="costs-tier-btn" id="ctBtnAdvanced" onclick="filterCostsTier('advanced', this)">
+            <i class="fa-solid fa-rocket"></i> 🟡 Sports / Rehab Center
+          </button>
         </div>
+
+        <!-- Comparison Table (All tiers) -->
+        <div id="costsTableAll" class="costs-view">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Expense Category</th>
+                  <th style="color: #34d399;">🟢 Compact<br><small>400–600 sqft</small></th>
+                  <th style="color: #60a5fa;">🔵 Standard<br><small>800–1,200 sqft</small></th>
+                  <th style="color: #f59e0b;">🟡 Sports/Rehab<br><small>1,500+ sqft</small></th>
+                  <th>Notes & Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong><i class="fa-solid fa-building text-accent"></i> Monthly Rent</strong><br><small class="text-muted">Panathur/ORR corridor</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹25K – ₹50K</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹55K – ₹1.1L</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹1.0L – ₹1.6L</td>
+                  <td><small>Internal road cheaper; ORR main road premium. <a href="#rental" onclick="switchTab('section-rental',null)" style="color:#60a5fa;">→ Rental Tab</a></small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-key text-accent"></i> Security Deposit</strong><br><small class="text-muted">4–10 months upfront</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹1.0L – ₹2.5L</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹2.75L – ₹5.5L</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹5.5L – ₹14.0L</td>
+                  <td><small>BLR norm: 6 months avg. Panathur landlords often demand 8-10mo. Source: NoBroker/99acres</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-fire-flame-curved text-accent"></i> Heat Therapy</strong><br><small class="text-muted">Hydrocollator + Wax Bath</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹10K – ₹25K</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹25K – ₹47K</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹47K – ₹80K</td>
+                  <td><small>Hydrocollator ₹7K–35K + Wax Bath ₹3K–12K. Clinical-grade SS units at higher end. Source: IndiaMART</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-bolt text-accent"></i> Electrotherapy</strong><br><small class="text-muted">TENS + IFT + MS + Combo</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹6K – ₹25K</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹25K – ₹1.1L</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹1.5L – ₹4.0L</td>
+                  <td><small>Basic: Combo unit ₹6K–25K. Medium: Standalone IFT ₹10K–85K + SWD ₹17.5K–90K. Advanced: EMG/NMES ₹50K–3.5L</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-satellite-dish text-accent"></i> Ultrasound Therapy</strong><br><small class="text-muted">1 MHz + 3 MHz</small></td>
+                  <td style="color: #34d399; font-weight:600;">Included in Combo</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹6K – ₹35K</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹20K – ₹35K</td>
+                  <td><small>Standalone dual-frequency unit. Basic tier uses combo unit which includes US. Source: IndiaMART/HospitalStore</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-arrows-up-down text-accent"></i> Traction Units</strong><br><small class="text-muted">Cervical + Lumbar</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹10K – ₹25K</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹45K – ₹1.2L</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹1.2L – ₹2.0L</td>
+                  <td><small>Basic: Cervical manual/pneumatic ₹10K–25K. Medium: Motorized combo cervical+lumbar ₹45K–1.2L. Source: IndiaMART</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-wand-magic-sparkles text-accent"></i> Laser Therapy</strong><br><small class="text-muted">LLLT / Class IV</small></td>
+                  <td style="color: #34d399; font-weight:600;">—</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹15K – ₹80K <small>(LLLT)</small></td>
+                  <td style="color: #f59e0b; font-weight:600;">₹1.5L – ₹3.5L <small>(Class IV)</small></td>
+                  <td><small>LLLT cold laser for medium; Class IV high-power laser for advanced/sports rehab. Source: IndiaMART</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-bed text-accent"></i> Treatment Tables</strong><br><small class="text-muted">Manual / Hi-Low Electric</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹9.5K – ₹30K</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹25K – ₹75K</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹75K – ₹2.0L</td>
+                  <td><small>Basic: Manual fold couch. Medium: Hi-Low motorized. Advanced: Multiple electric tables + specialty tables. Source: IndiaMART</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-person-running text-accent"></i> Exercise & Rehab Gear</strong><br><small class="text-muted">Bands, bars, weights, cycle</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹9K – ₹25K</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹10K – ₹75K</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹2.0L – ₹5.0L</td>
+                  <td><small>Basic: Theraband ₹500–3K + Parallel bars ₹8K–22K. Medium adds exercise cycle ₹5K–40K + dumbbells. Advanced adds CPM ₹14K–90K + robotics</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-paint-roller text-accent"></i> Interiors & Fit-Out</strong><br><small class="text-muted">Cubicles, signage, reception</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹1.0L – ₹1.5L</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹2.0L – ₹3.5L</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹5.0L – ₹12.0L</td>
+                  <td><small>Curtains, non-slip flooring, reception desk, signage board, cubicle dividers, electrical points for modalities</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-file-contract text-accent"></i> Licensing & Legal</strong><br><small class="text-muted">KPME + BBMP + BMWM</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹30K – ₹50K</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹50K – ₹80K</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹80K – ₹1.5L</td>
+                  <td><small>KPME registration, BBMP Trade License, BMWM waste agreement, consultant/lawyer fees. Higher for multi-floor or specialized</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-bullhorn text-accent"></i> Marketing & Launch</strong><br><small class="text-muted">GMB, signage, digital</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹20K – ₹40K</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹50K – ₹1.0L</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹1.0L – ₹3.0L</td>
+                  <td><small>Google My Business setup, outdoor hoarding, referral launch events, local FB/Instagram ads, website</small></td>
+                </tr>
+                <tr>
+                  <td><strong><i class="fa-solid fa-piggy-bank text-accent"></i> Working Capital Buffer</strong><br><small class="text-muted">6-month reserves</small></td>
+                  <td style="color: #34d399; font-weight:600;">₹1.5L – ₹2.0L</td>
+                  <td style="color: #60a5fa; font-weight:600;">₹3.0L – ₹4.5L</td>
+                  <td style="color: #f59e0b; font-weight:600;">₹6.0L – ₹12.0L</td>
+                  <td><small>Covers 6 months rent + salaries + consumables while building patient volume to breakeven</small></td>
+                </tr>
+                <tr class="total-row">
+                  <td><strong>TOTAL INVESTMENT</strong></td>
+                  <td><strong style="color: #34d399; font-size:1.05rem;">₹5.0L – ₹8.5L</strong></td>
+                  <td><strong style="color: #60a5fa; font-size:1.05rem;">₹12.5L – ₹24.0L</strong></td>
+                  <td><strong style="color: #f59e0b; font-size:1.05rem;">₹25.0L – ₹60.0L+</strong></td>
+                  <td><em>Sourced from NoBroker, 99acres, IndiaMART, HospitalStore — Bengaluru market, mid-2026</em></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Individual Tier Detail Cards -->
+        <div id="costsCardBasic" class="costs-view hidden">
+          <div class="tier-detail-card" style="border: 1px solid #34d399; border-radius: 14px; overflow: hidden;">
+            <div style="background: rgba(16,185,129,0.12); padding: 18px 22px; border-bottom: 1px solid rgba(16,185,129,0.2);">
+              <h3 style="color: #34d399; margin:0;"><i class="fa-solid fa-store"></i> 🟢 Compact Clinic — 400–600 sqft</h3>
+              <p style="margin: 6px 0 0; color: var(--text-muted); font-size: 0.85rem;">Solo practitioner, 1–2 bays, 20–35 patients/day target. Panathur internal road or gated community ground floor.</p>
+            </div>
+            <div style="padding: 20px 22px;">
+              <div class="tier-cost-breakdown">
+                <div class="tcb-row"><span>Monthly Rent (Panathur Internal)</span><span style="color:#34d399;">₹25,000 – ₹35,000</span></div>
+                <div class="tcb-row"><span>Security Deposit (6 months avg)</span><span style="color:#34d399;">₹1.0L – ₹2.1L</span></div>
+                <div class="tcb-row"><span>Combo Therapy Unit (TENS+IFT+US+MS)</span><span style="color:#34d399;">₹6,000 – ₹25,000</span></div>
+                <div class="tcb-row"><span>Hydrocollator + Wax Bath</span><span style="color:#34d399;">₹10,000 – ₹25,000</span></div>
+                <div class="tcb-row"><span>Cervical Traction (Manual/Pneumatic)</span><span style="color:#34d399;">₹10,000 – ₹25,000</span></div>
+                <div class="tcb-row"><span>Treatment Table / Couch (×2)</span><span style="color:#34d399;">₹19,000 – ₹40,000</span></div>
+                <div class="tcb-row"><span>Theraband Set + Parallel Bars</span><span style="color:#34d399;">₹8,500 – ₹25,000</span></div>
+                <div class="tcb-row"><span>Interiors, Curtains & Fit-Out</span><span style="color:#34d399;">₹1.0L – ₹1.5L</span></div>
+                <div class="tcb-row"><span>KPME + BBMP + BMWM Licensing</span><span style="color:#34d399;">₹30,000 – ₹50,000</span></div>
+                <div class="tcb-row"><span>Marketing & Launch (GMB, Signage)</span><span style="color:#34d399;">₹20,000 – ₹40,000</span></div>
+                <div class="tcb-row"><span>6-Month Working Capital Buffer</span><span style="color:#34d399;">₹1.5L – ₹2.0L</span></div>
+                <div class="tcb-total"><span>TOTAL ONE-TIME INVESTMENT</span><span style="color:#34d399; font-size:1.2rem; font-weight:800;">₹5.0L – ₹8.5L</span></div>
+              </div>
+              <p style="font-size:0.78rem; color: var(--text-muted); margin-top:12px;">📦 Equipment sourced from <a href="https://www.indiamart.com" target="_blank" style="color:#60a5fa;">IndiaMART</a> · 🏠 Rent sourced from <a href="https://www.nobroker.in" target="_blank" style="color:#60a5fa;">NoBroker</a> & <a href="https://www.99acres.com" target="_blank" style="color:#60a5fa;">99acres</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div id="costsCardMedium" class="costs-view hidden">
+          <div class="tier-detail-card" style="border: 1px solid #60a5fa; border-radius: 14px; overflow: hidden;">
+            <div style="background: rgba(96,165,250,0.12); padding: 18px 22px; border-bottom: 1px solid rgba(96,165,250,0.2);">
+              <h3 style="color: #60a5fa; margin:0;"><i class="fa-solid fa-hospital"></i> 🔵 Standard Clinic — 800–1,200 sqft</h3>
+              <p style="margin: 6px 0 0; color: var(--text-muted); font-size: 0.85rem;">2–3 physiotherapists, 3–4 bays, 40–60 patients/day. Panathur main road or ORR service road preferred.</p>
+            </div>
+            <div style="padding: 20px 22px;">
+              <div class="tier-cost-breakdown">
+                <div class="tcb-row"><span>Monthly Rent (ORR Service Road/Main)</span><span style="color:#60a5fa;">₹55,000 – ₹1,10,000</span></div>
+                <div class="tcb-row"><span>Security Deposit (6–8 months)</span><span style="color:#60a5fa;">₹2.75L – ₹5.5L</span></div>
+                <div class="tcb-row"><span>Standalone IFT Machine</span><span style="color:#60a5fa;">₹10,000 – ₹85,000</span></div>
+                <div class="tcb-row"><span>Therapeutic Ultrasound (1+3 MHz)</span><span style="color:#60a5fa;">₹6,000 – ₹35,000</span></div>
+                <div class="tcb-row"><span>TENS + EMS Units (×2)</span><span style="color:#60a5fa;">₹5,000 – ₹20,000</span></div>
+                <div class="tcb-row"><span>Hydrocollator + Wax Bath</span><span style="color:#60a5fa;">₹15,000 – ₹35,000</span></div>
+                <div class="tcb-row"><span>Shortwave Diathermy (SWD) 300W</span><span style="color:#60a5fa;">₹17,500 – ₹60,000</span></div>
+                <div class="tcb-row"><span>Cervical + Lumbar Motorized Traction</span><span style="color:#60a5fa;">₹45,000 – ₹1.2L</span></div>
+                <div class="tcb-row"><span>LLLT Cold Laser</span><span style="color:#60a5fa;">₹15,000 – ₹80,000</span></div>
+                <div class="tcb-row"><span>Hi-Low Motorized Treatment Tables (×3)</span><span style="color:#60a5fa;">₹75,000 – ₹1.5L</span></div>
+                <div class="tcb-row"><span>Exercise Cycle + Dumbbells + Balance Board</span><span style="color:#60a5fa;">₹10,000 – ₹75,000</span></div>
+                <div class="tcb-row"><span>Interiors, Fit-Out & Reception</span><span style="color:#60a5fa;">₹2.0L – ₹3.5L</span></div>
+                <div class="tcb-row"><span>KPME + BBMP + BMWM Licensing</span><span style="color:#60a5fa;">₹50,000 – ₹80,000</span></div>
+                <div class="tcb-row"><span>Marketing & Digital Launch</span><span style="color:#60a5fa;">₹50,000 – ₹1.0L</span></div>
+                <div class="tcb-row"><span>6-Month Working Capital Buffer</span><span style="color:#60a5fa;">₹3.0L – ₹4.5L</span></div>
+                <div class="tcb-total"><span>TOTAL ONE-TIME INVESTMENT</span><span style="color:#60a5fa; font-size:1.2rem; font-weight:800;">₹12.5L – ₹24.0L</span></div>
+              </div>
+              <p style="font-size:0.78rem; color: var(--text-muted); margin-top:12px;">📦 Equipment sourced from <a href="https://www.indiamart.com" target="_blank" style="color:#60a5fa;">IndiaMART</a> & <a href="https://hospitalstore.com" target="_blank" style="color:#60a5fa;">HospitalStore</a> · 🏠 Rent sourced from <a href="https://www.nobroker.in" target="_blank" style="color:#60a5fa;">NoBroker</a> & <a href="https://www.magicbricks.com" target="_blank" style="color:#60a5fa;">MagicBricks</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div id="costsCardAdvanced" class="costs-view hidden">
+          <div class="tier-detail-card" style="border: 1px solid #f59e0b; border-radius: 14px; overflow: hidden;">
+            <div style="background: rgba(245,158,11,0.12); padding: 18px 22px; border-bottom: 1px solid rgba(245,158,11,0.2);">
+              <h3 style="color: #f59e0b; margin:0;"><i class="fa-solid fa-dumbbell"></i> 🟡 Sports/Rehab Center — 1,500+ sqft</h3>
+              <p style="margin: 6px 0 0; color: var(--text-muted); font-size: 0.85rem;">Full sports/neuro rehab center, 4–6 bays + gym zone. Whitefield/Brookefield or gated community preferred.</p>
+            </div>
+            <div style="padding: 20px 22px;">
+              <div class="tier-cost-breakdown">
+                <div class="tcb-row"><span>Monthly Rent (Whitefield/ORR large unit)</span><span style="color:#f59e0b;">₹1.0L – ₹2.0L</span></div>
+                <div class="tcb-row"><span>Security Deposit (8–10 months)</span><span style="color:#f59e0b;">₹5.5L – ₹14.0L</span></div>
+                <div class="tcb-row"><span>Class IV High-Power Laser (5W–10W)</span><span style="color:#f59e0b;">₹1.5L – ₹3.5L</span></div>
+                <div class="tcb-row"><span>EMG Biofeedback + NMES System</span><span style="color:#f59e0b;">₹50,000 – ₹3.5L</span></div>
+                <div class="tcb-row"><span>Shortwave Diathermy 500W + IFT (Premium)</span><span style="color:#f59e0b;">₹60,000 – ₹1.75L</span></div>
+                <div class="tcb-row"><span>Full Traction Suite (Cervical + Lumbar Digital)</span><span style="color:#f59e0b;">₹1.0L – ₹2.0L</span></div>
+                <div class="tcb-row"><span>CPM Machine (Post-TKR/ACL)</span><span style="color:#f59e0b;">₹14,000 – ₹90,000</span></div>
+                <div class="tcb-row"><span>Therapeutic Ultrasound (×2) + Hydrocollator</span><span style="color:#f59e0b;">₹20,000 – ₹70,000</span></div>
+                <div class="tcb-row"><span>Treatment Tables ×5 (Hi-Low Electric)</span><span style="color:#f59e0b;">₹1.25L – ₹3.0L</span></div>
+                <div class="tcb-row"><span>Full Exercise Bay (Cycle, Dumbells, Bars, BOSU)</span><span style="color:#f59e0b;">₹50,000 – ₹2.0L</span></div>
+                <div class="tcb-row"><span>Interiors, Fit-Out, Gym Zone</span><span style="color:#f59e0b;">₹5.0L – ₹12.0L</span></div>
+                <div class="tcb-row"><span>KPME + BBMP + BMWM + Legal Consultant</span><span style="color:#f59e0b;">₹80,000 – ₹1.5L</span></div>
+                <div class="tcb-row"><span>Marketing, Events & Digital Campaign</span><span style="color:#f59e0b;">₹1.0L – ₹3.0L</span></div>
+                <div class="tcb-row"><span>6-Month Working Capital Buffer</span><span style="color:#f59e0b;">₹6.0L – ₹12.0L</span></div>
+                <div class="tcb-total"><span>TOTAL ONE-TIME INVESTMENT</span><span style="color:#f59e0b; font-size:1.2rem; font-weight:800;">₹25.0L – ₹60.0L+</span></div>
+              </div>
+              <p style="font-size:0.78rem; color: var(--text-muted); margin-top:12px;">📦 Equipment sourced from <a href="https://www.indiamart.com" target="_blank" style="color:#60a5fa;">IndiaMART</a> & <a href="https://hospitalstore.com" target="_blank" style="color:#60a5fa;">HospitalStore</a> · 🏠 Rent sourced from <a href="https://www.99acres.com" target="_blank" style="color:#60a5fa;">99acres</a> & <a href="https://addressadvisors.com" target="_blank" style="color:#60a5fa;">AddressAdvisors</a></p>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <!-- Section: Earnings -->
