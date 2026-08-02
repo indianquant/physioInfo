@@ -928,6 +928,52 @@
     </div>
   </div>
 
+  <!-- Floating AI Research Assistant Widget -->
+  <div id="aiChatWidget" class="ai-chat-widget">
+    <button id="chatToggleBtn" class="chat-toggle-btn" onclick="toggleAIChat()">
+      <i class="fa-solid fa-robot"></i>
+      <span class="chat-toggle-text">AI Assistant</span>
+      <span class="chat-online-dot"></span>
+    </button>
+
+    <div id="chatWindow" class="chat-window hidden">
+      <div class="chat-header">
+        <div class="chat-header-title">
+          <i class="fa-solid fa-brain text-accent"></i>
+          <div>
+            <strong>PhysioLaunch AI Assistant</strong>
+            <small style="display: block; font-size: 0.7rem; color: var(--text-muted);">Scoped to Guide & 568 Clinic Dataset</small>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="chat-icon-btn" onclick="clearAIChat()" title="Clear Chat"><i class="fa-solid fa-trash-can"></i></button>
+          <button class="chat-icon-btn" onclick="toggleAIChat()" title="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <div id="chatMessages" class="chat-messages">
+        <div class="chat-msg bot">
+          <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+          <div class="msg-content">
+            <p>👋 Hello! I am your <strong>PhysioLaunch AI Research Assistant</strong>.</p>
+            <p>Ask me anything about setting up a clinic in Bengaluru, KPME Act rules, rental budgets, or nearest competitors to <strong>Home (Sobha Neopolis)</strong>!</p>
+            <div class="suggestion-pills">
+              <button class="sug-pill" onclick="sendSuggestedQuery('What are the exact KPME registration steps in BLR?')">KPME Registration Steps?</button>
+              <button class="sug-pill" onclick="sendSuggestedQuery('What are the closest physio clinics to Home (Sobha Neopolis)?')">Clinics near Home?</button>
+              <button class="sug-pill" onclick="sendSuggestedQuery('What is the typical rent & deposit for Panathur area?')">Panathur Rent & Deposit?</button>
+              <button class="sug-pill" onclick="sendSuggestedQuery('What are the top reasons physio clinics fail in Bengaluru?')">Why do clinics fail?</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input-bar">
+        <input type="text" id="chatInput" placeholder="Ask a question within website scope..." onkeydown="handleChatKeydown(event)" autocomplete="off">
+        <button id="chatSendBtn" class="btn-send" onclick="submitAIChat()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

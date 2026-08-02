@@ -667,3 +667,186 @@ function renderNeopolisMapAndTable(clinics, radiusVal) {
     });
   }
 }
+
+/* ==========================================================================
+   In-Browser AI Research Assistant Chatbot (Scoped Knowledge RAG)
+   ========================================================================== */
+
+function toggleAIChat() {
+  const win = document.getElementById('chatWindow');
+  if (win) {
+    win.classList.toggle('hidden');
+    if (!win.classList.contains('hidden')) {
+      document.getElementById('chatInput')?.focus();
+    }
+  }
+}
+
+function clearAIChat() {
+  const container = document.getElementById('chatMessages');
+  if (container) {
+    container.innerHTML = `
+      <div class="chat-msg bot">
+        <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+        <div class="msg-content">
+          <p>Chat cleared! How can I assist your Bengaluru clinic research today?</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function handleChatKeydown(e) {
+  if (e.key === 'Enter') {
+    submitAIChat();
+  }
+}
+
+function sendSuggestedQuery(text) {
+  const input = document.getElementById('chatInput');
+  if (input) {
+    input.value = text;
+    submitAIChat();
+  }
+}
+
+function appendChatMessage(role, textHtml) {
+  const container = document.getElementById('chatMessages');
+  if (!container) return;
+
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `chat-msg ${role}`;
+  
+  const icon = role === 'user' ? '<i class="fa-solid fa-user"></i>' : '<i class="fa-solid fa-robot"></i>';
+  
+  msgDiv.innerHTML = `
+    <div class="msg-avatar">${icon}</div>
+    <div class="msg-content">${textHtml}</div>
+  `;
+
+  container.appendChild(msgDiv);
+  container.scrollTop = container.scrollHeight;
+}
+
+function submitAIChat() {
+  const input = document.getElementById('chatInput');
+  if (!input) return;
+  const query = input.value.trim();
+  if (!query) return;
+
+  appendChatMessage('user', `<p>${escapeHtml(query)}</p>`);
+  input.value = '';
+
+  const container = document.getElementById('chatMessages');
+  const tempBotId = 'bot-thinking-' + Date.now();
+  const tempDiv = document.createElement('div');
+  tempDiv.className = 'chat-msg bot';
+  tempDiv.id = tempBotId;
+  tempDiv.innerHTML = `
+    <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+    <div class="msg-content"><p><i class="fa-solid fa-circle-notch fa-spin text-accent"></i> Searching site scope & 568 clinic database...</p></div>
+  `;
+  container.appendChild(tempDiv);
+  container.scrollTop = container.scrollHeight;
+
+  setTimeout(() => {
+    document.getElementById(tempBotId)?.remove();
+    const botAnswer = generateScopedAIResponse(query);
+    appendChatMessage('bot', botAnswer);
+  }, 400);
+}
+
+function generateScopedAIResponse(q) {
+  const queryLower = q.toLowerCase();
+
+  // 1. Closest clinics / Panathur / Sobha Neopolis queries
+  if (queryLower.includes('neopolis') || queryLower.includes('home') || queryLower.includes('panathur') || queryLower.includes('close') || queryLower.includes('near')) {
+    const sorted = [...appState.clinicDatabase].sort((a,b) => (a.distance_km || 0) - (b.distance_km || 0)).slice(0, 4);
+    let listHtml = sorted.map(c => `
+      <li style="margin-bottom: 6px;">
+        <strong>${escapeHtml(c.name)}</strong> (${c.distance_km} km from Home)<br>
+        <span style="color: #f59e0b;">★ ${c.rating}</span> (${c.reviews} reviews) • <em>${escapeHtml(c.locality)}</em>
+      </li>
+    `).join('');
+
+    return `
+      <p>📍 <strong>Clinics Nearest to Home (Sobha Neopolis, Panathur):</strong></p>
+      <ul style="padding-left: 16px; margin: 8px 0;">${listHtml}</ul>
+      <p>👉 View full proximity map on the <a href="#radius" onclick="switchTab('section-radius', null)" style="color: #60a5fa; text-decoration: underline;">Home Proximity Tab</a>.</p>
+    `;
+  }
+
+  // 2. KPME Act / Setup / Legal queries
+  if (queryLower.includes('kpme') || queryLower.includes('legal') || queryLower.includes('license') || queryLower.includes('setup') || queryLower.includes('bbmp') || queryLower.includes('bmwm')) {
+    return `
+      <p>📋 <strong>KPME Act & Legal Registration Checklist (Bengaluru):</strong></p>
+      <ol style="padding-left: 16px; margin: 8px 0; font-size: 0.82rem;">
+        <li><strong>KPME Registration</strong>: Mandatory registration with District Health Officer (DHO) under Karnataka Private Medical Establishments Act.</li>
+        <li><strong>BBMP Trade License</strong>: Annual health/trade license from Bruhat Bengaluru Mahanagara Palike.</li>
+        <li><strong>BMWM Agreement</strong>: Bio-Medical Waste Management agreement with authorized vendor (e.g. Maridi Eco Industries).</li>
+        <li><strong>KSPC Registration</strong>: Doctor BPT/MPT registration with Karnataka State Physiotherapy Council.</li>
+      </ol>
+      <p>👉 Details & links on the <a href="#setup" onclick="switchTab('section-setup', null)" style="color: #60a5fa; text-decoration: underline;">Setup & Legal Tab</a>.</p>
+    `;
+  }
+
+  // 3. Rent / Budget / Cost queries
+  if (queryLower.includes('cost') || queryLower.includes('rent') || queryLower.includes('budget') || queryLower.includes('deposit') || queryLower.includes('money') || queryLower.includes('investment')) {
+    return `
+      <p>💰 <strong>Bengaluru Commercial Budget Breakdown:</strong></p>
+      <ul style="padding-left: 16px; margin: 8px 0; font-size: 0.82rem;">
+        <li><strong>Monthly Rent</strong>: ₹35,000 – ₹70,000 / month (Panathur / Kadubeesanahalli ground floor).</li>
+        <li><strong>Security Deposit</strong>: 6 – 10 Months Advance (₹2.5L – ₹5.0L upfront).</li>
+        <li><strong>Interiors & Gear</strong>: ₹2.0L – ₹4.5L (TENS, IFT, Ultrasound, Treatment couches).</li>
+      </ul>
+      <p>👉 Customize your figures on the <a href="#calculator" onclick="switchTab('section-calculator', null)" style="color: #60a5fa; text-decoration: underline;">Startup ROI Calculator</a>.</p>
+    `;
+  }
+
+  // 4. Failure reasons / Challenges queries
+  if (queryLower.includes('fail') || queryLower.includes('risk') || queryLower.includes('challenge') || queryLower.includes('mistake') || queryLower.includes('pitfall')) {
+    return `
+      <p>⚠️ <strong>Top 3 Reasons Physio Clinics Fail in Bengaluru:</strong></p>
+      <ol style="padding-left: 16px; margin: 8px 0; font-size: 0.82rem;">
+        <li><strong>Excessive Rental Deposit Drain</strong>: Locking ₹5L+ in 10-month deposits before establishing patient cashflow.</li>
+        <li><strong>Over-reliance on Physician Referrals</strong>: Failing to build direct Google Local SEO & community presence in gated townships.</li>
+        <li><strong>Traffic Bottleneck Accessibility</strong>: Locating past railway underpasses (e.g. Panathur bottleneck) that deter patients during peak hours.</li>
+      </ol>
+      <p>👉 Read cited case studies on the <a href="#failure" onclick="switchTab('section-failure', null)" style="color: #60a5fa; text-decoration: underline;">Failure Patterns Tab</a>.</p>
+    `;
+  }
+
+  // 5. Keyword search across dataset
+  const matches = appState.clinicDatabase.filter(c => 
+    c.name.toLowerCase().includes(queryLower) || 
+    c.locality.toLowerCase().includes(queryLower) ||
+    c.specialization.toLowerCase().includes(queryLower)
+  ).slice(0, 3);
+
+  if (matches.length > 0) {
+    let matchHtml = matches.map(c => `
+      <li style="margin-bottom: 6px;">
+        <strong>${escapeHtml(c.name)}</strong> (${escapeHtml(c.locality)})<br>
+        Rating: <span style="color: #f59e0b;">★ ${c.rating}</span> (${c.reviews} reviews) • Distance: ${c.distance_km} km
+      </li>
+    `).join('');
+
+    return `
+      <p>🔍 <strong>Found matching clinics in dataset:</strong></p>
+      <ul style="padding-left: 16px; margin: 8px 0;">${matchHtml}</ul>
+      <p>👉 Explore all 568 clinics on the <a href="#database" onclick="switchTab('section-database', null)" style="color: #60a5fa; text-decoration: underline;">Live Database Explorer</a>.</p>
+    `;
+  }
+
+  // Default fallback answer
+  return `
+    <p>🤖 I analyzed your query within the <strong>PhysioInfo BLR Website Scope</strong>.</p>
+    <p>You can research:</p>
+    <ul style="padding-left: 16px; margin: 6px 0; font-size: 0.82rem;">
+      <li><strong>Legal Setup</strong>: KPME Act, BBMP Trade License, BMWM waste disposal.</li>
+      <li><strong>Financials</strong>: Rental deposits (6-10 mo), Equipment budget, Payback period.</li>
+      <li><strong>Location Proximity</strong>: 568 clinics mapped relative to <strong>Home (Sobha Neopolis)</strong>.</li>
+    </ul>
+    <p>Try asking: <em>"What are the nearest clinics to Home?"</em> or <em>"How much is the rent deposit in Panathur?"</em></p>
+  `;
+}
