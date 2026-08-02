@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Bengaluru 100% Real Spatial Clinic Extractor (2,000+ Real Pins)
-================================================================
-Fetches 2,200+ real-world named clinic pins across Bengaluru Urban
-from OpenStreetMap's spatial database.
+Bengaluru 100% Real Physiotherapy, Rehab & Orthopedic Clinic Extractor
+=======================================================================
+Extracted strictly for:
+- Physiotherapy & Physical Therapy Clinics
+- Rehabilitation & Sports Rehab Centers
+- Orthopedic, Spine, Joint & Pain Management Clinics
 
-Enforces: STRICT ZERO-HYPOTHETICAL RULE.
-All names, addresses, localities, and Google Maps search links are 100% real.
-Unverified rating, review, and fee fields are strictly set to "N/A".
+Strict Rule: NO GENERAL PHARMA / DENTAL / LABS. ZERO HYPOTHETICAL FILLER.
 
 Outputs:
 - bengaluru_physio_clinics.json
@@ -32,12 +32,25 @@ BENGALURU_LOCALITIES = [
     "Richmond Town", "Sadashivanagar", "Mathikere", "Kengeri"
 ]
 
-def fetch_real_osm_dataset():
-    print("Executing Overpass spatial query for Bengaluru Urban clinics...")
+PHYSIO_KEYWORDS = [
+    'physio', 'rehab', 'physical therapy', 'ortho', 'spine', 'joint', 'pain', 
+    'sports', 'movement', 'kinesi', 'bone', 'osteo', 'chiro', 'stiffness', 'paralysis'
+]
+
+EXCLUDE_KEYWORDS = [
+    'dental', 'eye', 'pharma', 'chemist', 'skin', 'derma', 'ent', 'pathology', 
+    'lab', 'dialysis', 'ayurved', 'homeo', 'nursing', 'optician', 'pet', 'vet', 
+    'dental', 'cosmetic', 'lasik', 'maternity'
+]
+
+def fetch_strict_physio_dataset():
+    print("Executing strict spatial query for Bengaluru Physiotherapy, Rehab & Ortho clinics...")
     overpass_url = "https://overpass-api.de/api/interpreter"
     query = """
     [out:json][timeout:90];
     (
+      node["healthcare"="physiotherapy"](12.75,77.35,13.25,77.85);
+      way["healthcare"="physiotherapy"](12.75,77.35,13.25,77.85);
       node["amenity"="clinic"](12.75,77.35,13.25,77.85);
       way["amenity"="clinic"](12.75,77.35,13.25,77.85);
       node["healthcare"](12.75,77.35,13.25,77.85);
@@ -59,7 +72,7 @@ def fetch_real_osm_dataset():
         with urllib.request.urlopen(req) as resp:
             data = json.loads(resp.read().decode('utf-8'))
             elements = data.get('elements', [])
-            print(f"✓ Total raw spatial nodes fetched: {len(elements)}")
+            print(f"✓ Raw spatial nodes fetched: {len(elements)}")
             
             for elem in elements:
                 tags = elem.get('tags', {})
@@ -72,9 +85,20 @@ def fetch_real_osm_dataset():
                 
                 if name_key in seen:
                     continue
+                
+                # Check strict inclusion & exclusion criteria
+                healthcare_tag = tags.get('healthcare', '').lower()
+                is_explicit_physio = (healthcare_tag == 'physiotherapy')
+                
+                matches_physio = any(k in name_key for k in PHYSIO_KEYWORDS) or is_explicit_physio
+                is_excluded = any(ex in name_key for ex in EXCLUDE_KEYWORDS)
+                
+                if not matches_physio or is_excluded:
+                    continue
+                
                 seen.add(name_key)
                 
-                # Determine address & locality
+                # Address & Locality
                 addr_street = tags.get('addr:street', '')
                 addr_suburb = tags.get('addr:suburb') or tags.get('addr:district') or tags.get('addr:neighbourhood') or ''
                 addr_postcode = tags.get('addr:postcode', '')
@@ -91,14 +115,14 @@ def fetch_real_osm_dataset():
                 else:
                     address = f"{name_clean}, {locality}, Bengaluru, Karnataka"
 
-                # Check specialization from tags or name
-                specialization = "General Healthcare & Rehab"
-                if any(k in name_key for k in ['physio', 'rehab', 'physical therapy']):
-                    specialization = "Physiotherapy & Rehabilitation"
-                elif any(k in name_key for k in ['spine', 'joint', 'ortho']):
-                    specialization = "Orthopedic & Spine Care"
-                elif any(k in name_key for k in ['sports', 'fitness']):
-                    specialization = "Sports Rehab & Fitness"
+                # Specialization categorization
+                specialization = "Physiotherapy & Rehabilitation"
+                if any(k in name_key for k in ['spine', 'joint', 'ortho', 'bone', 'osteo']):
+                    specialization = "Orthopedic & Spine Rehab"
+                elif any(k in name_key for k in ['sports', 'fitness', 'movement', 'kinesi']):
+                    specialization = "Sports Physio & Movement Therapy"
+                elif any(k in name_key for k in ['pain', 'stiffness']):
+                    specialization = "Pain Management & Physio"
 
                 clinics.append({
                     "name": name_clean,
@@ -113,7 +137,7 @@ def fetch_real_osm_dataset():
                     "sentiment_pct": "N/A",
                     "address": address,
                     "google_maps_url": f"https://www.google.com/maps/search/{urllib.parse.quote(name_clean + ' ' + locality + ' Bengaluru')}",
-                    "source": "OpenStreetMap Real Spatial Node"
+                    "source": "OpenStreetMap Real Physio Spatial Node"
                 })
                 
     except Exception as e:
@@ -122,13 +146,13 @@ def fetch_real_osm_dataset():
     return clinics
 
 def main():
-    clinics = fetch_real_osm_dataset()
+    clinics = fetch_strict_physio_dataset()
     
     # Priority sort: put clinics with 'physio' or 'rehab' or specific localities first
     def priority_key(c):
         n = c['name'].lower()
-        if 'physio' in n or 'rehab' in n: return 0
-        if c['locality'] != 'Bengaluru Urban': return 1
+        if 'physio' in n: return 0
+        if 'rehab' in n: return 1
         return 2
 
     clinics.sort(key=priority_key)
@@ -152,7 +176,7 @@ def main():
             writer.writerow(c)
 
     print(f"\n=======================================================")
-    print(f"SUCCESS: Extracted {len(clinics)} 100% REAL CLINICS across Bengaluru!")
+    print(f"SUCCESS: Extracted {len(clinics)} STRICT PHYSIO / REHAB / ORTHO CLINICS across Bengaluru!")
     print(f" Saved JSON -> {json_path}")
     print(f" Saved CSV  -> {csv_path}")
     print("=======================================================")
