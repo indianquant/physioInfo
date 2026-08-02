@@ -15,7 +15,10 @@
     "source": "Official Google Places API",
     "lat": 12.9343,
     "lng": 77.7131,
-    "distance_km": 0.06
+    "distance_km": 0.06,
+    "phone": "N/A",
+    "website": "https://reliva.in/physiotherapy-clinics/kadubeesanahalli-bengaluru/",
+    "opening_hours": "Monday: 8:00 AM – 8:00 PM"
   },
   {
     "name": "Core Health Physio | Getwell Physsiotherapy @ Nurture",
@@ -33,7 +36,10 @@
     "source": "Official Google Places API",
     "lat": 12.9427,
     "lng": 77.7119,
-    "distance_km": 0.88
+    "distance_km": 0.88,
+    "phone": "073376 24453",
+    "website": "https://corehealthphysio.in/",
+    "opening_hours": "Monday: 8:30 AM – 9:00 PM"
   },
   {
     "name": "WellAssured Physiotherapy Clinic",
@@ -51,7 +57,10 @@
     "source": "Official Google Places API",
     "lat": 12.9424,
     "lng": 77.7098,
-    "distance_km": 0.91
+    "distance_km": 0.91,
+    "phone": "096626 30888",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 5:00 PM"
   },
   {
     "name": "SVDH PHYSIO HEALTH CARE & REHAB",
@@ -69,7 +78,10 @@
     "source": "Official Google Places API",
     "lat": 12.936,
     "lng": 77.7212,
-    "distance_km": 0.92
+    "distance_km": 0.92,
+    "phone": "088842 78844",
+    "website": "N/A",
+    "opening_hours": "Monday: 10:00 AM – 1:00 PM, 3:30 – 7:00 PM"
   },
   {
     "name": "BeacurA Physiotherapy Clinic",
@@ -87,7 +99,10 @@
     "source": "Official Google Places API",
     "lat": 12.9336,
     "lng": 77.7044,
-    "distance_km": 0.92
+    "distance_km": 0.92,
+    "phone": "075610 09512",
+    "website": "https://www.beacuraphysiotherapy.com/",
+    "opening_hours": "Monday: 11:00 AM – 8:00 PM"
   },
   {
     "name": "TheraSpark Physiotherapy Clinic",
@@ -105,7 +120,10 @@
     "source": "Official Google Places API",
     "lat": 12.9267,
     "lng": 77.7161,
-    "distance_km": 0.97
+    "distance_km": 0.97,
+    "phone": "095605 57152",
+    "website": "https://therasparkphysio.com/",
+    "opening_hours": "Monday: 10:00 AM – 2:00 PM, 4:00 – 7:00 PM"
   },
   {
     "name": "KAIRO Home physio",
@@ -123,7 +141,10 @@
     "source": "Official Google Places API",
     "lat": 12.9259,
     "lng": 77.7143,
-    "distance_km": 1.0
+    "distance_km": 1.0,
+    "phone": "074111 98425",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "CB Physiotherapy Clinic Sarjapura",
@@ -141,7 +162,10 @@
     "source": "Official Google Places API",
     "lat": 12.9378,
     "lng": 77.7038,
-    "distance_km": 1.03
+    "distance_km": 1.03,
+    "phone": "080 4709 3099",
+    "website": "https://cbphysiotherapy.in/bangalore/physiotherapy-clinic/cb-physiotherapy-clinic-sarjapur",
+    "opening_hours": "Monday: 8:00 AM – 10:00 PM"
   },
   {
     "name": "Perfect Physio Clinic",
@@ -159,7 +183,10 @@
     "source": "Official Google Places API",
     "lat": 12.9318,
     "lng": 77.7218,
-    "distance_km": 1.03
+    "distance_km": 1.03,
+    "phone": "088927 02460",
+    "website": "N/A",
+    "opening_hours": "Monday: 10:00 AM – 8:00 PM"
   },
   {
     "name": "SPYNUS PHYSIOTHERAPY CENTRE",
@@ -177,7 +204,10 @@
     "source": "Official Google Places API",
     "lat": 12.9423,
     "lng": 77.7053,
-    "distance_km": 1.16
+    "distance_km": 1.16,
+    "phone": "081094 67757",
+    "website": "N/A",
+    "opening_hours": "Monday: 10:00 AM – 12:30 PM, 5:00 – 7:30 PM"
   },
   {
     "name": "PECTOVIA - Home Physiotherapy | Bellandur",
@@ -195,7 +225,10 @@
     "source": "Official Google Places API",
     "lat": 12.9252,
     "lng": 77.7074,
-    "distance_km": 1.22
+    "distance_km": 1.22,
+    "phone": "078922 87599",
+    "website": "https://www.pectoviaphysiotherapy.com/",
+    "opening_hours": "Monday: 8:00 AM – 10:00 PM"
   },
   {
     "name": "Physiotherapy Clinic - Dr Chatterjee",
@@ -213,7 +246,10 @@
     "source": "Official Google Places API",
     "lat": 12.9291,
     "lng": 77.7029,
-    "distance_km": 1.25
+    "distance_km": 1.25,
+    "phone": "N/A",
+    "website": "https://www.linkedin.com/in/dr-bibekananda-chattopadhyay/",
+    "opening_hours": "Monday: 9:00 AM – 9:30 PM"
   },
   {
     "name": "Swasth Physiotherapy",
@@ -221,7 +257,7 @@
     "rating": 5.0,
     "reviews": 41,
     "mps_score": 8.12,
-    "fee_range": "N/A (Contact Clinic)",
+    "fee_range": "₹399 / session (Website Published)",
     "specialization": "Pure Physiotherapy & Rehabilitation Practice",
     "top_praise": "N/A",
     "top_complaint": "N/A",
@@ -231,7 +267,10 @@
     "source": "Official Google Places API",
     "lat": 12.9439,
     "lng": 77.7203,
-    "distance_km": 1.3
+    "distance_km": 1.3,
+    "phone": "097666 13750",
+    "website": "https://swasthphysio.in/",
+    "opening_hours": "Monday: 9:30 AM – 9:30 PM"
   },
   {
     "name": "Refunction Rehab Physiotherapy",
@@ -249,7 +288,10 @@
     "source": "Official Google Places API",
     "lat": 12.9475,
     "lng": 77.7155,
-    "distance_km": 1.44
+    "distance_km": 1.44,
+    "phone": "099009 11795",
+    "website": "https://refunctionrehab.in/",
+    "opening_hours": "Monday: 10:00 AM – 8:00 PM"
   },
   {
     "name": "Varthur physio care / physiotherapy clinic",
@@ -267,7 +309,10 @@
     "source": "Official Google Places API",
     "lat": 12.9283,
     "lng": 77.7011,
-    "distance_km": 1.46
+    "distance_km": 1.46,
+    "phone": "084304 52497",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:30 AM – 12:00 PM"
   },
   {
     "name": "Dr Koushik Reddy (PT) Physiotherapy & Rehabilitation",
@@ -285,7 +330,10 @@
     "source": "Official Google Places API",
     "lat": 12.9465,
     "lng": 77.7065,
-    "distance_km": 1.47
+    "distance_km": 1.47,
+    "phone": "078457 96116",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "PECTOVIA - Home Physiotherapy | Haralur",
@@ -303,7 +351,10 @@
     "source": "Official Google Places API",
     "lat": 12.9216,
     "lng": 77.7104,
-    "distance_km": 1.49
+    "distance_km": 1.49,
+    "phone": "078922 87599",
+    "website": "https://pectoviaphysiotherapy.com/",
+    "opening_hours": "Monday: 8:00 AM – 10:00 PM"
   },
   {
     "name": "Dr Pooja's Physiotherapy Clinic | Chikkanayakanahalli",
@@ -321,7 +372,10 @@
     "source": "Official Google Places API",
     "lat": 12.9369,
     "lng": 77.7275,
-    "distance_km": 1.61
+    "distance_km": 1.61,
+    "phone": "090049 07509",
+    "website": "N/A",
+    "opening_hours": "Monday: 10:30 AM – 1:30 PM, 5:00 – 8:30 PM"
   },
   {
     "name": "Dr A Keerthanya (Physiotherapist)",
@@ -339,7 +393,10 @@
     "source": "Official Google Places API",
     "lat": 12.9226,
     "lng": 77.7212,
-    "distance_km": 1.63
+    "distance_km": 1.63,
+    "phone": "091087 19403",
+    "website": "https://www.linkedin.com/in/keerthanya-prem-512377230?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+    "opening_hours": "Monday: 7:00 – 9:00 AM, 7:30 – 9:30 PM"
   },
   {
     "name": "Bellandur physiotherapy clinic",
@@ -357,7 +414,10 @@
     "source": "Official Google Places API",
     "lat": 12.9445,
     "lng": 77.7245,
-    "distance_km": 1.66
+    "distance_km": 1.66,
+    "phone": "N/A",
+    "website": "N/A",
+    "opening_hours": "Monday: 12:00 – 6:00 PM"
   },
   {
     "name": "Rapid Cure Physiotherapy Centre - Rayasandra - Choodsandra",
@@ -375,7 +435,10 @@
     "source": "Official Google Places API",
     "lat": 12.9285,
     "lng": 77.6987,
-    "distance_km": 1.68
+    "distance_km": 1.68,
+    "phone": "087927 96698",
+    "website": "https://rapidcurept.com/",
+    "opening_hours": "Monday: 9:00 AM – 10:00 PM"
   },
   {
     "name": "PECTOVIA - Home Physiotherapy | Carmelaram",
@@ -393,7 +456,10 @@
     "source": "Official Google Places API",
     "lat": 12.9267,
     "lng": 77.6979,
-    "distance_km": 1.85
+    "distance_km": 1.85,
+    "phone": "078922 87599",
+    "website": "https://www.pectoviaphysiotherapy.com/",
+    "opening_hours": "Monday: 7:00 AM – 11:00 PM"
   },
   {
     "name": "Peak Performance - Physiotherapy & Sports Rehab - Bellandur",
@@ -411,7 +477,10 @@
     "source": "Official Google Places API",
     "lat": 12.9232,
     "lng": 77.7254,
-    "distance_km": 1.88
+    "distance_km": 1.88,
+    "phone": "N/A",
+    "website": "https://peakperformancesr.com/#hero",
+    "opening_hours": "N/A"
   },
   {
     "name": "PULSOPT PHYSIOTHERAPY & REHABILITATION",
@@ -429,7 +498,10 @@
     "source": "Official Google Places API",
     "lat": 12.9375,
     "lng": 77.7315,
-    "distance_km": 2.05
+    "distance_km": 2.05,
+    "phone": "099013 42483",
+    "website": "N/A",
+    "opening_hours": "Monday: 6:00 – 9:30 PM"
   },
   {
     "name": "ARCH Physiotherapy and Rehabilitation | Physiotherapy In Bangalore",
@@ -447,7 +519,10 @@
     "source": "Official Google Places API",
     "lat": 12.9501,
     "lng": 77.7017,
-    "distance_km": 2.08
+    "distance_km": 2.08,
+    "phone": "063640 60004",
+    "website": "http://www.archphysio.com/",
+    "opening_hours": "Monday: 6:00 AM – 9:00 PM"
   },
   {
     "name": "CorpErgo Physiotherapy & Occupational Health Centre",
@@ -465,7 +540,10 @@
     "source": "Official Google Places API",
     "lat": 12.9243,
     "lng": 77.7291,
-    "distance_km": 2.12
+    "distance_km": 2.12,
+    "phone": "097396 83930",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 9:30 PM"
   },
   {
     "name": "M Care Physiotherapy Center",
@@ -483,7 +561,10 @@
     "source": "Official Google Places API",
     "lat": 12.9467,
     "lng": 77.6959,
-    "distance_km": 2.26
+    "distance_km": 2.26,
+    "phone": "080500 15375",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 1:00 PM, 4:00 – 7:00 PM"
   },
   {
     "name": "Physio Reset",
@@ -501,7 +582,10 @@
     "source": "Official Google Places API",
     "lat": 12.9498,
     "lng": 77.7276,
-    "distance_km": 2.31
+    "distance_km": 2.31,
+    "phone": "083285 63399",
+    "website": "http://www.physioreset.com/",
+    "opening_hours": "Monday: 10:00 AM – 8:00 PM"
   },
   {
     "name": "ACE PHYSIOTHERAPY PVT LTD",
@@ -519,7 +603,10 @@
     "source": "Official Google Places API",
     "lat": 12.9198,
     "lng": 77.6978,
-    "distance_km": 2.33
+    "distance_km": 2.33,
+    "phone": "078923 02003",
+    "website": "https://acephysiotherapy.org/",
+    "opening_hours": "Monday: 8:00 AM – 9:00 PM"
   },
   {
     "name": "Raakri physiotherapy centre",
@@ -537,7 +624,10 @@
     "source": "Official Google Places API",
     "lat": 12.9315,
     "lng": 77.6915,
-    "distance_km": 2.34
+    "distance_km": 2.34,
+    "phone": "082097 95744",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 2:00 PM"
   },
   {
     "name": "Physiotattva Physiotherapy Clinic and Chiropractor | Bellandur",
@@ -555,7 +645,10 @@
     "source": "Official Google Places API",
     "lat": 12.9273,
     "lng": 77.6921,
-    "distance_km": 2.39
+    "distance_km": 2.39,
+    "phone": "089510 47001",
+    "website": "https://www.physiotattva.com/specialties/physiotherapy-clinic-in-bellandur?utm_source=google&utm_medium=gmb&utm_campaign=bellandur",
+    "opening_hours": "Monday: 6:00 AM – 9:00 PM"
   },
   {
     "name": "Physiotattva Sarjapura",
@@ -573,7 +666,10 @@
     "source": "Official Google Places API",
     "lat": 12.9512,
     "lng": 77.6974,
-    "distance_km": 2.47
+    "distance_km": 2.47,
+    "phone": "089510 47001",
+    "website": "https://www.physiotattva.com/specialties/physiotherapy-in-sarjapur?utm_source=google&utm_medium=gmb&utm_campaign=sarjapur",
+    "opening_hours": "Monday: 6:00 AM – 9:00 PM"
   },
   {
     "name": "Physiocare",
@@ -591,7 +687,10 @@
     "source": "Official Google Places API",
     "lat": 12.9492,
     "lng": 77.6954,
-    "distance_km": 2.47
+    "distance_km": 2.47,
+    "phone": "077008 40175",
+    "website": "N/A",
+    "opening_hours": "Monday: 8:00 AM – 8:00 PM"
   },
   {
     "name": "RJH Physiotherapy Clinic - Physiotherapy services, Munnekolala, Marathahalli, Bangalore",
@@ -609,7 +708,10 @@
     "source": "Official Google Places API",
     "lat": 12.9572,
     "lng": 77.7094,
-    "distance_km": 2.52
+    "distance_km": 2.52,
+    "phone": "080884 79899",
+    "website": "http://www.rjhclinic.com/",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "YOURS PHYSIOTHERAPY & REHABILITATION CENTRE",
@@ -627,7 +729,10 @@
     "source": "Official Google Places API",
     "lat": 12.9533,
     "lng": 77.6991,
-    "distance_km": 2.54
+    "distance_km": 2.54,
+    "phone": "099434 74216",
+    "website": "N/A",
+    "opening_hours": "Monday: 7:00 AM – 9:00 PM"
   },
   {
     "name": "Beracah Oasis Physiotherapy Clinc",
@@ -645,7 +750,10 @@
     "source": "Official Google Places API",
     "lat": 12.9584,
     "lng": 77.7048,
-    "distance_km": 2.76
+    "distance_km": 2.76,
+    "phone": "096639 23344",
+    "website": "https://beracahphysiotherapy.com/",
+    "opening_hours": "Monday: 9:00 AM – 2:00 PM, 5:00 – 9:00 PM"
   },
   {
     "name": "ACHYUTHA PHYSIOTHERAPY CLINIC",
@@ -663,7 +771,10 @@
     "source": "Official Google Places API",
     "lat": 12.9506,
     "lng": 77.6932,
-    "distance_km": 2.76
+    "distance_km": 2.76,
+    "phone": "083175 34898",
+    "website": "http://achyuthaphysio.co.in/",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "MOVENTRA - Sports Physiotherapy & Orthopaedic Centre",
@@ -681,7 +792,10 @@
     "source": "Official Google Places API",
     "lat": 12.9342,
     "lng": 77.7384,
-    "distance_km": 2.78
+    "distance_km": 2.78,
+    "phone": "091480 17070",
+    "website": "https://moventrahealth.in/",
+    "opening_hours": "Monday: 7:00 – 8:00 AM"
   },
   {
     "name": "S.J PHYSIOTHERAPY CLINIC",
@@ -699,7 +813,10 @@
     "source": "Official Google Places API",
     "lat": 12.9138,
     "lng": 77.6976,
-    "distance_km": 2.86
+    "distance_km": 2.86,
+    "phone": "094448 33722",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "Revesco Physio Services Pvt. Ltd.",
@@ -717,7 +834,10 @@
     "source": "Official Google Places API",
     "lat": 12.93,
     "lng": 77.739,
-    "distance_km": 2.89
+    "distance_km": 2.89,
+    "phone": "098800 16024",
+    "website": "http://revesco.in/",
+    "opening_hours": "Monday: Open 24 hours"
   },
   {
     "name": "The Urban Physio Care – Clinic & Home Care Service Marathahalli",
@@ -735,7 +855,10 @@
     "source": "Official Google Places API",
     "lat": 12.9503,
     "lng": 77.6911,
-    "distance_km": 2.92
+    "distance_km": 2.92,
+    "phone": "073497 63249",
+    "website": "https://www.theurbanphysiocare.com/",
+    "opening_hours": "Monday: 8:30 AM – 8:30 PM"
   },
   {
     "name": "HealWell Physiotherapy Centre",
@@ -753,7 +876,10 @@
     "source": "Official Google Places API",
     "lat": 12.941,
     "lng": 77.686,
-    "distance_km": 2.99
+    "distance_km": 2.99,
+    "phone": "098443 73075",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 6:30 PM"
   },
   {
     "name": "Amogha Physiotherapy Clinic",
@@ -771,7 +897,10 @@
     "source": "Official Google Places API",
     "lat": 12.9345,
     "lng": 77.7405,
-    "distance_km": 3.0
+    "distance_km": 3.0,
+    "phone": "089044 99300",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:30 AM – 9:30 PM"
   },
   {
     "name": "Doctor physio",
@@ -789,7 +918,10 @@
     "source": "Official Google Places API",
     "lat": 12.9134,
     "lng": 77.6958,
-    "distance_km": 3.01
+    "distance_km": 3.01,
+    "phone": "094833 14158",
+    "website": "http://www.doctor-physio.com/",
+    "opening_hours": "Monday: 7:00 AM – 11:00 PM"
   },
   {
     "name": "Careflex physiotherapy clinic (Homecare physio)",
@@ -807,7 +939,10 @@
     "source": "Official Google Places API",
     "lat": 12.9429,
     "lng": 77.7393,
-    "distance_km": 3.01
+    "distance_km": 3.01,
+    "phone": "076196 78243",
+    "website": "http://www.careflexphysiotherapy.com/",
+    "opening_hours": "Monday: 8:30 AM – 9:00 PM"
   },
   {
     "name": "R3Rehab- Physiotherapy and Sports Rehabilitation | Varthur",
@@ -825,7 +960,10 @@
     "source": "Official Google Places API",
     "lat": 12.9258,
     "lng": 77.7396,
-    "distance_km": 3.07
+    "distance_km": 3.07,
+    "phone": "080733 08664",
+    "website": "https://www.r3rehab.com/",
+    "opening_hours": "Monday: 9:00 AM – 8:00 PM"
   },
   {
     "name": "R3Rehab- Physiotherapy and Sports Rehabilitation",
@@ -843,7 +981,10 @@
     "source": "Official Google Places API",
     "lat": 12.917,
     "lng": 77.691,
-    "distance_km": 3.08
+    "distance_km": 3.08,
+    "phone": "087926 59027",
+    "website": "https://www.r3rehab.com/",
+    "opening_hours": "Monday: 8:30 AM – 8:30 PM"
   },
   {
     "name": "Shanthi Physiotherapy Clinic",
@@ -861,7 +1002,10 @@
     "source": "Official Google Places API",
     "lat": 12.95,
     "lng": 77.689,
-    "distance_km": 3.08
+    "distance_km": 3.08,
+    "phone": "N/A",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 7:00 PM"
   },
   {
     "name": "Dr.Ramya's Physiotherapy Clinic",
@@ -879,7 +1023,10 @@
     "source": "Official Google Places API",
     "lat": 12.9435,
     "lng": 77.6855,
-    "distance_km": 3.11
+    "distance_km": 3.11,
+    "phone": "063629 77701",
+    "website": "https://www.drramyaphysiotherapy.com/",
+    "opening_hours": "Monday: 9:00 AM – 2:00 PM, 5:00 – 9:00 PM"
   },
   {
     "name": "Blossom Physiotherapy Clinic – Best Physiotherapist in Marathahalli | Dr. Jyoti Raghavendra",
@@ -897,7 +1044,10 @@
     "source": "Official Google Places API",
     "lat": 12.9602,
     "lng": 77.7004,
-    "distance_km": 3.13
+    "distance_km": 3.13,
+    "phone": "098445 96658",
+    "website": "https://jyotiraghavendrak.wixsite.com/blossomphysioclinic",
+    "opening_hours": "Monday: 9:00 AM – 12:00 PM, 5:00 – 7:00 PM"
   },
   {
     "name": "Physio Corner - Home visit",
@@ -915,7 +1065,10 @@
     "source": "Official Google Places API",
     "lat": 12.9611,
     "lng": 77.7237,
-    "distance_km": 3.15
+    "distance_km": 3.15,
+    "phone": "090589 93057",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 5:00 PM"
   },
   {
     "name": "STEPUP Physio - Physiotherapy and sports rehab",
@@ -933,7 +1086,10 @@
     "source": "Official Google Places API",
     "lat": 12.9545,
     "lng": 77.6905,
-    "distance_km": 3.26
+    "distance_km": 3.26,
+    "phone": "073386 04130",
+    "website": "https://tinyurl.com/5n97t958",
+    "opening_hours": "Monday: Open 24 hours"
   },
   {
     "name": "MOVE FIT Physiotherapy",
@@ -951,7 +1107,10 @@
     "source": "Official Google Places API",
     "lat": 12.9596,
     "lng": 77.6962,
-    "distance_km": 3.29
+    "distance_km": 3.29,
+    "phone": "N/A",
+    "website": "https://movefitphysiotherapy.netlify.app/",
+    "opening_hours": "Monday: Open 24 hours"
   },
   {
     "name": "NGR physiotherapy clinic /centre",
@@ -969,7 +1128,10 @@
     "source": "Official Google Places API",
     "lat": 12.9474,
     "lng": 77.7408,
-    "distance_km": 3.34
+    "distance_km": 3.34,
+    "phone": "N/A",
+    "website": "http://ngrhealthcare.com/",
+    "opening_hours": "Monday: 11:00 AM – 3:00 PM"
   },
   {
     "name": "Mindful Movements Physiotherapy and Rehab Clinic",
@@ -987,7 +1149,10 @@
     "source": "Official Google Places API",
     "lat": 12.9128,
     "lng": 77.6916,
-    "distance_km": 3.36
+    "distance_km": 3.36,
+    "phone": "097427 18495",
+    "website": "N/A",
+    "opening_hours": "Monday: Closed"
   },
   {
     "name": "Actilife Physiotherapy Clinic & Sports Rehab",
@@ -1005,7 +1170,10 @@
     "source": "Official Google Places API",
     "lat": 12.9188,
     "lng": 77.6856,
-    "distance_km": 3.44
+    "distance_km": 3.44,
+    "phone": "090193 62937",
+    "website": "https://www.actilifephysio.com/",
+    "opening_hours": "Monday: 7:00 AM – 9:00 PM"
   },
   {
     "name": "The Urban Physio Care - Clinic & Home Care Service in Bellandur & Sarjapur Road",
@@ -1023,7 +1191,10 @@
     "source": "Official Google Places API",
     "lat": 12.9188,
     "lng": 77.6856,
-    "distance_km": 3.44
+    "distance_km": 3.44,
+    "phone": "080502 97778",
+    "website": "https://www.theurbanphysiocare.com/sarjapur-road/",
+    "opening_hours": "Monday: 8:30 AM – 9:00 PM"
   },
   {
     "name": "Dr.Ravi Physio & Chirotherapy centre",
@@ -1041,7 +1212,10 @@
     "source": "Official Google Places API",
     "lat": 12.9203,
     "lng": 77.6841,
-    "distance_km": 3.5
+    "distance_km": 3.5,
+    "phone": "097314 13468",
+    "website": "https://drravis.co.in/",
+    "opening_hours": "Monday: 11:00 AM – 9:00 PM"
   },
   {
     "name": "Prana Physiotheraphy & Rehabilitation Centre",
@@ -1059,7 +1233,10 @@
     "source": "Official Google Places API",
     "lat": 12.9516,
     "lng": 77.7402,
-    "distance_km": 3.51
+    "distance_km": 3.51,
+    "phone": "N/A",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 3:00 PM, 4:30 – 9:00 PM"
   },
   {
     "name": "Brahmi Physiotherapy And Rehabilitation Centre",
@@ -1077,7 +1254,10 @@
     "source": "Official Google Places API",
     "lat": 12.9665,
     "lng": 77.7145,
-    "distance_km": 3.53
+    "distance_km": 3.53,
+    "phone": "083742 23701",
+    "website": "N/A",
+    "opening_hours": "N/A"
   },
   {
     "name": "Dr Pooja's Physiotherapy Clinic",
@@ -1095,7 +1275,10 @@
     "source": "Official Google Places API",
     "lat": 12.9053,
     "lng": 77.6991,
-    "distance_km": 3.6
+    "distance_km": 3.6,
+    "phone": "090049 07509",
+    "website": "N/A",
+    "opening_hours": "Monday: 10:30 AM – 1:30 PM, 5:00 – 8:30 PM"
   },
   {
     "name": "PHYSIOCREST PHYSIOTHERAPY & PILATES",
@@ -1113,7 +1296,10 @@
     "source": "Official Google Places API",
     "lat": 12.9216,
     "lng": 77.6822,
-    "distance_km": 3.63
+    "distance_km": 3.63,
+    "phone": "074835 83145",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 10:00 PM"
   },
   {
     "name": "New Beginnings Physiotherapy Clinic",
@@ -1131,7 +1317,10 @@
     "source": "Official Google Places API",
     "lat": 12.968,
     "lng": 77.712,
-    "distance_km": 3.69
+    "distance_km": 3.69,
+    "phone": "082172 29584",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 1:00 PM, 4:00 – 8:00 PM"
   },
   {
     "name": "Dr. Ravi’s Physio & Chiro Clinic",
@@ -1149,7 +1338,10 @@
     "source": "Official Google Places API",
     "lat": 12.9161,
     "lng": 77.6847,
-    "distance_km": 3.69
+    "distance_km": 3.69,
+    "phone": "N/A",
+    "website": "https://drravis.co.in/",
+    "opening_hours": "Monday: 11:00 AM – 8:00 PM"
   },
   {
     "name": "D7 Med physiotherapy clinic",
@@ -1167,7 +1359,10 @@
     "source": "Official Google Places API",
     "lat": 12.9668,
     "lng": 77.7036,
-    "distance_km": 3.7
+    "distance_km": 3.7,
+    "phone": "N/A",
+    "website": "http://www.d7medclinic.com/",
+    "opening_hours": "Monday: 10:00 AM – 5:00 PM"
   },
   {
     "name": "WellAssured Advanced Physiotherapy",
@@ -1185,7 +1380,10 @@
     "source": "Official Google Places API",
     "lat": 12.9519,
     "lng": 77.7423,
-    "distance_km": 3.72
+    "distance_km": 3.72,
+    "phone": "091874 58109",
+    "website": "N/A",
+    "opening_hours": "Monday: 8:00 AM – 7:00 PM"
   },
   {
     "name": "Actilife Physiotherapy Clinic & Sports Rehab | Sarjapur Road | Doddakannelli",
@@ -1203,7 +1401,10 @@
     "source": "Official Google Places API",
     "lat": 12.9122,
     "lng": 77.6874,
-    "distance_km": 3.73
+    "distance_km": 3.73,
+    "phone": "090193 62937",
+    "website": "https://www.actilifephysio.com/",
+    "opening_hours": "Monday: 8:00 AM – 9:00 PM"
   },
   {
     "name": "Quantum Rehab Nexus | Physiotherapy| Sports Rehab| Home Service",
@@ -1221,7 +1422,10 @@
     "source": "Official Google Places API",
     "lat": 12.9471,
     "lng": 77.6807,
-    "distance_km": 3.74
+    "distance_km": 3.74,
+    "phone": "063628 94413",
+    "website": "https://quantumrehabnexus.in/",
+    "opening_hours": "Monday: 6:00 AM – 10:00 PM"
   },
   {
     "name": "PHYSIO X10 - Whitefield",
@@ -1239,7 +1443,10 @@
     "source": "Official Google Places API",
     "lat": 12.9549,
     "lng": 77.7413,
-    "distance_km": 3.81
+    "distance_km": 3.81,
+    "phone": "080801 05108",
+    "website": "https://physiox10.com/",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "Uplift Physiotherapy Clinic",
@@ -1257,7 +1464,10 @@
     "source": "Official Google Places API",
     "lat": 12.9659,
     "lng": 77.6973,
-    "distance_km": 3.84
+    "distance_km": 3.84,
+    "phone": "080809 78279",
+    "website": "https://upliftphysio.zohobookings.in/#/299867000000043014",
+    "opening_hours": "Monday: 9:00 AM – 8:00 PM"
   },
   {
     "name": "Physio Chiro Nexus",
@@ -1275,7 +1485,10 @@
     "source": "Official Google Places API",
     "lat": 12.9399,
     "lng": 77.7483,
-    "distance_km": 3.89
+    "distance_km": 3.89,
+    "phone": "097428 60744",
+    "website": "https://www.physiochironexus.com/",
+    "opening_hours": "Monday: 8:00 AM – 9:00 PM"
   },
   {
     "name": "HighWorth Physiotherapy Clinic",
@@ -1293,7 +1506,10 @@
     "source": "Official Google Places API",
     "lat": 12.9347,
     "lng": 77.6769,
-    "distance_km": 3.89
+    "distance_km": 3.89,
+    "phone": "086985 97520",
+    "website": "https://highworthphysiotherapy.in/",
+    "opening_hours": "Monday: 8:00 AM – 9:00 PM"
   },
   {
     "name": "ReLiva Physiotherapy & Rehab: Sarjapur Road",
@@ -1311,7 +1527,10 @@
     "source": "Official Google Places API",
     "lat": 12.9158,
     "lng": 77.6826,
-    "distance_km": 3.9
+    "distance_km": 3.9,
+    "phone": "099209 91584",
+    "website": "https://reliva.in/physiotherapy-clinics/sarjapur-road-bengaluru/?utm_source=gmb",
+    "opening_hours": "Monday: 9:00 AM – 1:00 PM, 4:00 – 8:00 PM"
   },
   {
     "name": "Physiotattva Uber Verdant",
@@ -1329,7 +1548,10 @@
     "source": "Official Google Places API",
     "lat": 12.9159,
     "lng": 77.6823,
-    "distance_km": 3.92
+    "distance_km": 3.92,
+    "phone": "N/A",
+    "website": "https://www.physiotattva.com/?utm_source=google&utm_medium=gmb&utm_campaign=uber-verdant",
+    "opening_hours": "Monday: 9:00 AM – 12:00 PM, 5:00 – 8:00 PM"
   },
   {
     "name": "L N Motion Physiotherapy Clinic",
@@ -1347,7 +1569,10 @@
     "source": "Official Google Places API",
     "lat": 12.9683,
     "lng": 77.6971,
-    "distance_km": 4.1
+    "distance_km": 4.1,
+    "phone": "087923 47772",
+    "website": "https://lnmotionphysio.in/",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "Nowhere Neuro Rehabilitation Home Service",
@@ -1365,7 +1590,10 @@
     "source": "Official Google Places API",
     "lat": 12.9344,
     "lng": 77.6748,
-    "distance_km": 4.12
+    "distance_km": 4.12,
+    "phone": "N/A",
+    "website": "N/A",
+    "opening_hours": "Monday: Open 24 hours"
   },
   {
     "name": "LivActiv Physiotherapy & Wellness Centre",
@@ -1383,7 +1611,10 @@
     "source": "Official Google Places API",
     "lat": 12.9041,
     "lng": 77.6907,
-    "distance_km": 4.17
+    "distance_km": 4.17,
+    "phone": "098451 31014",
+    "website": "N/A",
+    "opening_hours": "Monday: 8:00 AM – 9:00 PM"
   },
   {
     "name": "Apex Physiotherapy",
@@ -1391,7 +1622,7 @@
     "rating": 5.0,
     "reviews": 44,
     "mps_score": 8.27,
-    "fee_range": "N/A (Contact Clinic)",
+    "fee_range": "₹400 / session (Website Published)",
     "specialization": "Pure Physiotherapy & Rehabilitation Practice",
     "top_praise": "N/A",
     "top_complaint": "N/A",
@@ -1401,7 +1632,10 @@
     "source": "Official Google Places API",
     "lat": 12.9218,
     "lng": 77.6766,
-    "distance_km": 4.18
+    "distance_km": 4.18,
+    "phone": "063643 25021",
+    "website": "https://www.apexphysiotherapyclinic.com/",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "Physio Care(Dr.Rashmi Nair)",
@@ -1419,7 +1653,10 @@
     "source": "Official Google Places API",
     "lat": 12.9077,
     "lng": 77.6859,
-    "distance_km": 4.19
+    "distance_km": 4.19,
+    "phone": "097420 48172",
+    "website": "N/A",
+    "opening_hours": "Monday: 10:30 AM – 3:00 PM, 5:00 – 7:00 PM"
   },
   {
     "name": "PhysioHeal : Physiotherapy Center",
@@ -1437,7 +1674,10 @@
     "source": "Official Google Places API",
     "lat": 12.9005,
     "lng": 77.6955,
-    "distance_km": 4.25
+    "distance_km": 4.25,
+    "phone": "070190 97402",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:00 AM – 12:00 PM, 5:00 – 8:00 PM"
   },
   {
     "name": "Physio Robust",
@@ -1455,7 +1695,10 @@
     "source": "Official Google Places API",
     "lat": 12.9299,
     "lng": 77.6733,
-    "distance_km": 4.32
+    "distance_km": 4.32,
+    "phone": "081970 20080",
+    "website": "https://nfc.dgtechsoln.com/physio-robust/",
+    "opening_hours": "Monday: 9:00 AM – 8:00 PM"
   },
   {
     "name": "Saanvika Physiotherapy Clinic",
@@ -1473,7 +1716,10 @@
     "source": "Official Google Places API",
     "lat": 12.9405,
     "lng": 77.7525,
-    "distance_km": 4.35
+    "distance_km": 4.35,
+    "phone": "086608 62942",
+    "website": "http://saanvikaphysiotherapy.com/",
+    "opening_hours": "Monday: 9:00 AM – 8:00 PM"
   },
   {
     "name": "CorpErgo Physiotherapy and Occupational Health Centre",
@@ -1491,7 +1737,10 @@
     "source": "Official Google Places API",
     "lat": 12.9528,
     "lng": 77.7486,
-    "distance_km": 4.37
+    "distance_km": 4.37,
+    "phone": "097396 83930",
+    "website": "N/A",
+    "opening_hours": "Monday: 9:30 AM – 9:30 PM"
   },
   {
     "name": "Omniphysiocare Physiotherapy Clinic | Brookfield",
@@ -1499,7 +1748,7 @@
     "rating": 4.8,
     "reviews": 229,
     "mps_score": 11.34,
-    "fee_range": "N/A (Contact Clinic)",
+    "fee_range": "₹600 / session (Website Published)",
     "specialization": "Pure Physiotherapy & Rehabilitation Practice",
     "top_praise": "N/A",
     "top_complaint": "N/A",
@@ -1509,7 +1758,10 @@
     "source": "Official Google Places API",
     "lat": 12.9737,
     "lng": 77.7219,
-    "distance_km": 4.44
+    "distance_km": 4.44,
+    "phone": "074833 97055",
+    "website": "https://www.omniphysiocare.com/physiotherapy-marathalli",
+    "opening_hours": "Monday: 7:00 AM – 9:00 PM"
   },
   {
     "name": "The Urban Physiocare Physiotherapy and Rehab centre",
@@ -1527,7 +1779,10 @@
     "source": "Official Google Places API",
     "lat": 12.9671,
     "lng": 77.6887,
-    "distance_km": 4.44
+    "distance_km": 4.44,
+    "phone": "096326 24101",
+    "website": "https://theurbanphysiocare.com/marathahalli-branch-2/",
+    "opening_hours": "Monday: 8:30 AM – 8:30 PM"
   },
   {
     "name": "BSI Physiotherapy and Sports Medicine",
@@ -1545,7 +1800,10 @@
     "source": "Official Google Places API",
     "lat": 12.9671,
     "lng": 77.6887,
-    "distance_km": 4.44
+    "distance_km": 4.44,
+    "phone": "086600 60905",
+    "website": "https://www.bsiphysiotherapy.com/physiotherapy-clinic-in-marathahalli/",
+    "opening_hours": "Monday: 10:00 AM – 7:00 PM"
   },
   {
     "name": "Mind Motion Physiotherapy and Rehab Center",
@@ -1563,7 +1821,10 @@
     "source": "Official Google Places API",
     "lat": 12.938,
     "lng": 77.67,
-    "distance_km": 4.65
+    "distance_km": 4.65,
+    "phone": "090085 41255",
+    "website": "https://www.mindmotionphysiotherapy.com/",
+    "opening_hours": "Monday: 9:00 AM – 8:30 PM"
   },
   {
     "name": "Priya Hariprasad Physiotherapy",
@@ -1581,7 +1842,10 @@
     "source": "Official Google Places API",
     "lat": 12.9749,
     "lng": 77.7003,
-    "distance_km": 4.66
+    "distance_km": 4.66,
+    "phone": "078292 87646",
+    "website": "N/A",
+    "opening_hours": "Monday: 8:00 AM – 8:00 PM"
   },
   {
     "name": "Physiotattva Physiotherapy Clinic| Whitefield",
@@ -1599,7 +1863,10 @@
     "source": "Official Google Places API",
     "lat": 12.9492,
     "lng": 77.7534,
-    "distance_km": 4.68
+    "distance_km": 4.68,
+    "phone": "089510 47001",
+    "website": "https://www.physiotattva.com/specialties/physiotherapy-clinic-in-whitefield?utm_source=google&utm_medium=gmb&utm_campaign=whitefield",
+    "opening_hours": "Monday: 6:00 AM – 9:00 PM"
   },
   {
     "name": "Dr. Pooja Jhade ( Physiotherapist and Posture Expert ) / Best Physiotherapist in Sarjapur Road",
@@ -1617,7 +1884,10 @@
     "source": "Official Google Places API",
     "lat": 12.896,
     "lng": 77.694,
-    "distance_km": 4.77
+    "distance_km": 4.77,
+    "phone": "073386 17677",
+    "website": "https://5sportshospital.com/",
+    "opening_hours": "Monday: 8:00 AM – 9:00 PM"
   },
   {
     "name": "PhysioCare By Dr.Swati @Bellandur | Best Physiotherapist in Bellandur",
@@ -1625,7 +1895,7 @@
     "rating": 5.0,
     "reviews": 495,
     "mps_score": 13.48,
-    "fee_range": "N/A (Contact Clinic)",
+    "fee_range": "₹499 / session (Website Published)",
     "specialization": "Pure Physiotherapy & Rehabilitation Practice",
     "top_praise": "N/A",
     "top_complaint": "N/A",
@@ -1635,7 +1905,10 @@
     "source": "Official Google Places API",
     "lat": 12.9293,
     "lng": 77.6691,
-    "distance_km": 4.78
+    "distance_km": 4.78,
+    "phone": "083173 12538",
+    "website": "https://paineasy.in/landing_page/",
+    "opening_hours": "Monday: 8:00 AM – 10:00 PM"
   },
   {
     "name": "Tranquil Wellness - Physiotherapy, Yoga & Nutrition",
@@ -1653,7 +1926,10 @@
     "source": "Official Google Places API",
     "lat": 12.9293,
     "lng": 77.6691,
-    "distance_km": 4.78
+    "distance_km": 4.78,
+    "phone": "063649 14834",
+    "website": "https://tranquilwellness.in/",
+    "opening_hours": "Monday: 6:00 AM – 8:00 PM"
   },
   {
     "name": "YOS Sports Health Specialists - Physiotherapy Clinic in Sarjapur Road",
@@ -1671,7 +1947,10 @@
     "source": "Official Google Places API",
     "lat": 12.8993,
     "lng": 77.6871,
-    "distance_km": 4.83
+    "distance_km": 4.83,
+    "phone": "096064 75411",
+    "website": "https://www.yos.health/",
+    "opening_hours": "Monday: 7:00 AM – 7:00 PM"
   },
   {
     "name": "Dr Mythille - Physiotherapist in Hoodi, Bangalore",
@@ -1689,7 +1968,10 @@
     "source": "Official Google Places API",
     "lat": 12.9776,
     "lng": 77.7042,
-    "distance_km": 4.85
+    "distance_km": 4.85,
+    "phone": "N/A",
+    "website": "https://medwellphysiorehab.com/",
+    "opening_hours": "Monday: Open 24 hours"
   },
   {
     "name": "Dr DHRUVI'S Physiotherapy and Advanced Neuro Rehabilitation",
@@ -1707,7 +1989,10 @@
     "source": "Official Google Places API",
     "lat": 12.9495,
     "lng": 77.7555,
-    "distance_km": 4.91
+    "distance_km": 4.91,
+    "phone": "N/A",
+    "website": "N/A",
+    "opening_hours": "Monday: 4:00 – 7:00 PM"
   },
   {
     "name": "Eva Physiotherapy Clinic",
@@ -1725,7 +2010,10 @@
     "source": "Official Google Places API",
     "lat": 12.9717,
     "lng": 77.7389,
-    "distance_km": 4.98
+    "distance_km": 4.98,
+    "phone": "088616 90058",
+    "website": "http://www.evaphysiotherapyclinic.com/",
+    "opening_hours": "Monday: 8:30 AM – 2:00 PM, 4:00 – 8:30 PM"
   },
   {
     "name": "ReBalance Physiotherapy Clinic",
@@ -1733,7 +2021,7 @@
     "rating": 5.0,
     "reviews": 183,
     "mps_score": 11.32,
-    "fee_range": "N/A (Contact Clinic)",
+    "fee_range": "₹700 / session (Website Published)",
     "specialization": "Pure Physiotherapy & Rehabilitation Practice",
     "top_praise": "N/A",
     "top_complaint": "N/A",
@@ -1743,7 +2031,10 @@
     "source": "Official Google Places API",
     "lat": 12.9785,
     "lng": 77.7255,
-    "distance_km": 5.05
+    "distance_km": 5.05,
+    "phone": "077210 99005",
+    "website": "https://www.rebalancephysio.in/",
+    "opening_hours": "Monday: 9:00 AM – 9:00 PM"
   },
   {
     "name": "Dr Meghna Physiotherapist (S R Health Care AECS Layout)",
@@ -1761,7 +2052,10 @@
     "source": "Official Google Places API",
     "lat": 12.9803,
     "lng": 77.7081,
-    "distance_km": 5.08
+    "distance_km": 5.08,
+    "phone": "097311 23155",
+    "website": "N/A",
+    "opening_hours": "N/A"
   },
   {
     "name": "SpineNova Physiotherapy & Rehabilitation | Whitefield",
@@ -1779,7 +2073,10 @@
     "source": "Official Google Places API",
     "lat": 12.9567,
     "lng": 77.7539,
-    "distance_km": 5.08
+    "distance_km": 5.08,
+    "phone": "072046 33445",
+    "website": "https://spinenovaphysio.com/",
+    "opening_hours": "Monday: 7:30 AM – 9:00 PM"
   },
   {
     "name": "Mr. Gaurav Sheel | Consult With Best Physiotherapy and Rehabilitation Doctor Near Me | 17+ Yrs. of Exp.",
@@ -1787,7 +2084,7 @@
     "rating": 5.0,
     "reviews": 9,
     "mps_score": 5.0,
-    "fee_range": "N/A (Contact Clinic)",
+    "fee_range": "₹500 / session (Website Published)",
     "specialization": "Pure Physiotherapy & Rehabilitation Practice",
     "top_praise": "N/A",
     "top_complaint": "N/A",
@@ -1797,7 +2094,10 @@
     "source": "Official Google Places API",
     "lat": 12.9803,
     "lng": 77.7081,
-    "distance_km": 5.08
+    "distance_km": 5.08,
+    "phone": "080 4628 6473",
+    "website": "https://www.apollo247.com/doctors/5968804a-83e5-4856-88bd-e2b8171b11a2?utm_source=EP_GMB&utm_medium=EP_GMB_organic&utm_campaign=EP_GMBpost",
+    "opening_hours": "Monday: 6:30 AM – 11:00 PM"
   },
   {
     "name": "Last Hope Home care Physiotherapy",
