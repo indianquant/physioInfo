@@ -21,6 +21,20 @@ let appState = {
   ]
 };
 
+// Helper: Safe UTF-8 to Base64 encoding for GitHub API (prevents btoa crash)
+function utf8_to_b64(str) {
+  const bytes = new TextEncoder().encode(str);
+  const binString = Array.from(bytes, (byte) => String.fromCharCode(byte)).join("");
+  return window.btoa(binString);
+}
+
+// Helper: Safe Base64 to UTF-8 decoding
+function b64_to_utf8(str) {
+  const binString = window.atob(str);
+  const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0));
+  return new TextDecoder().decode(bytes);
+}
+
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
   updateTokenUI();
@@ -50,7 +64,6 @@ function calculateROI() {
   const fee = parseFloat(document.getElementById('calcFee').value) || 500;
   const patientsPerDay = parseFloat(document.getElementById('calcPatients').value) || 5;
 
-  // Rent & Security Deposit Norms in BLR
   let rent = 35000;
   let depositMonths = 6;
   if (locality === 'premium') { rent = 60000; depositMonths = 8; }
@@ -58,31 +71,25 @@ function calculateROI() {
 
   const upfrontDeposit = rent * depositMonths;
 
-  // Equipment Cost
   let equipCost = 450000;
   if (equipTier === 'basic') equipCost = 250000;
   else if (equipTier === 'advanced') equipCost = 1000000;
 
-  // Interiors & Licensing
   const interiorCost = 150000 + (beds * 30000);
   const licensingCost = 50000;
   const workingCapitalBuffer = rent * 4;
 
   const totalUpfront = upfrontDeposit + equipCost + interiorCost + licensingCost + workingCapitalBuffer;
-
-  // Monthly Financials (Assuming 25 Working Days per Month)
   const grossMonthlyRevenue = fee * patientsPerDay * 25;
-  const fixedExpenses = rent + 12000 + (beds * 5000); // Rent + Utilities + Consumables
+  const fixedExpenses = rent + 12000 + (beds * 5000);
   const netMonthlyProfit = grossMonthlyRevenue - fixedExpenses;
 
-  // Payback Period
   let paybackMonths = "N/A (Operating at Loss)";
   if (netMonthlyProfit > 0) {
     const months = Math.ceil(totalUpfront / netMonthlyProfit);
     paybackMonths = `${months} Months (${(months / 12).toFixed(1)} Years)`;
   }
 
-  // Update UI Metrics
   document.getElementById('resUpfront').innerText = `₹${totalUpfront.toLocaleString('en-IN')}`;
   document.getElementById('resRevenue').innerText = `₹${grossMonthlyRevenue.toLocaleString('en-IN')}/mo`;
   document.getElementById('resExpenses').innerText = `₹${fixedExpenses.toLocaleString('en-IN')}/mo`;
@@ -111,11 +118,15 @@ function renderChecklist() {
 
     const div = document.createElement('div');
     div.className = `checklist-item ${item.completed ? 'done' : ''}`;
-    div.onclick = () => toggleChecklistItem(item.id);
 
     div.innerHTML = `
-      <div class="checkbox"><i class="fa-solid fa-check"></i></div>
-      <div class="item-text">${item.text}</div>
+      <div class="checkbox" onclick="toggleChecklistItem(${item.id})">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <div class="item-text" onclick="toggleChecklistItem(${item.id})">${item.text}</div>
+      <button class="btn-delete" title="Cut / Delete Task" onclick="deleteChecklistItem(event, ${item.id})">
+        <i class="fa-solid fa-trash-can"></i>
+      </button>
     `;
 
     container.appendChild(div);
@@ -138,6 +149,51 @@ function toggleChecklistItem(id) {
 
   renderChecklist();
   saveData();
+}
+
+// Delete ("Cut") Checklist Item
+function deleteChecklistItem(event, id) {
+  event.stopPropagation();
+  appState.checklist = appState.checklist.filter(item => item.id !== id);
+  renderChecklist();
+  saveData();
+}
+
+// Add New Checklist Item
+function addChecklistItem() {
+  const input = document.getElementById('newTaskInput');
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text) return;
+
+  const newItem = {
+    id: Date.now(),
+    text: text,
+    completed: false
+  };
+
+  appState.checklist.push(newItem);
+  input.value = '';
+  renderChecklist();
+  saveData();
+}
+
+// Search Filter
+function handleSearch(query) {
+  const q = query.toLowerCase().trim();
+  if (!q) {
+    document.querySelectorAll('.story-card, .timeline-step, .challenge-card').forEach(el => el.style.display = '');
+    return;
+  }
+
+  document.querySelectorAll('.story-card, .timeline-step, .challenge-card').forEach(el => {
+    const text = el.innerText.toLowerCase();
+    if (text.includes(q)) {
+      el.style.display = '';
+    } else {
+      el.style.display = 'none';
+    }
+  });
 }
 
 // Modal Token Management
@@ -170,33 +226,62 @@ function updateTokenUI() {
   }
 }
 
+function showStatusMessage(msg, isError = false) {
+  const statusElem = document.getElementById('syncStatus');
+  if (statusElem) {
+    statusElem.innerText = msg;
+    statusElem.className = isError ? 'sync-status text-danger' : 'sync-status text-accent';
+    setTimeout(() => {
+      statusElem.innerText = '';
+    }, 4000);
+  }
+}
+
 // Data Persistence (GitHub REST API Read & Write)
 async function loadData() {
+  // First load from localStorage for instant response
+  const localSaved = localStorage.getItem('physio_checklist_state');
+  if (localSaved) {
+    try {
+      appState.checklist = JSON.parse(localSaved);
+      renderChecklist();
+    } catch (e) {}
+  }
+
+  // Then fetch latest data from GitHub
   try {
     const response = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${FILE_PATH}?v=${Date.now()}`);
     if (response.ok) {
       const data = await response.json();
-      if (data && data.checklist) {
+      if (data && Array.isArray(data.checklist)) {
         appState.checklist = data.checklist;
+        localStorage.setItem('physio_checklist_state', JSON.stringify(appState.checklist));
+        renderChecklist();
       }
     }
   } catch (err) {
-    console.warn('Could not fetch data.json from GitHub, using default local state.', err);
-  } finally {
-    renderChecklist();
+    console.warn('Using local state.', err);
   }
 }
 
 async function saveData() {
+  // Save to localStorage immediately
   localStorage.setItem('physio_checklist_state', JSON.stringify(appState.checklist));
 
   if (!appState.token) {
+    showStatusMessage('Saved locally ✓');
     return;
   }
 
+  showStatusMessage('Syncing to GitHub...');
+
   try {
+    // Get file SHA
     const getFileRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
-      headers: { 'Authorization': `token ${appState.token}` }
+      headers: { 
+        'Authorization': `Bearer ${appState.token}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
     });
 
     let sha = '';
@@ -205,24 +290,36 @@ async function saveData() {
       sha = fileData.sha;
     }
 
+    const payloadStr = JSON.stringify({
+      lastUpdated: new Date().toISOString(),
+      checklist: appState.checklist
+    }, null, 2);
+
     const payload = {
       message: 'Update checklist state via PhysioLaunch BLR Web App',
-      content: btoa(JSON.stringify({
-        lastUpdated: new Date().toISOString(),
-        checklist: appState.checklist
-      }, null, 2)),
+      content: utf8_to_b64(payloadStr),
       sha: sha || undefined
     };
 
-    await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+    const putRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
       method: 'PUT',
       headers: {
-        'Authorization': `token ${appState.token}`,
-        'Content-Type': 'application/json'
+        'Authorization': `Bearer ${appState.token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json'
       },
       body: JSON.stringify(payload)
     });
+
+    if (putRes.ok) {
+      showStatusMessage('Synced to GitHub ✓');
+    } else {
+      const errText = await putRes.text();
+      console.error('GitHub API error:', errText);
+      showStatusMessage('GitHub sync failed (check token)', true);
+    }
   } catch (err) {
     console.error('Error saving to GitHub API:', err);
+    showStatusMessage('Saved locally ✓ (GitHub offline)');
   }
 }

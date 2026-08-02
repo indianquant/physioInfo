@@ -29,6 +29,7 @@
     </div>
 
     <div class="nav-actions">
+      <span id="syncStatus" class="sync-status"></span>
       <button class="btn btn-token" onclick="openTokenModal()">
         <i class="fa-solid fa-key"></i> <span id="tokenBtnText">Set Sync Token</span>
       </button>
@@ -549,11 +550,16 @@
       <section id="section-checklist" class="content-section">
         <div class="section-header">
           <h2><i class="fa-solid fa-list-check text-accent"></i> Founder's Interactive Checklist</h2>
-          <p class="section-lead">Track your clinic launch progress. State syncs automatically if GitHub Token is set!</p>
+          <p class="section-lead">Manage your clinic launch tasks. You can check off, cut/delete, or add new tasks!</p>
         </div>
 
         <div class="card">
-          <div class="checklist-header">
+          <div class="add-task-row">
+            <input type="text" id="newTaskInput" placeholder="Add a custom task milestone..." onkeydown="if(event.key==='Enter') addChecklistItem()">
+            <button class="btn btn-primary" onclick="addChecklistItem()"><i class="fa-solid fa-plus"></i> Add Task</button>
+          </div>
+
+          <div class="checklist-header mt-4">
             <h3><i class="fa-solid fa-tasks"></i> Operational Milestones</h3>
             <span class="checklist-progress" id="checkProgress">0 of 8 completed</span>
           </div>
