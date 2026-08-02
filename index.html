@@ -133,13 +133,16 @@
           <div class="card">
             <h3><i class="fa-solid fa-map-location-dot text-accent"></i> Prime Bengaluru Locality Insights</h3>
             <div class="locality-chips">
+              <span class="chip chip-purple">Panathur / Sobha Neopolis Hub (High Techie Catchment)</span>
               <span class="chip chip-green">HSR Layout (High IT Demand / High Rent)</span>
               <span class="chip chip-green">Indiranagar (Premium Pricing / High Competition)</span>
               <span class="chip chip-blue">Koramangala (High Footfall)</span>
               <span class="chip chip-purple">JP Nagar / Jayanagar (Geriatric Base)</span>
               <span class="chip chip-orange">Whitefield / ORR (Corporate Workstations)</span>
             </div>
-            <p class="text-muted mt-3">Bengaluru commercial real estate demands 6 to 10 months' rent upfront as security deposit. Ensure adequate working capital before signing leases.</p>
+            <div class="callout callout-info mt-3">
+              <strong>Sobha Neopolis & Panathur Corridor Note:</strong> Panathur Road has 1,000s of tech families in high-density townships (Sobha Neopolis, Sobha Dream Acres). Severe traffic bottlenecks on Panathur Railway Underpass make hyper-local clinics and community home-visits extremely high in demand!
+            </div>
           </div>
         </div>
       </section>
@@ -409,6 +412,14 @@
               </tr>
             </thead>
             <tbody>
+              <tr class="highlighted-row">
+                <td><strong>Panathur / Varthur (Sobha Neopolis Hub)</strong></td>
+                <td>Fostr Healthcare, Revive Physio, Core Health, Omniphysiocare</td>
+                <td>60 – 280+ Reviews</td>
+                <td>₹500 – ₹1,000</td>
+                <td>Medium (High Gated Township Demand)</td>
+                <td><span class="mark">13.8 / 15.0</span> (Highest Catchment Opportunity)</td>
+              </tr>
               <tr>
                 <td><strong>HSR Layout</strong></td>
                 <td>Quantum Physio, Balance Plus, Physio;Fit</td>
@@ -452,7 +463,7 @@
             </tbody>
           </table>
         </div>
-        <p class="ref-link mt-3"><a href="https://practo.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Sources: Practo Directory Listings & Justdial Bengaluru Urban Data</a></p>
+        <p class="ref-link mt-3"><a href="https://practo.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Sources: Practo Directory Listings, Fostr Healthcare, Revive Physio, Justdial BLR</a></p>
       </section>
 
       <!-- Section: Reddit Stories -->
@@ -608,8 +619,9 @@
             <div class="form-group">
               <label>Locality Tier in Bengaluru:</label>
               <select id="calcLocality" onchange="calculateROI()">
+                <option value="panathur" selected>Panathur / East BLR (Sobha Neopolis Hub) - Rent ₹40k, Deposit 6 mos</option>
                 <option value="premium">Prime Hub (HSR Layout, Indiranagar, Koramangala) - Rent ₹60k, Deposit 8 mos</option>
-                <option value="standard" selected>Mid-Tier (JP Nagar, Banashankari, Sahakarnagar) - Rent ₹35k, Deposit 6 mos</option>
+                <option value="standard">Mid-Tier (JP Nagar, Banashankari, Sahakarnagar) - Rent ₹35k, Deposit 6 mos</option>
                 <option value="budget">Outer / Residential (Electronic City, Yelahanka) - Rent ₹22k, Deposit 5 mos</option>
               </select>
             </div>
@@ -630,7 +642,7 @@
 
             <div class="form-group">
               <label>Consultation Fee Per Session (₹):</label>
-              <input type="number" id="calcFee" value="700" step="50" onchange="calculateROI()">
+              <input type="number" id="calcFee" value="750" step="50" onchange="calculateROI()">
             </div>
 
             <div class="form-group">

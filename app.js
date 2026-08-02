@@ -61,12 +61,13 @@ function calculateROI() {
   const locality = document.getElementById('calcLocality').value;
   const beds = parseInt(document.getElementById('calcBeds').value) || 1;
   const equipTier = document.getElementById('calcEquip').value;
-  const fee = parseFloat(document.getElementById('calcFee').value) || 500;
-  const patientsPerDay = parseFloat(document.getElementById('calcPatients').value) || 5;
+  const fee = parseFloat(document.getElementById('calcFee').value) || 750;
+  const patientsPerDay = parseFloat(document.getElementById('calcPatients').value) || 8;
 
   let rent = 35000;
   let depositMonths = 6;
-  if (locality === 'premium') { rent = 60000; depositMonths = 8; }
+  if (locality === 'panathur') { rent = 40000; depositMonths = 6; }
+  else if (locality === 'premium') { rent = 60000; depositMonths = 8; }
   else if (locality === 'budget') { rent = 22000; depositMonths = 5; }
 
   const upfrontDeposit = rent * depositMonths;
@@ -178,24 +179,6 @@ function addChecklistItem() {
   saveData();
 }
 
-// Search Filter
-function handleSearch(query) {
-  const q = query.toLowerCase().trim();
-  if (!q) {
-    document.querySelectorAll('.story-card, .timeline-step, .challenge-card').forEach(el => el.style.display = '');
-    return;
-  }
-
-  document.querySelectorAll('.story-card, .timeline-step, .challenge-card').forEach(el => {
-    const text = el.innerText.toLowerCase();
-    if (text.includes(q)) {
-      el.style.display = '';
-    } else {
-      el.style.display = 'none';
-    }
-  });
-}
-
 // Modal Token Management
 function openTokenModal() {
   document.getElementById('tokenInput').value = appState.token;
@@ -239,7 +222,6 @@ function showStatusMessage(msg, isError = false) {
 
 // Data Persistence (GitHub REST API Read & Write)
 async function loadData() {
-  // First load from localStorage for instant response
   const localSaved = localStorage.getItem('physio_checklist_state');
   if (localSaved) {
     try {
@@ -248,7 +230,6 @@ async function loadData() {
     } catch (e) {}
   }
 
-  // Then fetch latest data from GitHub
   try {
     const response = await fetch(`https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${FILE_PATH}?v=${Date.now()}`);
     if (response.ok) {
@@ -265,7 +246,6 @@ async function loadData() {
 }
 
 async function saveData() {
-  // Save to localStorage immediately
   localStorage.setItem('physio_checklist_state', JSON.stringify(appState.checklist));
 
   if (!appState.token) {
@@ -276,7 +256,6 @@ async function saveData() {
   showStatusMessage('Syncing to GitHub...');
 
   try {
-    // Get file SHA
     const getFileRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
       headers: { 
         'Authorization': `Bearer ${appState.token}`,
@@ -314,12 +293,9 @@ async function saveData() {
     if (putRes.ok) {
       showStatusMessage('Synced to GitHub ✓');
     } else {
-      const errText = await putRes.text();
-      console.error('GitHub API error:', errText);
-      showStatusMessage('GitHub sync failed (check token)', true);
+      showStatusMessage('GitHub sync failed', true);
     }
   } catch (err) {
-    console.error('Error saving to GitHub API:', err);
-    showStatusMessage('Saved locally ✓ (GitHub offline)');
+    showStatusMessage('Saved locally ✓');
   }
 }
