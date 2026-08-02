@@ -83,6 +83,51 @@ a:hover {
 .mt-6 { margin-top: 1.5rem; }
 .mb-6 { margin-bottom: 1.5rem; }
 
+/* Database Explorer Controls */
+.db-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-box-db {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  flex: 1;
+  min-width: 240px;
+}
+
+.search-box-db input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.filter-box {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-box select {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  outline: none;
+}
+
 /* Highlight Marker */
 .mark {
   background: rgba(16, 185, 129, 0.2);

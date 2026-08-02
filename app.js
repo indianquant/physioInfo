@@ -18,7 +18,8 @@ let appState = {
     { id: 6, text: "Procure Essential Modalities (TENS, IFT, Ultrasound, Rehab Gear)", completed: false },
     { id: 7, text: "Setup & Verify Google My Business Profile (Direct-to-Consumer Local SEO)", completed: false },
     { id: 8, text: "Secure 6-Month Working Capital Cushion for Rent & Payroll", completed: false }
-  ]
+  ],
+  clinicDatabase: []
 };
 
 // Helper: Safe UTF-8 to Base64 encoding for GitHub API (prevents btoa crash)
@@ -28,18 +29,12 @@ function utf8_to_b64(str) {
   return window.btoa(binString);
 }
 
-// Helper: Safe Base64 to UTF-8 decoding
-function b64_to_utf8(str) {
-  const binString = window.atob(str);
-  const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0));
-  return new TextDecoder().decode(bytes);
-}
-
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
   updateTokenUI();
   calculateROI();
   loadData();
+  loadClinicDatabase();
   handleHashNavigation();
 });
 
@@ -73,7 +68,6 @@ function switchTab(sectionId, element, updateHash = true) {
   if (element) {
     element.classList.add('active');
   } else {
-    // Find matching nav button by sectionId
     const matchBtn = document.querySelector(`.nav-item[onclick*="${sectionId}"]`);
     if (matchBtn) matchBtn.classList.add('active');
   }
@@ -92,6 +86,80 @@ function copySectionLink(hashName) {
   }).catch(() => {
     showStatusMessage(`Direct link: #${hashName}`);
   });
+}
+
+// Load Clinic Database JSON
+async function loadClinicDatabase() {
+  try {
+    const res = await fetch('bengaluru_physio_clinics.json');
+    if (res.ok) {
+      appState.clinicDatabase = await res.json();
+      renderClinicDatabase();
+    }
+  } catch (err) {
+    console.warn('Could not load bengaluru_physio_clinics.json', err);
+  }
+}
+
+function renderClinicDatabase() {
+  const tbody = document.getElementById('clinicTableBody');
+  if (!tbody) return;
+
+  const locFilter = document.getElementById('dbLocalityFilter')?.value || 'ALL';
+  const sortFilter = document.getElementById('dbSortFilter')?.value || 'reviews-desc';
+  const searchInput = (document.getElementById('dbSearchInput')?.value || '').toLowerCase().trim();
+
+  let list = [...appState.clinicDatabase];
+
+  // Filter Locality
+  if (locFilter !== 'ALL') {
+    list = list.filter(c => c.locality.toLowerCase().includes(locFilter.toLowerCase()));
+  }
+
+  // Filter Search Input
+  if (searchInput) {
+    list = list.filter(c => 
+      c.name.toLowerCase().includes(searchInput) || 
+      c.locality.toLowerCase().includes(searchInput) || 
+      c.address.toLowerCase().includes(searchInput)
+    );
+  }
+
+  // Sort
+  list.sort((a, b) => {
+    if (sortFilter === 'reviews-desc') return (b.reviews || 0) - (a.reviews || 0);
+    if (sortFilter === 'rating-desc') return (b.rating || 0) - (a.rating || 0);
+    if (sortFilter === 'mps-desc') return (b.mps_score || 0) - (a.mps_score || 0);
+    return 0;
+  });
+
+  tbody.innerHTML = '';
+
+  if (list.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted" style="padding: 20px;">No clinics matching filter criteria.</td></tr>`;
+    return;
+  }
+
+  list.forEach(c => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><strong>${c.name}</strong><br><small class="text-muted">${c.address}</small></td>
+      <td><span class="chip chip-blue">${c.locality}</span></td>
+      <td><i class="fa-solid fa-star text-warning"></i> <strong>${c.rating}</strong></td>
+      <td><strong>${c.reviews}</strong> reviews</td>
+      <td><span class="mark">${c.mps_score || '-'}</span></td>
+      <td>
+        <a href="${c.google_maps_url}" target="_blank" class="btn btn-token" style="padding: 4px 8px; font-size: 0.75rem;">
+          <i class="fa-solid fa-map-pin"></i> View Map
+        </a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function filterClinicDatabase() {
+  renderClinicDatabase();
 }
 
 // Interactive ROI Calculator Logic

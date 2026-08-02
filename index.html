@@ -42,7 +42,7 @@
   <!-- Main Container with Sidebar + Content -->
   <div class="app-layout">
     
-    <!-- Sidebar Navigation with Native Anchor Hrefs -->
+    <!-- Sidebar Navigation -->
     <aside class="sidebar">
       <div class="sidebar-section-title">GUIDE DIRECTORY</div>
       <nav class="nav-menu">
@@ -63,6 +63,9 @@
         </a>
         <a href="#mapdata" class="nav-item" onclick="switchTab('section-mapdata', this)">
           <i class="fa-solid fa-map-location-dot"></i> BLR Urban Area Data
+        </a>
+        <a href="#database" class="nav-item" onclick="switchTab('section-database', this)">
+          <i class="fa-solid fa-database"></i> Live Clinic Database
         </a>
         <a href="#reddit" class="nav-item" onclick="switchTab('section-reddit', this)">
           <i class="fa-brands fa-reddit-alien"></i> Reddit Stories & Insights
@@ -485,6 +488,68 @@
           </table>
         </div>
         <p class="ref-link mt-3"><a href="https://practo.com" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Sources: Practo Directory Listings, Fostr Healthcare, Revive Physio, Justdial BLR</a></p>
+      </section>
+
+      <!-- Section: Live Clinic Database Explorer -->
+      <section id="section-database" class="content-section">
+        <div class="section-header">
+          <div class="section-header-flex">
+            <h2><i class="fa-solid fa-database text-accent"></i> Bengaluru Clinic Scraped Database Explorer</h2>
+            <button class="btn-copy-link" onclick="copySectionLink('database')" title="Copy Direct Link"><i class="fa-solid fa-link"></i> Copy Link</button>
+          </div>
+          <p class="section-lead">Systematically fetched clinic entries across 30+ sub-localities in Bengaluru Urban (Panathur, HSR, Indiranagar, Jayanagar, etc.).</p>
+        </div>
+
+        <div class="card">
+          <div class="db-controls">
+            <div class="search-box-db">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="dbSearchInput" placeholder="Filter clinics by name or keyword..." oninput="filterClinicDatabase()">
+            </div>
+            <div class="filter-box">
+              <select id="dbLocalityFilter" onchange="filterClinicDatabase()">
+                <option value="ALL">All Sub-Localities</option>
+                <option value="Panathur">Panathur / Sobha Neopolis</option>
+                <option value="HSR Layout">HSR Layout</option>
+                <option value="Indiranagar">Indiranagar</option>
+                <option value="Jayanagar">Jayanagar</option>
+                <option value="Koramangala">Koramangala</option>
+                <option value="Whitefield">Whitefield</option>
+                <option value="JP Nagar">JP Nagar</option>
+                <option value="Electronic City Phase 1">Electronic City</option>
+              </select>
+              <select id="dbSortFilter" onchange="filterClinicDatabase()">
+                <option value="reviews-desc">Sort by Review Count (Highest)</option>
+                <option value="rating-desc">Sort by Rating (Highest)</option>
+                <option value="mps-desc">Sort by Market Score (MPS)</option>
+              </select>
+            </div>
+            <a href="bengaluru_physio_clinics.csv" download class="btn btn-primary"><i class="fa-solid fa-download"></i> Export CSV</a>
+          </div>
+
+          <div class="table-container mt-4">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Clinic Name</th>
+                  <th>Locality</th>
+                  <th>Rating</th>
+                  <th>Reviews</th>
+                  <th>Market Score (MPS)</th>
+                  <th>Map Action</th>
+                </tr>
+              </thead>
+              <tbody id="clinicTableBody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-info mt-4">
+            <strong>How to run full Google Places API Scraper:</strong>
+            <code>python3 fetch_blr_physio_clinics.py</code> with <code>GOOGLE_MAPS_API_KEY</code> set in your shell environment to continuously pull live Google Maps Place IDs and review counts.
+          </div>
+        </div>
       </section>
 
       <!-- Section: Reddit Stories -->

@@ -1,0 +1,232 @@
+[
+  {
+    "name": "Attitude Prime Physio (Dr. Gladson)",
+    "locality": "Jayanagar",
+    "rating": 4.9,
+    "reviews": 840,
+    "address": "4th Block, Jayanagar, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Attitude+Prime+Jayanagar+Bengaluru",
+    "mps_score": 14.33,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Spectrum Physio Main Center",
+    "locality": "Jayanagar",
+    "rating": 4.8,
+    "reviews": 720,
+    "address": "9th Block, Jayanagar, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Spectrum+Physio+Jayanagar+Bengaluru",
+    "mps_score": 13.72,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Quantum Physiotherapy Clinic",
+    "locality": "HSR Layout",
+    "rating": 4.9,
+    "reviews": 650,
+    "address": "Sector 1, HSR Layout, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Quantum+Physiotherapy+HSR+Layout+Bengaluru",
+    "mps_score": 13.79,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Physio Be Fit",
+    "locality": "Indiranagar",
+    "rating": 4.9,
+    "reviews": 620,
+    "address": "Double Road, Indiranagar, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Physio+Be+Fit+Indiranagar+Bengaluru",
+    "mps_score": 13.69,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Physionext Clinic",
+    "locality": "Indiranagar",
+    "rating": 4.8,
+    "reviews": 510,
+    "address": "100 Feet Rd, Indiranagar, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Physionext+Indiranagar+Bengaluru",
+    "mps_score": 13.0,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "STAIRS Physiotherapy & Fitness",
+    "locality": "Koramangala",
+    "rating": 4.9,
+    "reviews": 460,
+    "address": "80 Feet Road, 8th Block, Koramangala, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/STAIRS+Physiotherapy+Koramangala+Bengaluru",
+    "mps_score": 13.05,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Balance Plus Physiotherapy",
+    "locality": "HSR Layout",
+    "rating": 4.8,
+    "reviews": 420,
+    "address": "27th Main Rd, Sector 2, HSR Layout, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Balance+Plus+Physiotherapy+HSR+Layout+Bengaluru",
+    "mps_score": 12.6,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Sanjeevini Rehab Clinic",
+    "locality": "Rajajinagar",
+    "rating": 4.8,
+    "reviews": 410,
+    "address": "Dr Rajkumar Rd, Rajajinagar, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Sanjeevini+Rehab+Rajajinagar+Bengaluru",
+    "mps_score": 12.55,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Prajna Physio & Wellness",
+    "locality": "Banashankari",
+    "rating": 4.8,
+    "reviews": 390,
+    "address": "3rd Stage, Banashankari, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Prajna+Physio+Banashankari+Bengaluru",
+    "mps_score": 12.44,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "ReLiva Physiotherapy & Rehab",
+    "locality": "Indiranagar",
+    "rating": 4.7,
+    "reviews": 380,
+    "address": "12th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/ReLiva+Physiotherapy+Indiranagar+Bengaluru",
+    "mps_score": 12.13,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "HealthQ Rehab Clinic",
+    "locality": "Whitefield",
+    "rating": 4.8,
+    "reviews": 350,
+    "address": "Whitefield Main Rd, Near Forum Value Mall, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/HealthQ+Rehab+Whitefield+Bengaluru",
+    "mps_score": 12.22,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Active Life Physio Clinic",
+    "locality": "JP Nagar",
+    "rating": 4.7,
+    "reviews": 340,
+    "address": "6th Phase, JP Nagar, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Active+Life+Physio+JP+Nagar+Bengaluru",
+    "mps_score": 11.9,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Core Health Physio",
+    "locality": "Doddakannehalli",
+    "rating": 4.9,
+    "reviews": 310,
+    "address": "Doddakannehalli Main Rd, Near New Horizon Gurukul, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Core+Health+Physio+Doddakannehalli+Bengaluru",
+    "mps_score": 12.21,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Apex Sports Rehab",
+    "locality": "Koramangala",
+    "rating": 4.7,
+    "reviews": 310,
+    "address": "5th Block, Koramangala, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Apex+Sports+Rehab+Koramangala+Bengaluru",
+    "mps_score": 11.72,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Physio;Fit Rehab Center",
+    "locality": "HSR Layout",
+    "rating": 4.7,
+    "reviews": 290,
+    "address": "19th Main Rd, Sector 4, HSR Layout, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/PhysioFit+HSR+Layout+Bengaluru",
+    "mps_score": 11.58,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Physiobic Home Visit Hub",
+    "locality": "Marathahalli",
+    "rating": 4.9,
+    "reviews": 290,
+    "address": "Marathahalli-Sarjapur Outer Ring Rd, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Physiobic+Marathahalli+Bengaluru",
+    "mps_score": 12.07,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Northside Physio & Sports Care",
+    "locality": "Hebbal",
+    "rating": 4.7,
+    "reviews": 270,
+    "address": "Bellary Road, Hebbal, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Northside+Physio+Hebbal+Bengaluru",
+    "mps_score": 11.43,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Fostr Healthcare & Diagnostics",
+    "locality": "Panathur",
+    "rating": 4.8,
+    "reviews": 240,
+    "address": "Panathur Main Road, Near Railway Underpass, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Fostr+Healthcare+Panathur+Bengaluru",
+    "mps_score": 11.43,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "V-Cure Physiotherapy",
+    "locality": "Electronic City Phase 1",
+    "rating": 4.6,
+    "reviews": 220,
+    "address": "Velankani Tech Park Zone, Electronic City, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/V-Cure+Physiotherapy+Electronic+City+Bengaluru",
+    "mps_score": 10.78,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Healing Hands Physio",
+    "locality": "Kadubeesanahalli",
+    "rating": 4.7,
+    "reviews": 210,
+    "address": "Near Cessna Business Park, Kadubeesanahalli, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Healing+Hands+Physio+Kadubeesanahalli+Bengaluru",
+    "mps_score": 10.92,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Dr. Anurag Physiotherapy",
+    "locality": "Varthur",
+    "rating": 4.8,
+    "reviews": 190,
+    "address": "Varthur Main Road, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Dr+Anurag+Physiotherapy+Varthur+Bengaluru",
+    "mps_score": 10.95,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Revive Physiotherapy & Rehabilitation Clinic",
+    "locality": "Panathur",
+    "rating": 4.7,
+    "reviews": 185,
+    "address": "AMP Towers, Panathur Main Road, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Revive+Physiotherapy+Panathur+Bengaluru",
+    "mps_score": 10.67,
+    "source": "Bengaluru Directory & Map Analysis"
+  },
+  {
+    "name": "Omniphysiocare East Hub",
+    "locality": "Varthur",
+    "rating": 4.6,
+    "reviews": 140,
+    "address": "Varthur Main Road, Balagere Precinct, Bengaluru",
+    "google_maps_url": "https://www.google.com/maps/search/Omniphysiocare+Varthur+Bengaluru",
+    "mps_score": 9.89,
+    "source": "Bengaluru Directory & Map Analysis"
+  }
+]
