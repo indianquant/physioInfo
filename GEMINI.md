@@ -17,6 +17,7 @@
 ### 3. DEMO MOCKUP ACCURACY & MANDATORY SECTIONS
 - Any clinic demo website built (e.g., `drpooja/`, `corpergo/`, `govardhan/`) must strictly reflect the clinic's real doctor credentials, actual address, real phone number, real review count, and real patient feedback themes.
 - **Mandatory Map Section**: Every website built MUST include an exact Google Maps embedded iframe (`.map-strip`) with the clinic's exact lat/lng and an overlay card with a direct "Get Directions" link pointing to the clinic's Google Maps place page.
+- **Mandatory Agency Contact Banner**: Every demo website MUST feature a top `.demo-banner` linking interested prospects to the founder via WhatsApp (`+91-8770855796` / `https://wa.me/918770855796`) and Email (`quantindian@gmail.com`).
 
 ### 4. PERSISTENCE & DEPLOYMENT
 - All fixes, updates, and demo sites must be committed to git and pushed to GitHub Pages.

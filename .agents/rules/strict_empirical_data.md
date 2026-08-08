@@ -37,7 +37,13 @@
      2. The phone number is formatted as a valid 10-digit Indian mobile number (`+91 XXXXX XXXXX`) capable of receiving WhatsApp messages (exclude landlines without WhatsApp capability).
      3. Cross-check against multi-branch listings to ensure the phone number belongs to the specific target location.
 
-8. **Outreach & Pitches**
+8. **Mandatory Agency Demo Banner Contact Rule**
+   - Every demo mockup website MUST include a top sticky `.demo-banner` specifying that it is a free preview mockup built for the target clinic.
+   - The banner link MUST direct interested clients/visitors to the agency founder:
+     - **WhatsApp:** `+91-8770855796` (`https://wa.me/918770855796`)
+     - **Email:** `quantindian@gmail.com`
+
+9. **Outreach & Pitches**
    - All pitch templates and live mockup demos must cite verified empirical data (exact address, real phone number, actual review count, real rating).
 
 ---
