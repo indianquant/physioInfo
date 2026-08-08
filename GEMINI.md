@@ -12,6 +12,7 @@
 
 ### 2. MANDATORY LEAD PRE-QUALIFICATION VERIFICATION
 - **Double-Check Website Absence**: Before selecting ANY lead to target or build a mockup for, perform a deep web search (`"[Clinic Name]" + website`) to verify they do NOT already own a standalone `.com`/`.in` website on the internet. Skip any lead that already owns a website.
+- **Mandatory Phone Number & WhatsApp Verification**: Before suggesting a phone number to send a WhatsApp pitch to, verify that the number is empirically sourced from GMB/Practo/Apollo247/Justdial listings, is a valid 10-digit Indian mobile number (`+91 XXXXX XXXXX`), and belongs specifically to the target clinic location.
 
 ### 3. DEMO MOCKUP ACCURACY & MANDATORY SECTIONS
 - Any clinic demo website built (e.g., `drpooja/`, `corpergo/`, `govardhan/`) must strictly reflect the clinic's real doctor credentials, actual address, real phone number, real review count, and real patient feedback themes.

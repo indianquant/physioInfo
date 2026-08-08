@@ -31,7 +31,13 @@
    - Run search queries: `"[Clinic Name]" + official website` or check WHOIS / GMB dataset fields.
    - If a clinic already owns a standalone `.com` / `.in` domain, SKIP them immediately and pick a verified 100% website-less target.
 
-7. **Outreach & Pitches**
+7. **Mandatory Phone Number & WhatsApp Compatibility Verification Protocol**
+   - BEFORE suggesting any phone number to the user to send a WhatsApp message, you MUST explicitly verify that:
+     1. The phone number is empirically sourced from verified public listings (GMB, Practo, Apollo247, Justdial, Facebook page).
+     2. The phone number is formatted as a valid 10-digit Indian mobile number (`+91 XXXXX XXXXX`) capable of receiving WhatsApp messages (exclude landlines without WhatsApp capability).
+     3. Cross-check against multi-branch listings to ensure the phone number belongs to the specific target location.
+
+8. **Outreach & Pitches**
    - All pitch templates and live mockup demos must cite verified empirical data (exact address, real phone number, actual review count, real rating).
 
 ---
@@ -40,5 +46,6 @@
 
 Before generating any clinic website, proposal, pitch script, or guide update:
 1. **Query the local dataset & verify NO website exists** for the target lead.
-2. **Run targeted web/WHOIS/GMB verification** if data is missing or incomplete.
-3. **Inject only verified empirical facts** into the HTML, CSS, JS, or Markdown artifacts.
+2. **Verify target phone number & WhatsApp formatting** from public listings.
+3. **Run targeted web/WHOIS/GMB verification** if data is missing or incomplete.
+4. **Inject only verified empirical facts** into the HTML, CSS, JS, or Markdown artifacts.
