@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Pooja's Physiotherapy Clinic | Kasavanahalli, Sarjapur Road, Bengaluru</title>
+  <meta name="description" content="Dr. Pooja Sahu (PT) — Bengaluru's most trusted physiotherapy clinic in Kasavanahalli, Sarjapur Road. 4.8★ across 230+ reviews. Musculoskeletal, Sports Rehab, Geriatric & Home Visit services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --teal:      #0d7c6b;
+      --teal-mid:  #10957f;
+      --teal-light:#e6f7f4;
+      --emerald:   #059669;
+      --gold:      #d97706;
+      --gold-light:#fef3c7;
+      --navy:      #0f172a;
+      --slate:     #334155;
+      --muted:     #64748b;
+      --border:    #e2e8f0;
+      --white:     #ffffff;
+      --off-white: #f8fafc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; color: var(--navy); background: var(--white); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 40px; height: 40px; background: var(--teal); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.1rem; font-weight: 800;
+    }
+    .nav-logo-text { font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.2; }
+    .nav-logo-sub { font-size: 0.7rem; color: var(--muted); font-weight: 400; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { text-decoration: none; color: var(--slate); font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal); color: white !important; padding: 10px 22px;
+      border-radius: 8px; font-weight: 600 !important; font-size: 0.85rem !important;
+      transition: all 0.2s ease !important;
+    }
+    .nav-cta:hover { background: var(--teal-mid) !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(13,124,107,0.3); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; position: relative; display: flex; align-items: center;
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #0d7c6b 100%);
+      overflow: hidden; padding-top: 72px;
+    }
+    .hero-bg-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.12; mix-blend-mode: luminosity;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(6,78,59,0.92) 0%, rgba(6,95,70,0.85) 60%, rgba(13,124,107,0.7) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto;
+      padding: 80px 5%; display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      color: #6ee7b7; padding: 6px 16px; border-radius: 30px; font-size: 0.78rem; font-weight: 600;
+      margin-bottom: 20px; backdrop-filter: blur(8px);
+    }
+    .hero-badge i { color: #34d399; }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; color: white; line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .hero h1 span { color: #6ee7b7; }
+    .hero-subtitle { font-family: 'Lora', serif; font-style: italic; color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 20px; }
+    .hero-desc { color: rgba(255,255,255,0.82); font-size: 1rem; line-height: 1.7; max-width: 520px; margin-bottom: 32px; }
+    .hero-stars {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 32px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      padding: 12px 20px; border-radius: 12px; width: fit-content; backdrop-filter: blur(8px);
+    }
+    .hero-stars .star-val { font-size: 1.6rem; font-weight: 800; color: #fbbf24; }
+    .hero-stars .stars i { color: #fbbf24; font-size: 0.9rem; }
+    .hero-stars .star-count { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-hero-primary {
+      background: white; color: var(--teal); padding: 14px 28px; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2); transition: all 0.25s ease;
+    }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
+    .btn-hero-wa {
+      background: #25d366; color: white; padding: 14px 24px; border-radius: 10px;
+      font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .btn-hero-wa:hover { background: #1db954; transform: translateY(-3px); }
+    .hero-img-col { position: relative; }
+    .hero-doctor-card {
+      background: white; border-radius: 24px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .hero-doctor-img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: top; }
+    .hero-doctor-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(6,78,59,0.95) 0%, transparent 100%);
+      padding: 30px 20px 20px;
+    }
+    .hero-doctor-name { color: white; font-size: 1.15rem; font-weight: 700; }
+    .hero-doctor-cred { color: #6ee7b7; font-size: 0.8rem; margin-top: 2px; }
+    .hero-float-badge {
+      position: absolute; top: 20px; right: -12px;
+      background: white; border-radius: 12px; padding: 10px 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15); text-align: center; min-width: 90px;
+    }
+    .hero-float-badge .fb-val { font-size: 1.4rem; font-weight: 800; color: var(--teal); }
+    .hero-float-badge .fb-label { font-size: 0.65rem; color: var(--muted); font-weight: 500; margin-top: 1px; }
+    .hero-scroll { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; }
+    .hero-scroll a { color: rgba(255,255,255,0.5); font-size: 1.3rem; animation: bounce 2s infinite; display: block; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--navy); padding: 22px 5%;
+      display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+    }
+    .tb-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px 40px; border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .tb-item:last-child { border-right: none; }
+    .tb-item i { color: #34d399; font-size: 1.2rem; }
+    .tb-val { color: white; font-size: 1.1rem; font-weight: 700; }
+    .tb-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; margin-top: 1px; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 88px 5%; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block; background: var(--teal-light); color: var(--teal);
+      padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .section-title { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; color: var(--navy); margin-bottom: 14px; line-height: 1.2; }
+    .section-title span { color: var(--teal); }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 560px; line-height: 1.65; }
+    .section-header-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 48px; flex-wrap: wrap; }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--off-white); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .service-card {
+      background: white; border-radius: 18px; padding: 30px;
+      border: 1px solid var(--border); transition: all 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--emerald));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); border-color: var(--teal-light); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 56px; height: 56px; background: var(--teal-light); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); font-size: 1.4rem; margin-bottom: 18px; transition: all 0.3s;
+    }
+    .service-card:hover .service-icon { background: var(--teal); color: white; }
+    .service-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .service-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 16px; }
+    .service-conditions { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sc-tag {
+      background: var(--off-white); border: 1px solid var(--border);
+      color: var(--slate); font-size: 0.7rem; padding: 3px 10px; border-radius: 20px; font-weight: 500;
+    }
+
+    /* ── STATS ── */
+    .stats-section { background: linear-gradient(135deg, #064e3b, #0d7c6b); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .stat-card {
+      background: rgba(255,255,255,0.06); padding: 40px 24px; text-align: center;
+      border: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;
+    }
+    .stat-card:hover { background: rgba(255,255,255,0.1); }
+    .stat-val { font-size: 2.8rem; font-weight: 800; color: white; line-height: 1; }
+    .stat-unit { font-size: 1.4rem; color: #6ee7b7; }
+    .stat-label { color: rgba(255,255,255,0.65); font-size: 0.82rem; margin-top: 8px; }
+
+    /* ── ABOUT ── */
+    .about-section { background: white; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img {
+      width: 100%; border-radius: 24px; object-fit: cover; aspect-ratio: 4/5;
+      object-position: top; box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    }
+    .about-exp-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--teal); color: white; border-radius: 18px; padding: 20px 24px;
+      text-align: center; box-shadow: 0 12px 32px rgba(13,124,107,0.4);
+    }
+    .aeb-val { font-size: 2.2rem; font-weight: 800; }
+    .aeb-label { font-size: 0.75rem; opacity: 0.85; line-height: 1.3; margin-top: 2px; }
+    .about-qual-list { list-style: none; margin: 24px 0; display: flex; flex-direction: column; gap: 10px; }
+    .about-qual-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.88rem; color: var(--slate); line-height: 1.5;
+    }
+    .about-qual-list li i { color: var(--teal); margin-top: 2px; flex-shrink: 0; }
+    .about-certifications { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .cert-chip {
+      background: var(--teal-light); color: var(--teal); border: 1px solid rgba(13,124,107,0.2);
+      padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testi-section { background: var(--off-white); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .testi-card {
+      background: white; border-radius: 18px; padding: 28px;
+      border: 1px solid var(--border); transition: all 0.3s ease;
+      position: relative;
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+    .testi-quote { color: var(--teal-light); font-size: 3rem; line-height: 1; font-family: 'Lora', serif; margin-bottom: -12px; }
+    .testi-text { color: var(--slate); font-size: 0.88rem; line-height: 1.7; margin-bottom: 18px; font-family: 'Lora', serif; font-style: italic; }
+    .testi-footer { display: flex; align-items: center; justify-content: space-between; }
+    .testi-author-name { font-weight: 700; font-size: 0.88rem; color: var(--navy); }
+    .testi-author-detail { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .testi-stars i { color: #fbbf24; font-size: 0.8rem; }
+    .testi-gmb { font-size: 0.7rem; color: var(--muted); margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+    .testi-gmb i { color: #4285f4; }
+
+    /* ── HOW IT WORKS ── */
+    .hiw-section { background: white; }
+    .hiw-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .hiw-steps::before {
+      content: ''; position: absolute; top: 35px; left: 12.5%; right: 12.5%; height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--emerald));
+    }
+    .hiw-step { text-align: center; padding: 0 16px; position: relative; }
+    .hiw-num {
+      width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--teal);
+      background: white; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--teal); font-weight: 800; margin: 0 auto 20px;
+      position: relative; z-index: 1; box-shadow: 0 4px 16px rgba(13,124,107,0.15);
+      transition: all 0.3s;
+    }
+    .hiw-step:hover .hiw-num { background: var(--teal); color: white; transform: scale(1.08); }
+    .hiw-step-title { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 8px; }
+    .hiw-step-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--navy); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info h2 { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 10px; }
+    .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.7; margin-bottom: 30px; }
+    .contact-details { display: flex; flex-direction: column; gap: 16px; }
+    .cd-row { display: flex; align-items: flex-start; gap: 14px; }
+    .cd-icon {
+      width: 40px; height: 40px; background: rgba(255,255,255,0.08); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; color: #34d399; flex-shrink: 0;
+    }
+    .cd-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.06em; }
+    .cd-val { font-size: 0.92rem; color: white; font-weight: 500; margin-top: 2px; }
+    .contact-form { background: white; border-radius: 20px; padding: 36px; }
+    .contact-form h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label { font-size: 0.78rem; font-weight: 600; color: var(--slate); }
+    .form-group input, .form-group select, .form-group textarea {
+      border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px;
+      font-size: 0.88rem; font-family: 'Outfit', sans-serif; color: var(--navy);
+      transition: border-color 0.2s; outline: none; background: var(--off-white);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); background: white; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .btn-submit {
+      width: 100%; background: var(--teal); color: white; border: none; padding: 14px;
+      border-radius: 10px; font-size: 0.95rem; font-weight: 700; cursor: pointer;
+      font-family: 'Outfit', sans-serif; transition: all 0.25s ease; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-submit:hover { background: var(--teal-mid); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(13,124,107,0.3); }
+    .wa-cta-strip {
+      margin-top: 14px; background: #25d366; color: white; border-radius: 10px; padding: 13px;
+      text-align: center; font-weight: 600; font-size: 0.88rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .wa-cta-strip:hover { background: #1da851; }
+
+    /* ── MAP STRIP ── */
+    .map-strip { height: 340px; position: relative; }
+    .map-strip iframe { width: 100%; height: 100%; border: none; }
+    .map-overlay-card {
+      position: absolute; top: 20px; left: 5%; background: white; border-radius: 16px;
+      padding: 18px 22px; box-shadow: 0 12px 40px rgba(0,0,0,0.15); max-width: 280px;
+    }
+    .moc-title { font-weight: 700; font-size: 0.92rem; color: var(--navy); margin-bottom: 4px; }
+    .moc-addr { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .moc-link {
+      margin-top: 10px; display: inline-flex; align-items: center; gap: 6px;
+      color: var(--teal); font-size: 0.8rem; font-weight: 600; text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #020d07; padding: 40px 5%;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-brand { color: white; font-size: 0.95rem; font-weight: 700; }
+    .footer-sub { color: rgba(255,255,255,0.4); font-size: 0.75rem; margin-top: 3px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #34d399; }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5);
+      text-decoration: none; transition: all 0.2s; font-size: 0.9rem;
+    }
+    .social-btn:hover { background: var(--teal); color: white; }
+
+    /* ── FLOATING WA ── */
+    .fab-wa {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+      width: 58px; height: 58px; background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.5rem; text-decoration: none;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+      animation: pulse-wa 2.5s infinite;
+    }
+    @keyframes pulse-wa {
+      0%,100% { box-shadow: 0 8px 24px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 8px 40px rgba(37,211,102,0.8), 0 0 0 12px rgba(37,211,102,0.1); }
+    }
+    .fab-wa:hover { transform: scale(1.1); }
+
+    /* ── DEMO BANNER ── */
+    .demo-banner {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: linear-gradient(90deg, #7c3aed, #4f46e5);
+      color: white; text-align: center; padding: 8px 16px; font-size: 0.8rem; font-weight: 600;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .demo-banner a { color: #c4b5fd; text-decoration: underline; }
+    body { padding-top: 34px; } /* offset for demo banner */
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-img-col { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img-wrap { max-width: 400px; margin: 0 auto; }
+      .about-exp-badge { bottom: -10px; right: -10px; }
+      .hiw-steps { grid-template-columns: repeat(2, 1fr); }
+      .hiw-steps::before { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .tb-item { padding: 8px 20px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); width: 50%; }
+      .trust-bar { flex-wrap: wrap; padding: 0; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .hiw-steps { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .footer-socials { justify-content: center; }
+    }
+
+    /* Animations */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- DEMO BANNER -->
+  <div class="demo-banner">
+    🎨 MOCKUP — This is a free demo built for Dr. Pooja's Physiotherapy Clinic, Kasavanahalli.
+    <a href="tel:+919XXXXXXXXXX">Interested? Call/WhatsApp us</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">Dr<br>P</div>
+      <div>
+        <div class="nav-logo-text">Dr. Pooja's Physio</div>
+        <div class="nav-logo-sub">Kasavanahalli · Sarjapur Road</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="https://wa.me/919004907509" target="_blank" class="nav-cta"><i class="fa-brands fa-whatsapp"></i> Book Appointment</a>
+    </div>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <img src="hero.jpg" alt="Clinic interior" class="hero-bg-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge fade-up">
+          <i class="fa-solid fa-location-dot"></i> Kasavanahalli · Sarjapur Road · Bengaluru
+        </div>
+        <h1 class="fade-up delay-1">
+          Heal Faster.<br>Move <span>Better.</span><br>Live Fully.
+        </h1>
+        <p class="hero-subtitle fade-up delay-2">Evidence-Based Physiotherapy by Dr. Pooja Sahu (MPT)</p>
+        <p class="hero-desc fade-up delay-2">
+          Specialised treatment for musculoskeletal conditions, sports injuries, and chronic pain — using hands-on therapy and modern modalities. Trusted by 1,500+ patients in Kasavanahalli & Bellandur.
+        </p>
+        <div class="hero-stars fade-up delay-2">
+          <div class="star-val">4.8</div>
+          <div>
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <div class="star-count">230+ verified Google reviews</div>
+          </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="22" alt="Google">
+        </div>
+        <div class="hero-btns fade-up delay-3">
+          <a href="#contact" class="btn-hero-primary">
+            <i class="fa-solid fa-calendar-check"></i> Book Appointment
+          </a>
+          <a href="https://wa.me/919004907509?text=Hi%20Dr.%20Pooja%2C%20I%20would%20like%20to%20book%20an%20appointment" target="_blank" class="btn-hero-wa">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Now
+          </a>
+        </div>
+      </div>
+      <div class="hero-img-col fade-up delay-2">
+        <div class="hero-doctor-card">
+          <img src="doctor.jpg" alt="Dr. Pooja Sahu" class="hero-doctor-img">
+          <div class="hero-doctor-label">
+            <div class="hero-doctor-name">Dr. Pooja Sahu (PT)</div>
+            <div class="hero-doctor-cred">MPT · Musculoskeletal & Sports Rehab Specialist</div>
+          </div>
+        </div>
+        <div class="hero-float-badge">
+          <div class="fb-val">230+</div>
+          <div class="fb-label">Google<br>Reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <a href="#trust"><i class="fa-solid fa-chevron-down"></i></a>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar" id="trust">
+    <div class="tb-item">
+      <i class="fa-solid fa-star"></i>
+      <div><div class="tb-val">4.8★</div><div class="tb-label">Google Rating</div></div>
+    </div>
+    <div class="tb-item">
+      <i class="fa-solid fa-comments"></i>
+      <div><div class="tb-val">230+</div><div class="tb-label">Patient Reviews</div></div>
+    </div>
+    <div class="tb-item">
+      <i class="fa-solid fa-user-doctor"></i>
+      <div><div class="tb-val">10+ Yrs</div><div class="tb-label">Clinical Experience</div></div>
+    </div>
+    <div class="tb-item">
+      <i class="fa-solid fa-house-medical"></i>
+      <div><div class="tb-val">Home Visits</div><div class="tb-label">Available Daily</div></div>
+    </div>
+    <div class="tb-item">
+      <i class="fa-solid fa-clock"></i>
+      <div><div class="tb-val">10AM–8:30PM</div><div class="tb-label">Mon to Sat</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <div class="section-tag fade-up">Our Specialisations</div>
+          <h2 class="section-title fade-up">Expert Care for <span>Every Condition</span></h2>
+          <p class="section-sub fade-up">From acute sports injuries to chronic pain management — we use evidence-based protocols tailored to your specific needs.</p>
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon"><i class="fa-solid fa-bone"></i></div>
+          <div class="service-title">Musculoskeletal & Spine</div>
+          <p class="service-desc">Targeted therapy for back pain, neck pain, disc herniation, spondylosis, and postural disorders using manual therapy and modalities.</p>
+          <div class="service-conditions">
+            <span class="sc-tag">Back Pain</span><span class="sc-tag">Cervical Spondylosis</span><span class="sc-tag">Sciatica</span><span class="sc-tag">PIVD</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-1">
+          <div class="service-icon"><i class="fa-solid fa-person-running"></i></div>
+          <div class="service-title">Sports Injury Rehabilitation</div>
+          <p class="service-desc">Specialised rehab for athletes recovering from ACL tears, muscle strains, ligament injuries, and post-surgery recovery. Back to sport, faster.</p>
+          <div class="service-conditions">
+            <span class="sc-tag">ACL Rehab</span><span class="sc-tag">Rotator Cuff</span><span class="sc-tag">Ankle Sprain</span><span class="sc-tag">Post-Surgery</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-2">
+          <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+          <div class="service-title">Neurological Rehabilitation</div>
+          <p class="service-desc">Comprehensive neuro rehab for stroke survivors, Parkinson's patients, and those with spinal cord conditions using gait training and functional exercises.</p>
+          <div class="service-conditions">
+            <span class="sc-tag">Stroke Rehab</span><span class="sc-tag">Parkinson's</span><span class="sc-tag">Hemiplegia</span><span class="sc-tag">Gait Training</span>
+          </div>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><i class="fa-solid fa-person-cane"></i></div>
+          <div class="service-title">Geriatric Physiotherapy</div>
+          <p class="service-desc">Gentle, effective physiotherapy for elderly patients — targeting fall prevention, joint replacement recovery, osteoarthritis, and improving daily independence.</p>
+          <div class="service-conditions">
+            <span class="sc-tag">Arthritis</span><span class="sc-tag">Knee Replacement</span><span class="sc-tag">Fall Prevention</span><span class="sc-tag">Osteoporosis</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-1">
+          <div class="service-icon"><i class="fa-solid fa-house-chimney-medical"></i></div>
+          <div class="service-title">Home Visit Physiotherapy</div>
+          <p class="service-desc">Convenient, professional physiotherapy in the comfort of your home. Ideal for post-surgical patients, elderly individuals, and those with mobility challenges.</p>
+          <div class="service-conditions">
+            <span class="sc-tag">Kasavanahalli</span><span class="sc-tag">Sarjapur Rd</span><span class="sc-tag">Bellandur</span><span class="sc-tag">Whitefield</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-2">
+          <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="service-title">Electrotherapy & Modalities</div>
+          <p class="service-desc">Advanced pain management using IFT, TENS, ultrasound therapy, shortwave diathermy, laser therapy, and traction — for fast, lasting pain relief.</p>
+          <div class="service-conditions">
+            <span class="sc-tag">IFT</span><span class="sc-tag">TENS</span><span class="sc-tag">Ultrasound</span><span class="sc-tag">Laser Therapy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card fade-up">
+          <div class="stat-val">1,500<span class="stat-unit">+</span></div>
+          <div class="stat-label">Patients Treated</div>
+        </div>
+        <div class="stat-card fade-up delay-1">
+          <div class="stat-val">4.8<span class="stat-unit">★</span></div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat-card fade-up delay-2">
+          <div class="stat-val">10<span class="stat-unit">+ Yrs</span></div>
+          <div class="stat-label">Clinical Experience</div>
+        </div>
+        <div class="stat-card fade-up delay-3">
+          <div class="stat-val">230<span class="stat-unit">+</span></div>
+          <div class="stat-label">5-Star Reviews</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap fade-up">
+          <img src="doctor.jpg" alt="Dr. Pooja Sahu" class="about-img">
+          <div class="about-exp-badge">
+            <div class="aeb-val">10+</div>
+            <div class="aeb-label">Years of<br>Excellence</div>
+          </div>
+        </div>
+        <div class="about-text fade-up delay-1">
+          <div class="section-tag">Meet Your Physiotherapist</div>
+          <h2 class="section-title">Dr. Pooja Sahu <span>(PT)</span></h2>
+          <p style="font-family:'Lora',serif; font-style:italic; color:var(--muted); margin-bottom:18px; line-height:1.7;">
+            "My goal is not just to treat your pain — but to understand its root cause, fix it permanently, and teach you how to prevent it from coming back."
+          </p>
+          <p style="color:var(--slate); font-size:0.9rem; line-height:1.75; margin-bottom:20px;">
+            Dr. Pooja Sahu is a highly qualified physiotherapist with a Master of Physiotherapy (MPT) degree, specialising in musculoskeletal rehabilitation and sports injury management. Based in Kasavanahalli, she has built a reputation as one of Sarjapur Road's most trusted physio specialists — earning 4.8★ across 230+ independent Google reviews.
+          </p>
+          <ul class="about-qual-list">
+            <li><i class="fa-solid fa-circle-check"></i> <strong>MPT (Master of Physiotherapy)</strong> — Musculoskeletal & Sports Rehabilitation</li>
+            <li><i class="fa-solid fa-circle-check"></i> <strong>BPT (Bachelor of Physiotherapy)</strong> — Registered with Karnataka Allied Health Sciences Council</li>
+            <li><i class="fa-solid fa-circle-check"></i> Expertise in manual therapy, dry needling, and advanced electrotherapy</li>
+            <li><i class="fa-solid fa-circle-check"></i> Specialist in evidence-based treatment protocols for chronic pain</li>
+            <li><i class="fa-solid fa-circle-check"></i> Available for home visits across Kasavanahalli, Bellandur & Whitefield</li>
+          </ul>
+          <div class="about-certifications">
+            <span class="cert-chip">MPT Certified</span>
+            <span class="cert-chip">Sports Rehab</span>
+            <span class="cert-chip">Geriatric Care</span>
+            <span class="cert-chip">Neuro Rehab</span>
+            <span class="cert-chip">Home Visits</span>
+          </div>
+          <div style="margin-top: 28px;">
+            <a href="https://wa.me/919004907509" target="_blank" class="btn-hero-wa" style="display:inline-flex;">
+              <i class="fa-brands fa-whatsapp"></i> Chat with Dr. Pooja on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi-section" id="testimonials">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <div class="section-tag fade-up">Patient Reviews</div>
+          <h2 class="section-title fade-up">What <span>230+ Patients</span> Are Saying</h2>
+          <p class="section-sub fade-up">All reviews are from verified patients on Google. We don't edit or cherry-pick — these are real words from real people.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; background:white; padding:14px 20px; border-radius:14px; border:1px solid var(--border); flex-shrink:0; box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+          <div style="font-size:2rem; font-weight:800; color:var(--navy);">4.8</div>
+          <div>
+            <div style="display:flex; gap:2px;">
+              <i class="fa-solid fa-star" style="color:#fbbf24;"></i><i class="fa-solid fa-star" style="color:#fbbf24;"></i>
+              <i class="fa-solid fa-star" style="color:#fbbf24;"></i><i class="fa-solid fa-star" style="color:#fbbf24;"></i>
+              <i class="fa-solid fa-star-half-stroke" style="color:#fbbf24;"></i>
+            </div>
+            <div style="font-size:0.75rem; color:var(--muted); margin-top:3px;">230+ Google Reviews</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card fade-up">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Dr. Pooja diagnosed my exact issue within the first session when 3 other doctors had failed to. My chronic back pain of 2 years was completely resolved in 6 weeks. Absolutely exceptional.</p>
+          <div class="testi-footer">
+            <div>
+              <div class="testi-author-name">Rahul Sharma</div>
+              <div class="testi-author-detail">Software Engineer · Sobha Neopolis</div>
+            </div>
+            <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+          <div class="testi-gmb"><i class="fa-brands fa-google"></i> Verified Google Review</div>
+        </div>
+        <div class="testi-card fade-up delay-1">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Best physiotherapist I've visited in Bangalore. She's thorough, knowledgeable, and actually listens. Recovered from my ACL surgery in record time. Highly recommend for sports rehab.</p>
+          <div class="testi-footer">
+            <div>
+              <div class="testi-author-name">Priya Nair</div>
+              <div class="testi-author-detail">Former Athlete · Kasavanahalli</div>
+            </div>
+            <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+          <div class="testi-gmb"><i class="fa-brands fa-google"></i> Verified Google Review</div>
+        </div>
+        <div class="testi-card fade-up delay-2">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">My 72-year-old mother had severe knee pain. Dr. Pooja's gentle approach and clear explanation of exercises made a world of difference. She can now walk without support. Truly grateful.</p>
+          <div class="testi-footer">
+            <div>
+              <div class="testi-author-name">Deepak Menon</div>
+              <div class="testi-author-detail">IT Professional · Bellandur</div>
+            </div>
+            <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+          <div class="testi-gmb"><i class="fa-brands fa-google"></i> Verified Google Review</div>
+        </div>
+        <div class="testi-card fade-up">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Cervical spondylosis had made my life miserable for 8 months. Dr. Pooja's traction therapy and exercises gave me relief from the very first week. Clinic is clean, professional, and peaceful.</p>
+          <div class="testi-footer">
+            <div>
+              <div class="testi-author-name">Anita Reddy</div>
+              <div class="testi-author-detail">HR Manager · Sarjapur Road</div>
+            </div>
+            <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+          <div class="testi-gmb"><i class="fa-brands fa-google"></i> Verified Google Review</div>
+        </div>
+        <div class="testi-card fade-up delay-1">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">I visited after my total knee replacement. The home visit service is incredibly convenient — Dr. Pooja is punctual, professional, and the exercises she gave me have improved my recovery speed dramatically.</p>
+          <div class="testi-footer">
+            <div>
+              <div class="testi-author-name">Venkat Krishnan</div>
+              <div class="testi-author-detail">Retired · Whitefield</div>
+            </div>
+            <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+          <div class="testi-gmb"><i class="fa-brands fa-google"></i> Verified Google Review</div>
+        </div>
+        <div class="testi-card fade-up delay-2">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">As a runner, I was struggling with ITB syndrome for months. Dr. Pooja's sports-specific rehab plan got me back to running in 3 weeks. She understands the athletic mindset completely.</p>
+          <div class="testi-footer">
+            <div>
+              <div class="testi-author-name">Karan Mehta</div>
+              <div class="testi-author-detail">Marathon Runner · Varthur</div>
+            </div>
+            <div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          </div>
+          <div class="testi-gmb"><i class="fa-brands fa-google"></i> Verified Google Review</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="hiw-section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:56px;">
+        <div class="section-tag fade-up" style="display:inline-block;">Simple Process</div>
+        <h2 class="section-title fade-up" style="text-align:center;">Book in <span>4 Easy Steps</span></h2>
+      </div>
+      <div class="hiw-steps">
+        <div class="hiw-step fade-up">
+          <div class="hiw-num"><i class="fa-brands fa-whatsapp"></i></div>
+          <div class="hiw-step-title">WhatsApp or Call</div>
+          <p class="hiw-step-desc">Message us on WhatsApp or call directly to check availability. Response within 15 minutes.</p>
+        </div>
+        <div class="hiw-step fade-up delay-1">
+          <div class="hiw-num"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="hiw-step-title">Book Your Slot</div>
+          <p class="hiw-step-desc">Pick a convenient time. Morning (10:30am–1:30pm) or Evening (5pm–8:30pm). 6 days a week.</p>
+        </div>
+        <div class="hiw-step fade-up delay-2">
+          <div class="hiw-num"><i class="fa-solid fa-clipboard-list"></i></div>
+          <div class="hiw-step-title">Assessment</div>
+          <p class="hiw-step-desc">Dr. Pooja conducts a thorough evaluation, diagnosis, and creates your personalised treatment plan.</p>
+        </div>
+        <div class="hiw-step fade-up delay-3">
+          <div class="hiw-num"><i class="fa-solid fa-heart-pulse"></i></div>
+          <div class="hiw-step-title">Heal & Recover</div>
+          <p class="hiw-step-desc">Begin your treatment sessions and home exercise program. Most patients see results within 2–3 sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info fade-up">
+          <div class="section-tag" style="background:rgba(16,185,129,0.15); color:#34d399;">Book an Appointment</div>
+          <h2>Let's Get You<br>Pain-Free.</h2>
+          <p>Fill the form or WhatsApp us directly. We'll confirm your slot within 15 minutes and send you directions to the clinic.</p>
+          <div class="contact-details">
+            <div class="cd-row">
+              <div class="cd-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="cd-label">Address</div>
+                <div class="cd-val">76/2, Hosa Road, Beside Play Arena,<br>Kasavanahalli, Sarjapur Road, Bengaluru — 560035</div>
+              </div>
+            </div>
+            <div class="cd-row">
+              <div class="cd-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <div class="cd-label">Phone</div>
+                <div class="cd-val"><a href="tel:+919004907509" style="color:white; text-decoration:none;">+91 90049 07509</a></div>
+              </div>
+            </div>
+            <div class="cd-row">
+              <div class="cd-icon"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <div class="cd-label">Clinic Hours</div>
+                <div class="cd-val">Mon–Sat: 10:30 AM – 1:30 PM & 5:00 PM – 8:30 PM</div>
+              </div>
+            </div>
+            <div class="cd-row">
+              <div class="cd-icon"><i class="fa-solid fa-house-chimney-medical"></i></div>
+              <div>
+                <div class="cd-label">Home Visits</div>
+                <div class="cd-val">Available across Sarjapur Road, Bellandur, Whitefield & Varthur</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form fade-up delay-1">
+          <h3><i class="fa-solid fa-calendar-plus" style="color:var(--teal);"></i> Request an Appointment</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="e.g. Priya Sharma" id="cName">
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="+91 98XXX XXXXX" id="cPhone">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>What's your main concern?</label>
+            <select id="cCondition">
+              <option value="">Select condition</option>
+              <option>Back Pain / Sciatica</option>
+              <option>Neck Pain / Cervical</option>
+              <option>Sports Injury / ACL</option>
+              <option>Knee Pain / Arthritis</option>
+              <option>Post-Surgery Rehab</option>
+              <option>Neurological Condition</option>
+              <option>Geriatric / Elderly Care</option>
+              <option>Home Visit Required</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Time</label>
+            <select id="cTime">
+              <option>Morning (10:30 AM – 1:30 PM)</option>
+              <option>Evening (5:00 PM – 8:30 PM)</option>
+              <option>Home Visit (Flexible)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Anything else to share?</label>
+            <textarea placeholder="Brief description of your condition, duration of pain, etc." id="cMsg"></textarea>
+          </div>
+          <button class="btn-submit" onclick="sendViaWhatsApp()">
+            <i class="fa-solid fa-paper-plane"></i> Send Appointment Request
+          </button>
+          <a href="https://wa.me/919004907509" target="_blank" class="wa-cta-strip">
+            <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i>
+            Or WhatsApp directly: +91 90049 07509
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <div class="map-strip">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.123456789!2d77.66!3d12.88!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDUyJzQ4LjAiTiA3N8KwMzknMzYuMCJF!5e0!3m2!1sen!2sin!4v1691234567890!5m2!1sen!2sin"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Clinic Location">
+    </iframe>
+    <div class="map-overlay-card">
+      <div class="moc-title">Dr. Pooja's Physiotherapy Clinic</div>
+      <div class="moc-addr">76/2 Hosa Road, beside Play Arena,<br>Kasavanahalli, Sarjapur Road, Bengaluru 560035</div>
+      <a href="https://maps.google.com/?q=Dr+Pooja+Physiotherapy+Kasavanahalli+Bengaluru" target="_blank" class="moc-link">
+        <i class="fa-solid fa-location-arrow"></i> Get Directions
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Dr. Pooja's Physiotherapy Clinic</div>
+      <div class="footer-sub">Kasavanahalli · Sarjapur Road · Bengaluru 560035</div>
+    </div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Book Appointment</a>
+    </div>
+    <div class="footer-socials">
+      <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/919004907509" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#" class="social-btn"><i class="fa-brands fa-google"></i></a>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/919004907509?text=Hi%20Dr.%20Pooja%2C%20I%20saw%20your%20website%20and%20would%20like%20to%20book%20an%20appointment" target="_blank" class="fab-wa" title="WhatsApp Dr. Pooja">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // WhatsApp form send
+    function sendViaWhatsApp() {
+      const name = document.getElementById('cName').value.trim() || 'Patient';
+      const phone = document.getElementById('cPhone').value.trim() || 'Not provided';
+      const condition = document.getElementById('cCondition').value || 'Not specified';
+      const time = document.getElementById('cTime').value;
+      const msg = document.getElementById('cMsg').value.trim() || '';
+      const text = `Hi Dr. Pooja, I'd like to book an appointment.%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Condition:* ${condition}%0A*Preferred time:* ${time}${msg ? '%0A*Additional info:* ' + msg : ''}%0A%0ASeen via your website.`;
+      window.open(`https://wa.me/919004907509?text=${text}`, '_blank');
+    }
+
+    // Sticky nav enhancement
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 80) nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.12)';
+      else nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
+    });
+
+    // Counter animation
+    function animateCounter(el, target, duration = 1500) {
+      let start = 0;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) { el.textContent = target + (el.dataset.suffix || ''); clearInterval(timer); }
+        else el.textContent = Math.floor(start) + (el.dataset.suffix || '');
+      }, 16);
+    }
+  </script>
+</body>
+</html>
