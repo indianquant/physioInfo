@@ -175,6 +175,20 @@
     footer { background: #020617; color: rgba(255,255,255,0.6); padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
     .fab-wa { position: fixed; bottom: 24px; right: 24px; z-index: 1000; width: 58px; height: 58px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; text-decoration: none; box-shadow: 0 8px 24px rgba(37,211,102,0.5); }
 
+    /* MAP STRIP */
+    .map-strip { height: 340px; position: relative; }
+    .map-strip iframe { width: 100%; height: 100%; border: none; }
+    .map-overlay-card {
+      position: absolute; top: 20px; left: 5%; background: white; border-radius: 16px;
+      padding: 18px 22px; box-shadow: 0 12px 40px rgba(0,0,0,0.15); max-width: 320px; z-index: 10;
+    }
+    .moc-title { font-weight: 700; font-size: 0.92rem; color: var(--navy); margin-bottom: 4px; }
+    .moc-addr { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .moc-link {
+      margin-top: 10px; display: inline-flex; align-items: center; gap: 6px;
+      color: var(--primary); font-size: 0.8rem; font-weight: 600; text-decoration: none;
+    }
+
     @media (max-width: 900px) {
       .hero-content, .about-grid, .contact-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
@@ -368,6 +382,21 @@
       </div>
     </div>
   </section>
+
+  <!-- MAP -->
+  <div class="map-strip">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.123456789!2d77.7486!3d12.9528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae137307e1e555%3A0x6c63394541c0ad3a!2sCorpErgo%20Physiotherapy%20and%20Occupational%20Health%20Centre!5e0!3m2!1sen!2sin!4v1691234567890!5m2!1sen!2sin"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="CorpErgo Clinic Location">
+    </iframe>
+    <div class="map-overlay-card">
+      <div class="moc-title">CorpErgo Physiotherapy & Occupational Health</div>
+      <div class="moc-addr">Sapthagiri Complex, opp. Hi-Life Pearl Shell Apt,<br>Balagere Village, Varthur, Bengaluru 560087</div>
+      <a href="https://www.google.com/maps/place/?q=place_id:ChIJVevhB3MTrjsROq3ADUU5DGY" target="_blank" class="moc-link">
+        <i class="fa-solid fa-location-arrow"></i> Get Directions on Google Maps
+      </a>
+    </div>
+  </div>
 
   <footer>
     <div>CorpErgo Physiotherapy & Occupational Health Centre</div>

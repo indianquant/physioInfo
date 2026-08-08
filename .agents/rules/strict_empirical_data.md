@@ -22,7 +22,11 @@
 4. **Equipment & Instrument Pricing**
    - Equipment price ranges (Basic, Medium, Advanced) must match verified manufacturer/distributor listings on IndiaMART and HospitalStore.
 
-5. **Outreach & Pitches**
+5. **Exact Google Maps Location Embed & Directions Link**
+   - Every generated website MUST include an interactive map strip (`.map-strip`) with the clinic's exact latitude/longitude or place ID.
+   - Must include an overlay card with the exact verified address and a direct "Get Directions" link pointing to the clinic's actual Google Maps URL or query.
+
+6. **Outreach & Pitches**
    - All pitch templates and live mockup demos must cite verified empirical data (exact address, real phone number, actual review count, real rating).
 
 ---
