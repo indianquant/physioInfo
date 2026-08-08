@@ -43,7 +43,14 @@
      - **WhatsApp:** `+91-8770855796` (`https://wa.me/918770855796`)
      - **Email:** `quantindian@gmail.com`
 
-9. **Outreach & Pitches**
+9. **Mandatory Mobile-First UI Optimization Protocol**
+   - Since >85% of target doctor/clinic owners view pitch previews on mobile phones, every generated webpage MUST be rigorously mobile-optimized:
+     - Touch targets (buttons, links, WhatsApp CTAs) must be at least **48px high** for easy thumb tapping.
+     - Top `.demo-banner` must flex-wrap cleanly on 320px–420px screens without obscuring hero headers.
+     - Hero sections, about cards, service grids, and forms must collapse smoothly into single-column layouts on mobile viewports.
+     - Floating WhatsApp FAB buttons must be positioned cleanly above mobile browser navigation bars.
+
+10. **Outreach & Pitches**
    - All pitch templates and live mockup demos must cite verified empirical data (exact address, real phone number, actual review count, real rating).
 
 ---
