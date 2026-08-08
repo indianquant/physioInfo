@@ -22,6 +22,20 @@
 </head>
 <body>
 
+  <!-- Authorization Lock Overlay (Passcode Protection) -->
+  <div id="authLockOverlay" class="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-icon"><i class="fa-solid fa-lock"></i></div>
+      <h3>PhysioLaunch Portal Lock</h3>
+      <p>This is a restricted founder portal & market research database. Please enter your passcode to access.</p>
+      <div class="auth-input-group">
+        <input type="password" id="authPasscode" placeholder="Enter passcode..." autocomplete="current-password" onkeydown="if(event.key==='Enter') verifyPortalPasscode()">
+        <button class="btn-auth-unlock" onclick="verifyPortalPasscode()">Unlock</button>
+      </div>
+      <div id="authErrorMsg" class="auth-error">Incorrect passcode. Access denied.</div>
+    </div>
+  </div>
+
   <!-- Top Navigation Bar -->
   <header class="navbar">
     <div class="nav-brand">

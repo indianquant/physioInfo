@@ -1480,3 +1480,45 @@ function filterCostsTier(tier, btn) {
     if (el) el.classList.remove('hidden');
   });
 }
+
+/* ==========================================================================
+   Portal Passcode Authorization Lock
+   ========================================================================== */
+const PORTAL_PASSCODE = 'physio2026';
+
+function initPortalAuth() {
+  const overlay = document.getElementById('authLockOverlay');
+  if (!overlay) return;
+
+  const isUnlocked = localStorage.getItem('portal_unlocked_session') === 'true';
+  if (isUnlocked) {
+    overlay.style.display = 'none';
+  } else {
+    overlay.style.display = 'flex';
+  }
+}
+
+function verifyPortalPasscode() {
+  const input = document.getElementById('authPasscode');
+  const errorMsg = document.getElementById('authErrorMsg');
+  const overlay = document.getElementById('authLockOverlay');
+  if (!input) return;
+
+  const entered = input.value.trim();
+  if (entered === PORTAL_PASSCODE) {
+    localStorage.setItem('portal_unlocked_session', 'true');
+    if (overlay) overlay.style.display = 'none';
+    if (errorMsg) errorMsg.style.display = 'none';
+  } else {
+    if (errorMsg) {
+      errorMsg.style.display = 'block';
+      errorMsg.innerText = '❌ Incorrect passcode. Access denied.';
+    }
+    input.value = '';
+    input.focus();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initPortalAuth();
+});
